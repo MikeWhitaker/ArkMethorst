@@ -64,6 +64,10 @@
     <Compile Include="Entities\EndOfLevel.Generated.cs">
       <DependentUpon>EndOfLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Piglet.cs" />
+    <Compile Include="Entities\Piglet.Generated.cs">
+      <DependentUpon>Piglet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Player.Generated.cs">
       <DependentUpon>Player.cs</DependentUpon>
