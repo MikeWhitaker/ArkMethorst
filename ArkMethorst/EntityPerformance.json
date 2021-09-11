@@ -1,0 +1,68 @@
+{
+  "EntityManagementValueList": [
+    {
+      "Name": "Entities\\Animal",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Checkpoint",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "PoleSprite"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "FlagSprite"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Player",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Piglet",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteRuntimeInstance"
+        }
+      ]
+    }
+  ]
+}

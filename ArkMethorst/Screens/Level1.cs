@@ -21,7 +21,6 @@ namespace ArkMethorst.Screens
 		void CustomInitialize()
 		{
 
-
 		}
 
 		void CustomActivity(bool firstTimeCalled)

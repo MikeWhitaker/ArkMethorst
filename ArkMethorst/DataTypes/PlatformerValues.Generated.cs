@@ -25,6 +25,7 @@ namespace ArkMethorst.DataTypes
         public System.Decimal DownhillMaxSpeedBoostPercentage;
         public bool CanClimb;
         public float MaxClimbingSpeed;
+        public int InheritOrOverwriteAsInt;
         public const string Ground = "Ground";
         public const string Air = "Air";
         public const string Running = "Running";

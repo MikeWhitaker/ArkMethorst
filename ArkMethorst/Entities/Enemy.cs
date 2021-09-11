@@ -11,7 +11,7 @@ using FlatRedBall.Math.Geometry;
 
 namespace ArkMethorst.Entities
 {
-    public partial class Piglet
+    public partial class Enemy
     {
         /// <summary>
         /// Initialization logic which is execute only one time for this Entity (unless the Entity is pooled).
@@ -20,13 +20,20 @@ namespace ArkMethorst.Entities
         /// </summary>
         private void CustomInitialize()
         {
-            this.InitializePlatformerInput(new PigletPlatformerInput());
+            this.InitializePlatformerInput(new EnemyInput());
 
         }
 
         private void CustomActivity()
         {
-            
+            if(DirectionFacing == HorizontalDirection.Right)
+            {
+                SpriteInstance.CurrentChainName = "EnemyWalkRight";
+            }
+            else
+            {
+                SpriteInstance.CurrentChainName = "EnemyWalkLeft";
+            }
 
         }
 
@@ -43,42 +50,8 @@ namespace ArkMethorst.Entities
         }
     }
 
-	public class PigletPlatformerInput : InputDeviceBase
+    class EnemyInput : InputDeviceBase
     {
-        private Direction desiredDirection;
 
-		public PigletPlatformerInput()
-		{
-            desiredDirection = Direction.Left;
-        }
-
-		public Direction DesiredDirection { get => desiredDirection; set => desiredDirection = value; }
-
-		protected override float GetHorizontalValue()
-        {
-            if (DesiredDirection == Direction.Left)
-            {
-                return -1;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        protected override bool GetPrimaryActionPressed()
-        {
-            //if (false)
-            //{
-            //    return true;
-            //}
-            return false;
-        }
     }
-
-    public enum Direction
-    {
-        Left,
-        Right
-    } 
 }

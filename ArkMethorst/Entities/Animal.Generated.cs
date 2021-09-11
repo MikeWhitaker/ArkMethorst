@@ -22,19 +22,6 @@ namespace ArkMethorst.Entities
         static System.Collections.Generic.List<string> mRegisteredUnloads = new System.Collections.Generic.List<string>();
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
         
-        private FlatRedBall.Sprite SpriteInstance;
-        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAxisAlignedRectangleInstance;
-        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AxisAlignedRectangleInstance
-        {
-            get
-            {
-                return mAxisAlignedRectangleInstance;
-            }
-            private set
-            {
-                mAxisAlignedRectangleInstance = value;
-            }
-        }
         public int Index { get; set; }
         public bool Used { get; set; }
         private FlatRedBall.Math.Geometry.ShapeCollection mGeneratedCollision;
@@ -63,10 +50,6 @@ namespace ArkMethorst.Entities
         protected virtual void InitializeEntity (bool addToManagers) 
         {
             LoadStaticContent(ContentManagerName);
-            SpriteInstance = new FlatRedBall.Sprite();
-            SpriteInstance.Name = "SpriteInstance";
-            mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
-            mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
             
             PostInitialize();
             if (addToManagers)
@@ -78,15 +61,11 @@ namespace ArkMethorst.Entities
         {
             LayerProvidedByContainer = layerToAddTo;
             FlatRedBall.SpriteManager.AddPositionedObject(this);
-            FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
         }
         public virtual void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
             FlatRedBall.SpriteManager.AddPositionedObject(this);
-            FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
             AddToManagersBottomUp(layerToAddTo);
             CustomInitialize();
         }
@@ -104,14 +83,6 @@ namespace ArkMethorst.Entities
             }
             FlatRedBall.SpriteManager.RemovePositionedObject(this);
             
-            if (SpriteInstance != null)
-            {
-                FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
-            }
-            if (AxisAlignedRectangleInstance != null)
-            {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
-            }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
             CustomDestroy();
         }
@@ -119,22 +90,7 @@ namespace ArkMethorst.Entities
         {
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-            if (SpriteInstance.Parent == null)
-            {
-                SpriteInstance.CopyAbsoluteToRelative();
-                SpriteInstance.AttachTo(this, false);
-            }
-            SpriteInstance.TextureScale = 1f;
-            if (mAxisAlignedRectangleInstance.Parent == null)
-            {
-                mAxisAlignedRectangleInstance.CopyAbsoluteToRelative();
-                mAxisAlignedRectangleInstance.AttachTo(this, false);
-            }
-            AxisAlignedRectangleInstance.Width = 32f;
-            AxisAlignedRectangleInstance.Height = 32f;
-            AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.SeaGreen;
             mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
-            Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public virtual void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -144,14 +100,6 @@ namespace ArkMethorst.Entities
         public virtual void RemoveFromManagers () 
         {
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
-            if (SpriteInstance != null)
-            {
-                FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
-            }
-            if (AxisAlignedRectangleInstance != null)
-            {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
-            }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
         }
         public virtual void AssignCustomVariables (bool callOnContainedElements) 
@@ -159,16 +107,11 @@ namespace ArkMethorst.Entities
             if (callOnContainedElements)
             {
             }
-            SpriteInstance.TextureScale = 1f;
-            AxisAlignedRectangleInstance.Width = 32f;
-            AxisAlignedRectangleInstance.Height = 32f;
-            AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.SeaGreen;
         }
         public virtual void ConvertToManuallyUpdated () 
         {
             this.ForceUpdateDependenciesDeep();
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
-            FlatRedBall.SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
         }
         public static void LoadStaticContent (string contentManagerName) 
         {
@@ -252,25 +195,10 @@ namespace ArkMethorst.Entities
         public virtual void SetToIgnorePausing () 
         {
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
-            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
         }
         public virtual void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {
             var layerToRemoveFrom = LayerProvidedByContainer;
-            if (layerToRemoveFrom != null)
-            {
-                layerToRemoveFrom.Remove(SpriteInstance);
-            }
-            if (layerToMoveTo != null || !SpriteManager.AutomaticallyUpdatedSprites.Contains(SpriteInstance))
-            {
-                FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, layerToMoveTo);
-            }
-            if (layerToRemoveFrom != null)
-            {
-                layerToRemoveFrom.Remove(AxisAlignedRectangleInstance);
-            }
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AxisAlignedRectangleInstance, layerToMoveTo);
             LayerProvidedByContainer = layerToMoveTo;
         }
     }

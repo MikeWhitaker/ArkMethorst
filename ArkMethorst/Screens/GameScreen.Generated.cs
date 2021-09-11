@@ -31,6 +31,7 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
+        private FlatRedBall.Math.Collision.CollidableListVsTileShapeCollectionRelationship<Entities.Animal> AnimalListVsSolidCollision;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
@@ -104,6 +105,10 @@ namespace ArkMethorst.Screens
     PlayerListVsEndOfLevelList.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
     PlayerListVsEndOfLevelList.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
     PlayerListVsEndOfLevelList.Name = "PlayerListVsEndOfLevelList";
+
+                AnimalListVsSolidCollision = FlatRedBall.Math.Collision.CollisionManagerTileShapeCollectionExtensions.CreateTileRelationship(FlatRedBall.Math.Collision.CollisionManager.Self, AnimalList, SolidCollision);
+    AnimalListVsSolidCollision.Name = "AnimalListVsSolidCollision";
+    AnimalListVsSolidCollision.SetBounceCollision(0f, 1f, 1f);
 
             Forms = new ArkMethorst.FormsControls.Screens.GameScreenGumForms(GameScreenGum);
             // normally we wait to set variables until after the object is created, but in this case if the

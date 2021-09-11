@@ -13,27 +13,17 @@ using ArkMethorst.DataTypes;
 using FlatRedBall.IO.Csv;
 namespace ArkMethorst.Entities
 {
-    public partial class Piglet : ArkMethorst.Entities.Animal, FlatRedBall.Graphics.IDestroyable
+    public partial class Enemy : FlatRedBall.PositionedObject, FlatRedBall.Graphics.IDestroyable, FlatRedBall.Math.Geometry.ICollidable
     {
         // This is made static so that static lazy-loaded content can access it.
-        public static new string ContentManagerName
-        {
-            get
-            {
-                return ArkMethorst.Entities.Animal.ContentManagerName;
-            }
-            set
-            {
-                ArkMethorst.Entities.Animal.ContentManagerName = value;
-            }
-        }
+        public static string ContentManagerName { get; set; }
         #if DEBUG
         static bool HasBeenLoadedWithGlobalContentManager = false;
         #endif
         static object mLockObject = new object();
         static System.Collections.Generic.List<string> mRegisteredUnloads = new System.Collections.Generic.List<string>();
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
-        protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTexture;
+        protected static FlatRedBall.Graphics.Animation.AnimationChainList PlatformerAnimations;
         public static System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> PlatformerValuesStatic;
         
         private FlatRedBall.Sprite SpriteInstance;
@@ -115,15 +105,12 @@ namespace ArkMethorst.Entities
                 return mAfterDoubleJump;
             }
         }
-        public bool SpriteInstanceFlipHorizontal
+        private FlatRedBall.Math.Geometry.ShapeCollection mGeneratedCollision;
+        public FlatRedBall.Math.Geometry.ShapeCollection Collision
         {
             get
             {
-                return SpriteInstance.FlipHorizontal;
-            }
-            set
-            {
-                SpriteInstance.FlipHorizontal = value;
+                return mGeneratedCollision;
             }
         }
         #region Platformer Fields
@@ -335,20 +322,22 @@ namespace ArkMethorst.Entities
         public System.Action LandedAction;
 
 
-        public Piglet () 
+        protected FlatRedBall.Graphics.Layer LayerProvidedByContainer = null;
+        public Enemy () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
         }
-        public Piglet (string contentManagerName) 
+        public Enemy (string contentManagerName) 
         	: this(contentManagerName, true)
         {
         }
-        public Piglet (string contentManagerName, bool addToManagers) 
-        	: base(contentManagerName, addToManagers)
+        public Enemy (string contentManagerName, bool addToManagers) 
+        	: base()
         {
             ContentManagerName = contentManagerName;
+            InitializeEntity(addToManagers);
         }
-        protected override void InitializeEntity (bool addToManagers) 
+        protected virtual void InitializeEntity (bool addToManagers) 
         {
             LoadStaticContent(ContentManagerName);
             SpriteInstance = new FlatRedBall.Sprite();
@@ -388,26 +377,31 @@ namespace ArkMethorst.Entities
             AfterAfterDoubleJumpSet += (not, used) => UpdateCurrentMovement();
 
             
-            base.InitializeEntity(addToManagers);
+            PostInitialize();
+            if (addToManagers)
+            {
+                AddToManagers(null);
+            }
         }
-        public override void ReAddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
+        public virtual void ReAddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
-            base.ReAddToManagers(layerToAddTo);
+            LayerProvidedByContainer = layerToAddTo;
+            FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
         }
-        public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
+        public virtual void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
+            FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
-            base.AddToManagers(layerToAddTo);
+            AddToManagersBottomUp(layerToAddTo);
             CustomInitialize();
         }
-        public override void Activity () 
+        public virtual void Activity () 
         {
-            base.Activity();
             
             
             ApplyInput();
@@ -416,9 +410,9 @@ namespace ArkMethorst.Entities
 
             CustomActivity();
         }
-        public override void Destroy () 
+        public virtual void Destroy () 
         {
-            base.Destroy();
+            FlatRedBall.SpriteManager.RemovePositionedObject(this);
             
             if (SpriteInstance != null)
             {
@@ -428,39 +422,48 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.Remove(AxisAlignedRectangleInstance);
             }
+            mGeneratedCollision.RemoveFromManagers(clearThis: false);
             CustomDestroy();
         }
-        public override void PostInitialize () 
+        public virtual void PostInitialize () 
         {
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-            base.PostInitialize();
             if (SpriteInstance.Parent == null)
             {
                 SpriteInstance.CopyAbsoluteToRelative();
                 SpriteInstance.AttachTo(this, false);
             }
-            SpriteInstance.Texture = PigletTexture;
             SpriteInstance.TextureScale = 1f;
+            SpriteInstance.AnimationChains = PlatformerAnimations;
+            SpriteInstance.CurrentChainName = "EnemyWalkRight";
             if (mAxisAlignedRectangleInstance.Parent == null)
             {
                 mAxisAlignedRectangleInstance.CopyAbsoluteToRelative();
                 mAxisAlignedRectangleInstance.AttachTo(this, false);
             }
+            if (AxisAlignedRectangleInstance.Parent == null)
+            {
+                AxisAlignedRectangleInstance.Y = 8f;
+            }
+            else
+            {
+                AxisAlignedRectangleInstance.RelativeY = 8f;
+            }
             AxisAlignedRectangleInstance.Width = 16f;
             AxisAlignedRectangleInstance.Height = 16f;
             AxisAlignedRectangleInstance.Visible = false;
-            AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
+            mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
-        public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
+        public virtual void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
-            base.AddToManagersBottomUp(layerToAddTo);
+            AssignCustomVariables(false);
         }
-        public override void RemoveFromManagers () 
+        public virtual void RemoveFromManagers () 
         {
-            base.RemoveFromManagers();
+            FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
             if (SpriteInstance != null)
             {
                 FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
@@ -469,38 +472,43 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
             }
+            mGeneratedCollision.RemoveFromManagers(clearThis: false);
         }
-        public override void AssignCustomVariables (bool callOnContainedElements) 
+        public virtual void AssignCustomVariables (bool callOnContainedElements) 
         {
-            base.AssignCustomVariables(callOnContainedElements);
             if (callOnContainedElements)
             {
             }
-            SpriteInstance.Texture = PigletTexture;
             SpriteInstance.TextureScale = 1f;
+            SpriteInstance.AnimationChains = PlatformerAnimations;
+            SpriteInstance.CurrentChainName = "EnemyWalkRight";
+            if (AxisAlignedRectangleInstance.Parent == null)
+            {
+                AxisAlignedRectangleInstance.Y = 8f;
+            }
+            else
+            {
+                AxisAlignedRectangleInstance.RelativeY = 8f;
+            }
             AxisAlignedRectangleInstance.Width = 16f;
             AxisAlignedRectangleInstance.Height = 16f;
             AxisAlignedRectangleInstance.Visible = false;
-            AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
-            GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
-            AirMovement = Entities.Piglet.PlatformerValuesStatic["Air"];
-            SpriteInstanceFlipHorizontal = false;
+            GroundMovement = Entities.Enemy.PlatformerValuesStatic["Ground"];
+            AirMovement = Entities.Enemy.PlatformerValuesStatic["Air"];
         }
-        public override void ConvertToManuallyUpdated () 
+        public virtual void ConvertToManuallyUpdated () 
         {
-            base.ConvertToManuallyUpdated();
             this.ForceUpdateDependenciesDeep();
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
         }
-        public static new void LoadStaticContent (string contentManagerName) 
+        public static void LoadStaticContent (string contentManagerName) 
         {
             if (string.IsNullOrEmpty(contentManagerName))
             {
                 throw new System.ArgumentException("contentManagerName cannot be empty or null");
             }
             ContentManagerName = contentManagerName;
-            ArkMethorst.Entities.Animal.LoadStaticContent(contentManagerName);
             // Set the content manager for Gum
             var contentManagerWrapper = new FlatRedBall.Gum.ContentManagerWrapper();
             contentManagerWrapper.ContentManagerName = contentManagerName;
@@ -525,15 +533,15 @@ namespace ArkMethorst.Entities
                 {
                     if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
                     {
-                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PigletStaticUnload", UnloadStaticContent);
+                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("EnemyStaticUnload", UnloadStaticContent);
                         mRegisteredUnloads.Add(ContentManagerName);
                     }
                 }
-                if (!FlatRedBall.FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexture.png", ContentManagerName))
+                if (!FlatRedBall.FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/enemy/platformeranimations.achx", ContentManagerName))
                 {
                     registerUnload = true;
                 }
-                PigletTexture = FlatRedBall.FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexture.png", ContentManagerName);
+                PlatformerAnimations = FlatRedBall.FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/enemy/platformeranimations.achx", ContentManagerName);
                 if (PlatformerValuesStatic == null)
                 {
                     {
@@ -541,7 +549,7 @@ namespace ArkMethorst.Entities
                         char oldDelimiter = FlatRedBall.IO.Csv.CsvFileManager.Delimiter;
                         FlatRedBall.IO.Csv.CsvFileManager.Delimiter = ',';
                         System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> temporaryCsvObject = new System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues>();
-                        FlatRedBall.IO.Csv.CsvFileManager.CsvDeserializeDictionary<System.String, ArkMethorst.DataTypes.PlatformerValues>("content/entities/piglet/platformervaluesstatic.csv", temporaryCsvObject, FlatRedBall.IO.Csv.DuplicateDictionaryEntryBehavior.Replace);
+                        FlatRedBall.IO.Csv.CsvFileManager.CsvDeserializeDictionary<System.String, ArkMethorst.DataTypes.PlatformerValues>("content/entities/enemy/platformervaluesstatic.csv", temporaryCsvObject, FlatRedBall.IO.Csv.DuplicateDictionaryEntryBehavior.Replace);
                         FlatRedBall.IO.Csv.CsvFileManager.Delimiter = oldDelimiter;
                         PlatformerValuesStatic = temporaryCsvObject;
                     }
@@ -553,14 +561,14 @@ namespace ArkMethorst.Entities
                 {
                     if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
                     {
-                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PigletStaticUnload", UnloadStaticContent);
+                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("EnemyStaticUnload", UnloadStaticContent);
                         mRegisteredUnloads.Add(ContentManagerName);
                     }
                 }
             }
             CustomLoadStaticContent(contentManagerName);
         }
-        public static new void UnloadStaticContent () 
+        public static void UnloadStaticContent () 
         {
             if (LoadedContentManagers.Count != 0)
             {
@@ -569,9 +577,9 @@ namespace ArkMethorst.Entities
             }
             if (LoadedContentManagers.Count == 0)
             {
-                if (PigletTexture != null)
+                if (PlatformerAnimations != null)
                 {
-                    PigletTexture= null;
+                    PlatformerAnimations= null;
                 }
                 if (PlatformerValuesStatic != null)
                 {
@@ -580,23 +588,23 @@ namespace ArkMethorst.Entities
             }
         }
         [System.Obsolete("Use GetFile instead")]
-        public static new object GetStaticMember (string memberName) 
+        public static object GetStaticMember (string memberName) 
         {
             switch(memberName)
             {
-                case  "PigletTexture":
-                    return PigletTexture;
+                case  "PlatformerAnimations":
+                    return PlatformerAnimations;
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
             }
             return null;
         }
-        public static new object GetFile (string memberName) 
+        public static object GetFile (string memberName) 
         {
             switch(memberName)
             {
-                case  "PigletTexture":
-                    return PigletTexture;
+                case  "PlatformerAnimations":
+                    return PlatformerAnimations;
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
             }
@@ -606,14 +614,20 @@ namespace ArkMethorst.Entities
         {
             switch(memberName)
             {
-                case  "PigletTexture":
-                    return PigletTexture;
+                case  "PlatformerAnimations":
+                    return PlatformerAnimations;
             }
             return null;
         }
-        public override void SetToIgnorePausing () 
+        protected bool mIsPaused;
+        public override void Pause (FlatRedBall.Instructions.InstructionList instructions) 
         {
-            base.SetToIgnorePausing();
+            base.Pause(instructions);
+            mIsPaused = true;
+        }
+        public virtual void SetToIgnorePausing () 
+        {
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
         }
@@ -1258,10 +1272,9 @@ namespace ArkMethorst.Entities
         
         }
 
-        public override void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
+        public virtual void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {
-            var layerToRemoveFrom = LayerProvidedByContainer; // assign before calling base so removal is not impacted by base call
-            base.MoveToLayer(layerToMoveTo);
+            var layerToRemoveFrom = LayerProvidedByContainer;
             if (layerToRemoveFrom != null)
             {
                 layerToRemoveFrom.Remove(SpriteInstance);
@@ -1275,6 +1288,7 @@ namespace ArkMethorst.Entities
                 layerToRemoveFrom.Remove(AxisAlignedRectangleInstance);
             }
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AxisAlignedRectangleInstance, layerToMoveTo);
+            LayerProvidedByContainer = layerToMoveTo;
         }
     }
 }
