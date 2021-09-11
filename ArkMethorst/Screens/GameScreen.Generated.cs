@@ -30,6 +30,7 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
+        private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
@@ -46,6 +47,8 @@ namespace ArkMethorst.Screens
             CheckpointList.Name = "CheckpointList";
             EndOfLevelList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel>();
             EndOfLevelList.Name = "EndOfLevelList";
+            AnimalList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal>();
+            AnimalList.Name = "AnimalList";
         }
         public override void Initialize (bool addToManagers) 
         {
@@ -62,6 +65,7 @@ namespace ArkMethorst.Screens
             PitCollision.Name = "PitCollision";
             CheckpointList.Clear();
             EndOfLevelList.Clear();
+            AnimalList.Clear();
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Player, FlatRedBall.TileCollisions.TileShapeCollection>(PlayerList, SolidCollision);
         var isCloud = false;
@@ -133,9 +137,11 @@ namespace ArkMethorst.Screens
             Factories.PlayerFactory.Initialize(ContentManagerName);
             Factories.CheckpointFactory.Initialize(ContentManagerName);
             Factories.EndOfLevelFactory.Initialize(ContentManagerName);
+            Factories.AnimalFactory.Initialize(ContentManagerName);
             Factories.PlayerFactory.AddList(PlayerList);
             Factories.CheckpointFactory.AddList(CheckpointList);
             Factories.EndOfLevelFactory.AddList(EndOfLevelList);
+            Factories.AnimalFactory.AddList(AnimalList);
             Player1.AddToManagers(mLayer);
             FlatRedBall.SpriteManager.AddPositionedObject(CameraControllingEntityInstance); CameraControllingEntityInstance.Activity();
             PitCollision.AddToManagers();
@@ -174,6 +180,14 @@ namespace ArkMethorst.Screens
                         EndOfLevelList[i].Activity();
                     }
                 }
+                for (int i = AnimalList.Count - 1; i > -1; i--)
+                {
+                    if (i < AnimalList.Count)
+                    {
+                        // We do the extra if-check because activity could destroy any number of entities
+                        AnimalList[i].Activity();
+                    }
+                }
             }
             else
             {
@@ -190,12 +204,14 @@ namespace ArkMethorst.Screens
             Factories.PlayerFactory.Destroy();
             Factories.CheckpointFactory.Destroy();
             Factories.EndOfLevelFactory.Destroy();
+            Factories.AnimalFactory.Destroy();
             GameScreenGum.RemoveFromManagers();FlatRedBall.FlatRedBallServices.GraphicsOptions.SizeOrOrientationChanged -= RefreshLayoutInternal;
             GameScreenGum = null;
             
             PlayerList.MakeOneWay();
             CheckpointList.MakeOneWay();
             EndOfLevelList.MakeOneWay();
+            AnimalList.MakeOneWay();
             for (int i = PlayerList.Count - 1; i > -1; i--)
             {
                 PlayerList[i].Destroy();
@@ -216,9 +232,14 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
+            for (int i = AnimalList.Count - 1; i > -1; i--)
+            {
+                AnimalList[i].Destroy();
+            }
             PlayerList.MakeTwoWay();
             CheckpointList.MakeTwoWay();
             EndOfLevelList.MakeTwoWay();
+            AnimalList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }
@@ -282,6 +303,10 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
+            for (int i = AnimalList.Count - 1; i > -1; i--)
+            {
+                AnimalList[i].Destroy();
+            }
         }
         public virtual void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -331,6 +356,10 @@ namespace ArkMethorst.Screens
             for (int i = 0; i < EndOfLevelList.Count; i++)
             {
                 EndOfLevelList[i].ConvertToManuallyUpdated();
+            }
+            for (int i = 0; i < AnimalList.Count; i++)
+            {
+                AnimalList[i].ConvertToManuallyUpdated();
             }
         }
         public static void LoadStaticContent (string contentManagerName) 
