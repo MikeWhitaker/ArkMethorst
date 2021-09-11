@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AnimationChainArraySave xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileRelativeTextures>true</FileRelativeTextures>
+  <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
+  <CoordinateType>Pixel</CoordinateType>
+  <AnimationChain>
+    <Name>CheckpointFlag</Name>
+    <Frame>
+      <TextureName>../../screens/level1/frbplatformer.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>224</LeftCoordinate>
+      <RightCoordinate>240</RightCoordinate>
+      <TopCoordinate>112</TopCoordinate>
+      <BottomCoordinate>128</BottomCoordinate>
+    </Frame>
+  </AnimationChain>
+  <AnimationChain>
+    <Name>CheckpointPole</Name>
+    <Frame>
+      <TextureName>../../screens/level1/frbplatformer.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>208</LeftCoordinate>
+      <RightCoordinate>224</RightCoordinate>
+      <TopCoordinate>112</TopCoordinate>
+      <BottomCoordinate>144</BottomCoordinate>
+    </Frame>
+  </AnimationChain>
+  <ProjectFile>../../../checkpointandlevelenddemo.glux</ProjectFile>
+</AnimationChainArraySave>
