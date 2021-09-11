@@ -181,6 +181,7 @@ namespace ArkMethorst.Entities
             PoleSprite.TextureScale = 1f;
             PoleSprite.AnimationChains = AnimationChainListFile;
             PoleSprite.CurrentChainName = "CheckpointPole";
+            PoleSprite.ColorOperation = FlatRedBall.Graphics.ColorOperation.Texture;
             if (FlagSprite.Parent == null)
             {
                 FlagSprite.CopyAbsoluteToRelative();
@@ -248,6 +249,7 @@ namespace ArkMethorst.Entities
             PoleSprite.TextureScale = 1f;
             PoleSprite.AnimationChains = AnimationChainListFile;
             PoleSprite.CurrentChainName = "CheckpointPole";
+            PoleSprite.ColorOperation = FlatRedBall.Graphics.ColorOperation.Texture;
             if (FlagSprite.Parent == null)
             {
                 FlagSprite.X = 8f;

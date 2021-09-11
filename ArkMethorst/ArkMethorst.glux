@@ -987,6 +987,11 @@
             <Member>TextureScale</Member>
             <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>FlatRedBall.Graphics.ColorOperation</Type>
+            <Member>ColorOperation</Member>
+            <ValueAsInt>0</ValueAsInt>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
