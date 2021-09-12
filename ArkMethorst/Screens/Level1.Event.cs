@@ -33,6 +33,5 @@ namespace ArkMethorst.Screens
                 first.SpriteInstanceFlipHorizontal = !first.SpriteInstanceFlipHorizontal;
             }
         }
-        
     }
 }

@@ -35,6 +35,9 @@ namespace ArkMethorst.Entities
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
         protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTexture;
         public static System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> PlatformerValuesStatic;
+        protected static FlatRedBall.Graphics.Animation.AnimationChainList PigletWalk;
+        protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureSecondFrame;
+        protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureFirstFrame;
         
         private FlatRedBall.Sprite SpriteInstance;
         private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAxisAlignedRectangleInstance;
@@ -47,6 +50,30 @@ namespace ArkMethorst.Entities
             private set
             {
                 mAxisAlignedRectangleInstance = value;
+            }
+        }
+        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mLeftCornerDetectionRectagle;
+        public FlatRedBall.Math.Geometry.AxisAlignedRectangle LeftCornerDetectionRectagle
+        {
+            get
+            {
+                return mLeftCornerDetectionRectagle;
+            }
+            private set
+            {
+                mLeftCornerDetectionRectagle = value;
+            }
+        }
+        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mRightCornerDetectionRectagle;
+        public FlatRedBall.Math.Geometry.AxisAlignedRectangle RightCornerDetectionRectagle
+        {
+            get
+            {
+                return mRightCornerDetectionRectagle;
+            }
+            private set
+            {
+                mRightCornerDetectionRectagle = value;
             }
         }
         public event Action<ArkMethorst.DataTypes.PlatformerValues> BeforeGroundMovementSet;
@@ -355,6 +382,10 @@ namespace ArkMethorst.Entities
             SpriteInstance.Name = "SpriteInstance";
             mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
             mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
+            mLeftCornerDetectionRectagle = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mLeftCornerDetectionRectagle.Name = "mLeftCornerDetectionRectagle";
+            mRightCornerDetectionRectagle = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mRightCornerDetectionRectagle.Name = "mRightCornerDetectionRectagle";
             
             // this provides default controls for the platformer using either keyboad or 360. Can be overridden in custom code:
             this.InitializeInput();
@@ -395,12 +426,16 @@ namespace ArkMethorst.Entities
             base.ReAddToManagers(layerToAddTo);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mLeftCornerDetectionRectagle, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mRightCornerDetectionRectagle, LayerProvidedByContainer);
         }
         public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mLeftCornerDetectionRectagle, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mRightCornerDetectionRectagle, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
             base.AddToManagers(layerToAddTo);
             CustomInitialize();
@@ -428,6 +463,14 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.Remove(AxisAlignedRectangleInstance);
             }
+            if (LeftCornerDetectionRectagle != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.Remove(LeftCornerDetectionRectagle);
+            }
+            if (RightCornerDetectionRectagle != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.Remove(RightCornerDetectionRectagle);
+            }
             CustomDestroy();
         }
         public override void PostInitialize () 
@@ -441,7 +484,12 @@ namespace ArkMethorst.Entities
                 SpriteInstance.AttachTo(this, false);
             }
             SpriteInstance.Texture = PigletTexture;
+            SpriteInstance.FlipHorizontal = false;
             SpriteInstance.TextureScale = 1f;
+            SpriteInstance.AnimationChains = PigletWalk;
+            SpriteInstance.CurrentChainName = "PigletWalk";
+            SpriteInstance.AnimationSpeed = 2f;
+            SpriteInstance.IgnoreAnimationChainTextureFlip = true;
             if (mAxisAlignedRectangleInstance.Parent == null)
             {
                 mAxisAlignedRectangleInstance.CopyAbsoluteToRelative();
@@ -451,6 +499,56 @@ namespace ArkMethorst.Entities
             AxisAlignedRectangleInstance.Height = 16f;
             AxisAlignedRectangleInstance.Visible = false;
             AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
+            if (mLeftCornerDetectionRectagle.Parent == null)
+            {
+                mLeftCornerDetectionRectagle.CopyAbsoluteToRelative();
+                mLeftCornerDetectionRectagle.AttachTo(this, false);
+            }
+            if (LeftCornerDetectionRectagle.Parent == null)
+            {
+                LeftCornerDetectionRectagle.X = -12f;
+            }
+            else
+            {
+                LeftCornerDetectionRectagle.RelativeX = -12f;
+            }
+            if (LeftCornerDetectionRectagle.Parent == null)
+            {
+                LeftCornerDetectionRectagle.Y = -12f;
+            }
+            else
+            {
+                LeftCornerDetectionRectagle.RelativeY = -12f;
+            }
+            LeftCornerDetectionRectagle.Width = 8f;
+            LeftCornerDetectionRectagle.Height = 8f;
+            LeftCornerDetectionRectagle.Visible = false;
+            LeftCornerDetectionRectagle.Color = Microsoft.Xna.Framework.Color.Green;
+            if (mRightCornerDetectionRectagle.Parent == null)
+            {
+                mRightCornerDetectionRectagle.CopyAbsoluteToRelative();
+                mRightCornerDetectionRectagle.AttachTo(this, false);
+            }
+            if (RightCornerDetectionRectagle.Parent == null)
+            {
+                RightCornerDetectionRectagle.X = 12f;
+            }
+            else
+            {
+                RightCornerDetectionRectagle.RelativeX = 12f;
+            }
+            if (RightCornerDetectionRectagle.Parent == null)
+            {
+                RightCornerDetectionRectagle.Y = -12f;
+            }
+            else
+            {
+                RightCornerDetectionRectagle.RelativeY = -12f;
+            }
+            RightCornerDetectionRectagle.Width = 8f;
+            RightCornerDetectionRectagle.Height = 8f;
+            RightCornerDetectionRectagle.Visible = false;
+            RightCornerDetectionRectagle.Color = Microsoft.Xna.Framework.Color.Green;
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
@@ -469,6 +567,14 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
             }
+            if (LeftCornerDetectionRectagle != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(LeftCornerDetectionRectagle);
+            }
+            if (RightCornerDetectionRectagle != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(RightCornerDetectionRectagle);
+            }
         }
         public override void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -477,11 +583,56 @@ namespace ArkMethorst.Entities
             {
             }
             SpriteInstance.Texture = PigletTexture;
+            SpriteInstance.FlipHorizontal = false;
             SpriteInstance.TextureScale = 1f;
+            SpriteInstance.AnimationChains = PigletWalk;
+            SpriteInstance.CurrentChainName = "PigletWalk";
+            SpriteInstance.AnimationSpeed = 2f;
+            SpriteInstance.IgnoreAnimationChainTextureFlip = true;
             AxisAlignedRectangleInstance.Width = 16f;
             AxisAlignedRectangleInstance.Height = 16f;
             AxisAlignedRectangleInstance.Visible = false;
             AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
+            if (LeftCornerDetectionRectagle.Parent == null)
+            {
+                LeftCornerDetectionRectagle.X = -12f;
+            }
+            else
+            {
+                LeftCornerDetectionRectagle.RelativeX = -12f;
+            }
+            if (LeftCornerDetectionRectagle.Parent == null)
+            {
+                LeftCornerDetectionRectagle.Y = -12f;
+            }
+            else
+            {
+                LeftCornerDetectionRectagle.RelativeY = -12f;
+            }
+            LeftCornerDetectionRectagle.Width = 8f;
+            LeftCornerDetectionRectagle.Height = 8f;
+            LeftCornerDetectionRectagle.Visible = false;
+            LeftCornerDetectionRectagle.Color = Microsoft.Xna.Framework.Color.Green;
+            if (RightCornerDetectionRectagle.Parent == null)
+            {
+                RightCornerDetectionRectagle.X = 12f;
+            }
+            else
+            {
+                RightCornerDetectionRectagle.RelativeX = 12f;
+            }
+            if (RightCornerDetectionRectagle.Parent == null)
+            {
+                RightCornerDetectionRectagle.Y = -12f;
+            }
+            else
+            {
+                RightCornerDetectionRectagle.RelativeY = -12f;
+            }
+            RightCornerDetectionRectagle.Width = 8f;
+            RightCornerDetectionRectagle.Height = 8f;
+            RightCornerDetectionRectagle.Visible = false;
+            RightCornerDetectionRectagle.Color = Microsoft.Xna.Framework.Color.Green;
             GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
             AirMovement = Entities.Piglet.PlatformerValuesStatic["Air"];
             SpriteInstanceFlipHorizontal = false;
@@ -546,6 +697,21 @@ namespace ArkMethorst.Entities
                         PlatformerValuesStatic = temporaryCsvObject;
                     }
                 }
+                if (!FlatRedBall.FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/piglet/pigletwalk.achx", ContentManagerName))
+                {
+                    registerUnload = true;
+                }
+                PigletWalk = FlatRedBall.FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/piglet/pigletwalk.achx", ContentManagerName);
+                if (!FlatRedBall.FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexturesecondframe.png", ContentManagerName))
+                {
+                    registerUnload = true;
+                }
+                PigletTextureSecondFrame = FlatRedBall.FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexturesecondframe.png", ContentManagerName);
+                if (!FlatRedBall.FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexturefirstframe.png", ContentManagerName))
+                {
+                    registerUnload = true;
+                }
+                PigletTextureFirstFrame = FlatRedBall.FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/piglet/piglettexturefirstframe.png", ContentManagerName);
             }
             if (registerUnload && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
             {
@@ -577,6 +743,18 @@ namespace ArkMethorst.Entities
                 {
                     PlatformerValuesStatic= null;
                 }
+                if (PigletWalk != null)
+                {
+                    PigletWalk= null;
+                }
+                if (PigletTextureSecondFrame != null)
+                {
+                    PigletTextureSecondFrame= null;
+                }
+                if (PigletTextureFirstFrame != null)
+                {
+                    PigletTextureFirstFrame= null;
+                }
             }
         }
         [System.Obsolete("Use GetFile instead")]
@@ -588,6 +766,12 @@ namespace ArkMethorst.Entities
                     return PigletTexture;
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
+                case  "PigletWalk":
+                    return PigletWalk;
+                case  "PigletTextureSecondFrame":
+                    return PigletTextureSecondFrame;
+                case  "PigletTextureFirstFrame":
+                    return PigletTextureFirstFrame;
             }
             return null;
         }
@@ -599,6 +783,12 @@ namespace ArkMethorst.Entities
                     return PigletTexture;
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
+                case  "PigletWalk":
+                    return PigletWalk;
+                case  "PigletTextureSecondFrame":
+                    return PigletTextureSecondFrame;
+                case  "PigletTextureFirstFrame":
+                    return PigletTextureFirstFrame;
             }
             return null;
         }
@@ -608,6 +798,12 @@ namespace ArkMethorst.Entities
             {
                 case  "PigletTexture":
                     return PigletTexture;
+                case  "PigletWalk":
+                    return PigletWalk;
+                case  "PigletTextureSecondFrame":
+                    return PigletTextureSecondFrame;
+                case  "PigletTextureFirstFrame":
+                    return PigletTextureFirstFrame;
             }
             return null;
         }
@@ -616,6 +812,8 @@ namespace ArkMethorst.Entities
             base.SetToIgnorePausing();
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(LeftCornerDetectionRectagle);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(RightCornerDetectionRectagle);
         }
         
 
@@ -1275,6 +1473,16 @@ namespace ArkMethorst.Entities
                 layerToRemoveFrom.Remove(AxisAlignedRectangleInstance);
             }
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AxisAlignedRectangleInstance, layerToMoveTo);
+            if (layerToRemoveFrom != null)
+            {
+                layerToRemoveFrom.Remove(LeftCornerDetectionRectagle);
+            }
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(LeftCornerDetectionRectagle, layerToMoveTo);
+            if (layerToRemoveFrom != null)
+            {
+                layerToRemoveFrom.Remove(RightCornerDetectionRectagle);
+            }
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(RightCornerDetectionRectagle, layerToMoveTo);
         }
     }
 }

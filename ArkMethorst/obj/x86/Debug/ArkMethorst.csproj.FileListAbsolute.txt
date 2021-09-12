@@ -189,3 +189,6 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\enemy\p
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\frbplatformer.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\platformeranimations.achx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\platformervaluesstatic.csv
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\piglettexturefirstframe.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\piglettexturesecondframe.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\pigletwalk.achx

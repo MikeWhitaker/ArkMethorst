@@ -111,6 +111,7 @@ namespace ArkMethorst.Screens
             PigletInstanceVsSolidCollision.CollisionOccurred += OnPigletInstanceVsSolidCollisionCollisionOccurred;
             PigletInstanceVsSolidCollision.CollisionOccurred += OnPigletInstanceVsSolidCollisionCollisionOccurredTunnel;
             base.PostInitialize();
+            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
             if (PigletInstance.Parent == null)
             {
                 PigletInstance.X = 160f;
@@ -127,7 +128,6 @@ namespace ArkMethorst.Screens
             {
                 PigletInstance.RelativeY = -160f;
             }
-            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp () 
@@ -160,6 +160,7 @@ namespace ArkMethorst.Screens
             {
                 PigletInstance.AssignCustomVariables(true);
             }
+            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
             if (PigletInstance.Parent == null)
             {
                 PigletInstance.X = 160f;
@@ -176,7 +177,6 @@ namespace ArkMethorst.Screens
             {
                 PigletInstance.RelativeY = -160f;
             }
-            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
         }
         public override void ConvertToManuallyUpdated () 
         {
