@@ -33,5 +33,12 @@ namespace ArkMethorst.Screens
                 PlayerListVsEndOfLevelListCollisionOccurred(first, second);
             }
         }
+        void OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel (Entities.Piglet first, Entities.Player second) 
+        {
+            if (this.PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred != null)
+            {
+                PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred(first, second);
+            }
+        }
     }
 }

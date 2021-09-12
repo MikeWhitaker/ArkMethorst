@@ -17,6 +17,7 @@ namespace ArkMethorst.Entities
 		AnimationController animationController;
 
 		public IPressableInput RunInput { get; set; }
+		public IPressableInput InputPickup { get; set; }
 
 		public bool PressedUp => InputDevice.DefaultUpPressable.WasJustPressed;
 
@@ -140,41 +141,35 @@ namespace ArkMethorst.Entities
 			if (InputDevice is Keyboard asKeyboard)
 			{
 				RunInput = asKeyboard.GetKey(Microsoft.Xna.Framework.Input.Keys.R);
+				InputPickup = asKeyboard.GetKey(Microsoft.Xna.Framework.Input.Keys.C);
 			}
 			else if (InputDevice is Xbox360GamePad asGamepad)
 			{
 				RunInput = asGamepad.GetButton(Xbox360GamePad.Button.X);
+				InputPickup = asGamepad.GetButton(Xbox360GamePad.Button.B);
 			}
 		}
 
 		private void CustomActivity()
 		{
 			animationController.Activity();
+			//When the player pressed the b button and the pick up hit box is in a state of collision with an animal then we want to set the coordinats to the
+			// same coordinates as the player, even better would be to set the coordinates of the animal to the pick up hit box.
 
-			if (!CurrentMovement.CanClimb)
+
+
+		}
+
+		private bool CheckPickupAnimal()
+		{
+			if (InputPickup.WasJustPressed)
 			{
-				if (VerticalInput.Value < 0)
-				{
-					this.GroundMovement = PlatformerValuesStatic["Ducking"];
-				}
-				else if (RunInput.IsDown)
-				{
-					this.GroundMovement = PlatformerValuesStatic["Running"];
-					this.AirMovement = PlatformerValuesStatic["RunningAir"];
-				}
-				else
-				{
-					this.GroundMovement = PlatformerValuesStatic["Ground"];
-					this.AirMovement = PlatformerValuesStatic["Air"];
-				}
+				// check for collision with a animal object
+				//var doesRightSideCollide = SolidCollision.CollideAgainst(PigletInstance.RightCornerDetectionRectagle);
+
 			}
-			else
-			{
-				if (VerticalInput.Value < 0 && IsOnGround)
-				{
-					this.GroundMovement = PlatformerValuesStatic["Ground"];
-				}
-			}
+
+			return false;
 		}
 
 		private void CustomDestroy()

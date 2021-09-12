@@ -184,11 +184,10 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\OpenTK.dll
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\StateInterpolation.dll
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\FlatRedBallDesktopGL.pdb
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\enemy\frbplatformer.png
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\enemy\platformeranimations.achx
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\enemy\platformervaluesstatic.csv
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\frbplatformer.png
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\platformeranimations.achx
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\enemy\platformervaluesstatic.csv
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\piglettexturefirstframe.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\piglettexturesecondframe.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\piglet\pigletwalk.achx
+c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\piglet\piglettexturefirstframe.png
+c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\piglet\piglettexturesecondframe.png
+c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\piglet\pigletwalk.achx

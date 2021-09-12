@@ -64,6 +64,7 @@ namespace ArkMethorst.Screens
             Level2Map.Destroy();
             Level2Map = null;
             
+            PigletList.MakeOneWay();
             if (Map != null)
             {
                 Map.Destroy();
@@ -76,6 +77,7 @@ namespace ArkMethorst.Screens
             {
                 CloudCollision.Visible = false;
             }
+            PigletList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }

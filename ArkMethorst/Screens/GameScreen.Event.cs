@@ -32,6 +32,15 @@ namespace ArkMethorst.Screens
 			GameScreen.LastCheckpointName = "LevelStart";
 			MoveToScreen(endOfLevel.NextLevel);
 		}
+        void OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred (Entities.Piglet piglet, Entities.Player player) 
+        {
+			if (player.InputPickup.WasJustPressed)
+			{
+				// we want to say to the piglet that it should take its co-ords from the player
+				piglet.IsPickedUp = true; // signaling the horizontal input should be null
+				piglet.Player = player; // Setting the player as an attriuut on the piglet.
+			}
+        }
 
 	}
 }

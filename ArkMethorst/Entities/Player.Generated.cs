@@ -43,6 +43,30 @@ namespace ArkMethorst.Entities
                 mAxisAlignedRectangleInstance = value;
             }
         }
+        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAnimalPickupHitBoxRight;
+        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AnimalPickupHitBoxRight
+        {
+            get
+            {
+                return mAnimalPickupHitBoxRight;
+            }
+            private set
+            {
+                mAnimalPickupHitBoxRight = value;
+            }
+        }
+        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAnimalPickupHitBoxLeft;
+        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AnimalPickupHitBoxLeft
+        {
+            get
+            {
+                return mAnimalPickupHitBoxLeft;
+            }
+            private set
+            {
+                mAnimalPickupHitBoxLeft = value;
+            }
+        }
         public event Action<ArkMethorst.DataTypes.PlatformerValues> BeforeGroundMovementSet;
         public event System.EventHandler AfterGroundMovementSet;
         private ArkMethorst.DataTypes.PlatformerValues mGroundMovement;
@@ -350,6 +374,10 @@ namespace ArkMethorst.Entities
             SpriteInstance.Name = "SpriteInstance";
             mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
             mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
+            mAnimalPickupHitBoxRight = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mAnimalPickupHitBoxRight.Name = "mAnimalPickupHitBoxRight";
+            mAnimalPickupHitBoxLeft = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mAnimalPickupHitBoxLeft.Name = "mAnimalPickupHitBoxLeft";
             
             // this provides default controls for the platformer using either keyboad or 360. Can be overridden in custom code:
             this.InitializeInput();
@@ -395,6 +423,8 @@ namespace ArkMethorst.Entities
             FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxRight, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxLeft, LayerProvidedByContainer);
         }
         public virtual void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
@@ -402,6 +432,8 @@ namespace ArkMethorst.Entities
             FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxRight, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxLeft, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
             AddToManagersBottomUp(layerToAddTo);
             CustomInitialize();
@@ -432,6 +464,14 @@ namespace ArkMethorst.Entities
             if (AxisAlignedRectangleInstance != null)
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
+            }
+            if (AnimalPickupHitBoxRight != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxRight);
+            }
+            if (AnimalPickupHitBoxLeft != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxLeft);
             }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
             CustomDestroy();
@@ -464,8 +504,56 @@ namespace ArkMethorst.Entities
             AxisAlignedRectangleInstance.Width = 10f;
             AxisAlignedRectangleInstance.Height = 22f;
             AxisAlignedRectangleInstance.Visible = false;
+            if (mAnimalPickupHitBoxRight.Parent == null)
+            {
+                mAnimalPickupHitBoxRight.CopyAbsoluteToRelative();
+                mAnimalPickupHitBoxRight.AttachTo(this, false);
+            }
+            if (AnimalPickupHitBoxRight.Parent == null)
+            {
+                AnimalPickupHitBoxRight.X = 8f;
+            }
+            else
+            {
+                AnimalPickupHitBoxRight.RelativeX = 8f;
+            }
+            if (AnimalPickupHitBoxRight.Parent == null)
+            {
+                AnimalPickupHitBoxRight.Y = 6f;
+            }
+            else
+            {
+                AnimalPickupHitBoxRight.RelativeY = 6f;
+            }
+            AnimalPickupHitBoxRight.Width = 4f;
+            AnimalPickupHitBoxRight.Height = 8f;
+            if (mAnimalPickupHitBoxLeft.Parent == null)
+            {
+                mAnimalPickupHitBoxLeft.CopyAbsoluteToRelative();
+                mAnimalPickupHitBoxLeft.AttachTo(this, false);
+            }
+            if (AnimalPickupHitBoxLeft.Parent == null)
+            {
+                AnimalPickupHitBoxLeft.X = -8f;
+            }
+            else
+            {
+                AnimalPickupHitBoxLeft.RelativeX = -8f;
+            }
+            if (AnimalPickupHitBoxLeft.Parent == null)
+            {
+                AnimalPickupHitBoxLeft.Y = 6f;
+            }
+            else
+            {
+                AnimalPickupHitBoxLeft.RelativeY = 6f;
+            }
+            AnimalPickupHitBoxLeft.Width = 4f;
+            AnimalPickupHitBoxLeft.Height = 8f;
             mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
+            Collision.AxisAlignedRectangles.AddOneWay(mAnimalPickupHitBoxRight);
+            Collision.AxisAlignedRectangles.AddOneWay(mAnimalPickupHitBoxLeft);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public virtual void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -482,6 +570,14 @@ namespace ArkMethorst.Entities
             if (AxisAlignedRectangleInstance != null)
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
+            }
+            if (AnimalPickupHitBoxRight != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxRight);
+            }
+            if (AnimalPickupHitBoxLeft != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxLeft);
             }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
         }
@@ -504,6 +600,42 @@ namespace ArkMethorst.Entities
             AxisAlignedRectangleInstance.Width = 10f;
             AxisAlignedRectangleInstance.Height = 22f;
             AxisAlignedRectangleInstance.Visible = false;
+            if (AnimalPickupHitBoxRight.Parent == null)
+            {
+                AnimalPickupHitBoxRight.X = 8f;
+            }
+            else
+            {
+                AnimalPickupHitBoxRight.RelativeX = 8f;
+            }
+            if (AnimalPickupHitBoxRight.Parent == null)
+            {
+                AnimalPickupHitBoxRight.Y = 6f;
+            }
+            else
+            {
+                AnimalPickupHitBoxRight.RelativeY = 6f;
+            }
+            AnimalPickupHitBoxRight.Width = 4f;
+            AnimalPickupHitBoxRight.Height = 8f;
+            if (AnimalPickupHitBoxLeft.Parent == null)
+            {
+                AnimalPickupHitBoxLeft.X = -8f;
+            }
+            else
+            {
+                AnimalPickupHitBoxLeft.RelativeX = -8f;
+            }
+            if (AnimalPickupHitBoxLeft.Parent == null)
+            {
+                AnimalPickupHitBoxLeft.Y = 6f;
+            }
+            else
+            {
+                AnimalPickupHitBoxLeft.RelativeY = 6f;
+            }
+            AnimalPickupHitBoxLeft.Width = 4f;
+            AnimalPickupHitBoxLeft.Height = 8f;
             if (Parent == null)
             {
                 X = 64f;
@@ -722,6 +854,8 @@ namespace ArkMethorst.Entities
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AnimalPickupHitBoxRight);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AnimalPickupHitBoxLeft);
         }
         
 
@@ -1389,6 +1523,16 @@ namespace ArkMethorst.Entities
                 layerToRemoveFrom.Remove(AxisAlignedRectangleInstance);
             }
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AxisAlignedRectangleInstance, layerToMoveTo);
+            if (layerToRemoveFrom != null)
+            {
+                layerToRemoveFrom.Remove(AnimalPickupHitBoxRight);
+            }
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AnimalPickupHitBoxRight, layerToMoveTo);
+            if (layerToRemoveFrom != null)
+            {
+                layerToRemoveFrom.Remove(AnimalPickupHitBoxLeft);
+            }
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AnimalPickupHitBoxLeft, layerToMoveTo);
             LayerProvidedByContainer = layerToMoveTo;
         }
     }

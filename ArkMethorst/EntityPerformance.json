@@ -33,20 +33,6 @@
       ]
     },
     {
-      "Name": "Entities\\Player",
-      "SelectedProperties": [],
-      "InstanceManagementValuesList": [
-        {
-          "SelectedProperties": [],
-          "Name": "SpriteInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "AxisAlignedRectangleInstance"
-        }
-      ]
-    },
-    {
       "Name": "Entities\\Piglet",
       "SelectedProperties": [],
       "InstanceManagementValuesList": [
@@ -61,6 +47,46 @@
         {
           "SelectedProperties": [],
           "Name": "SpriteRuntimeInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "LeftCornerDetectionRectagle"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "RightCornerDetectionRectagle"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Enemy",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Player",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AnimalPickupHitBoxRight"
         }
       ]
     }
