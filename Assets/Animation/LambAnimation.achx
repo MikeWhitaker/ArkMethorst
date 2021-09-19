@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AnimationChainArraySave xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileRelativeTextures>true</FileRelativeTextures>
+  <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
+  <CoordinateType>Pixel</CoordinateType>
+  <AnimationChain>
+    <Name>LambWalk</Name>
+    <Frame>
+      <TextureName>lambwalk01.png</TextureName>
+      <FrameLength>0.2</FrameLength>
+      <LeftCoordinate>0</LeftCoordinate>
+      <RightCoordinate>20</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>14</BottomCoordinate>
+    </Frame>
+    <Frame>
+      <TextureName>lambwalk02.png</TextureName>
+      <FrameLength>0.2</FrameLength>
+      <LeftCoordinate>0</LeftCoordinate>
+      <RightCoordinate>20</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>14</BottomCoordinate>
+    </Frame>
+  </AnimationChain>
+</AnimationChainArraySave>

@@ -30,8 +30,6 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
-        private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
-        private FlatRedBall.Math.Collision.CollidableListVsTileShapeCollectionRelationship<Entities.Animal> AnimalListVsSolidCollision;
         protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Piglet> PigletList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Piglet, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
@@ -51,8 +49,6 @@ namespace ArkMethorst.Screens
             CheckpointList.Name = "CheckpointList";
             EndOfLevelList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel>();
             EndOfLevelList.Name = "EndOfLevelList";
-            AnimalList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal>();
-            AnimalList.Name = "AnimalList";
             PigletList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Piglet>();
             PigletList.Name = "PigletList";
         }
@@ -71,7 +67,6 @@ namespace ArkMethorst.Screens
             PitCollision.Name = "PitCollision";
             CheckpointList.Clear();
             EndOfLevelList.Clear();
-            AnimalList.Clear();
             PigletList.Clear();
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Player, FlatRedBall.TileCollisions.TileShapeCollection>(PlayerList, SolidCollision);
@@ -112,10 +107,6 @@ namespace ArkMethorst.Screens
     PlayerListVsEndOfLevelList.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
     PlayerListVsEndOfLevelList.Name = "PlayerListVsEndOfLevelList";
 
-                AnimalListVsSolidCollision = FlatRedBall.Math.Collision.CollisionManagerTileShapeCollectionExtensions.CreateTileRelationship(FlatRedBall.Math.Collision.CollisionManager.Self, AnimalList, SolidCollision);
-    AnimalListVsSolidCollision.Name = "AnimalListVsSolidCollision";
-    AnimalListVsSolidCollision.SetBounceCollision(0f, 1f, 1f);
-
                 PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(PigletList, PlayerList);
     PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.SetFirstSubCollision(item => item.AxisAlignedRectangleInstance);
     PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.SetSecondSubCollision(item => item.AnimalPickupHitBoxRight);
@@ -155,11 +146,9 @@ namespace ArkMethorst.Screens
             Factories.PlayerFactory.Initialize(ContentManagerName);
             Factories.CheckpointFactory.Initialize(ContentManagerName);
             Factories.EndOfLevelFactory.Initialize(ContentManagerName);
-            Factories.AnimalFactory.Initialize(ContentManagerName);
             Factories.PlayerFactory.AddList(PlayerList);
             Factories.CheckpointFactory.AddList(CheckpointList);
             Factories.EndOfLevelFactory.AddList(EndOfLevelList);
-            Factories.AnimalFactory.AddList(AnimalList);
             Player1.AddToManagers(mLayer);
             FlatRedBall.SpriteManager.AddPositionedObject(CameraControllingEntityInstance); CameraControllingEntityInstance.Activity();
             PitCollision.AddToManagers();
@@ -198,14 +187,6 @@ namespace ArkMethorst.Screens
                         EndOfLevelList[i].Activity();
                     }
                 }
-                for (int i = AnimalList.Count - 1; i > -1; i--)
-                {
-                    if (i < AnimalList.Count)
-                    {
-                        // We do the extra if-check because activity could destroy any number of entities
-                        AnimalList[i].Activity();
-                    }
-                }
                 for (int i = PigletList.Count - 1; i > -1; i--)
                 {
                     if (i < PigletList.Count)
@@ -230,14 +211,12 @@ namespace ArkMethorst.Screens
             Factories.PlayerFactory.Destroy();
             Factories.CheckpointFactory.Destroy();
             Factories.EndOfLevelFactory.Destroy();
-            Factories.AnimalFactory.Destroy();
             GameScreenGum.RemoveFromManagers();FlatRedBall.FlatRedBallServices.GraphicsOptions.SizeOrOrientationChanged -= RefreshLayoutInternal;
             GameScreenGum = null;
             
             PlayerList.MakeOneWay();
             CheckpointList.MakeOneWay();
             EndOfLevelList.MakeOneWay();
-            AnimalList.MakeOneWay();
             PigletList.MakeOneWay();
             for (int i = PlayerList.Count - 1; i > -1; i--)
             {
@@ -259,10 +238,6 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
-            for (int i = AnimalList.Count - 1; i > -1; i--)
-            {
-                AnimalList[i].Destroy();
-            }
             for (int i = PigletList.Count - 1; i > -1; i--)
             {
                 PigletList[i].Destroy();
@@ -270,7 +245,6 @@ namespace ArkMethorst.Screens
             PlayerList.MakeTwoWay();
             CheckpointList.MakeTwoWay();
             EndOfLevelList.MakeTwoWay();
-            AnimalList.MakeTwoWay();
             PigletList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
@@ -337,10 +311,6 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
-            for (int i = AnimalList.Count - 1; i > -1; i--)
-            {
-                AnimalList[i].Destroy();
-            }
             for (int i = PigletList.Count - 1; i > -1; i--)
             {
                 PigletList[i].Destroy();
@@ -394,10 +364,6 @@ namespace ArkMethorst.Screens
             for (int i = 0; i < EndOfLevelList.Count; i++)
             {
                 EndOfLevelList[i].ConvertToManuallyUpdated();
-            }
-            for (int i = 0; i < AnimalList.Count; i++)
-            {
-                AnimalList[i].ConvertToManuallyUpdated();
             }
             for (int i = 0; i < PigletList.Count; i++)
             {

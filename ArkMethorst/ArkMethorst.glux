@@ -626,89 +626,6 @@
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>PositionedObjectList (Generic)</SourceFile>
           <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
-          <SourceClassGenericType>Entities\Animal</SourceClassGenericType>
-          <InstanceName>AnimalList</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-            <PropertySave>
-              <Name>IsAutoNameEnabled</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>FirstCollisionName</Name>
-              <ValueAsString>AnimalList</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>SecondCollisionName</Name>
-              <ValueAsString>SolidCollision</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionType</Name>
-              <ValueAsInt>2</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>FirstCollisionMass</Name>
-              <ValueAsFloat>0</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>SecondCollisionMass</Name>
-              <ValueAsFloat>1</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionElasticity</Name>
-              <ValueAsFloat>1</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>IsCollisionActive</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>Collision Relationship</SourceFile>
-          <SourceClassType>FlatRedBall.Math.Collision.CollidableListVsTileShapeCollectionRelationship&lt;Entities.Animal&gt;</SourceClassType>
-          <InstanceName>AnimalListVsSolidCollision</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-            <PropertySave>
-              <Name>SortAxis</Name>
-              <ValueAsInt>0</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>PartitionWidthHeight</Name>
-              <ValueAsFloat>32</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>IsSortListEveryFrameChecked</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>PositionedObjectList (Generic)</SourceFile>
-          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
           <SourceClassGenericType>Entities\Piglet</SourceClassGenericType>
           <InstanceName>PigletList</InstanceName>
           <ExposedInDerived>true</ExposedInDerived>
@@ -1243,58 +1160,6 @@
       </Tags>
       <Source>GLUE</Source>
       <UseGlobalContent>false</UseGlobalContent>
-      <IsHiddenInTreeView>false</IsHiddenInTreeView>
-      <CustomVariables>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>X</Name>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Y</Name>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Z</Name>
-        </CustomVariable>
-      </CustomVariables>
-      <Properties>
-        <PropertySave>
-          <Name>InputDevice</Name>
-          <ValueAsInt>0</ValueAsInt>
-        </PropertySave>
-        <PropertySave>
-          <Name>ImplementsICollidable</Name>
-          <ValueAsBool>true</ValueAsBool>
-        </PropertySave>
-      </Properties>
-      <Name>Entities\Animal</Name>
-      <CustomClassesForExport />
-      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
-      <CreatedByOtherEntities>true</CreatedByOtherEntities>
-      <Is2D>true</Is2D>
-    </EntitySave>
-    <EntitySave>
-      <Tags>
-        <string>GLUE</string>
-      </Tags>
-      <Source>GLUE</Source>
-      <UseGlobalContent>false</UseGlobalContent>
       <ReferencedFiles>
         <ReferencedFileSave>
           <Name>Entities/Checkpoint/AnimationChainListFile.achx</Name>
@@ -1488,6 +1353,89 @@
       <ImplementsIVisible>true</ImplementsIVisible>
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
       <CreatedByOtherEntities>true</CreatedByOtherEntities>
+      <Is2D>true</Is2D>
+    </EntitySave>
+    <EntitySave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <UseGlobalContent>false</UseGlobalContent>
+      <IsHiddenInTreeView>false</IsHiddenInTreeView>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Ground in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Air in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+      </CustomVariables>
+      <Properties>
+        <PropertySave>
+          <Name>InputDevice</Name>
+          <ValueAsInt>0</ValueAsInt>
+        </PropertySave>
+      </Properties>
+      <Name>Entities\Chicken</Name>
+      <CustomClassesForExport />
+      <BaseEntity>Entities\Piglet</BaseEntity>
+      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>
@@ -1763,19 +1711,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
-            <Member>Texture</Member>
-            <ValueAsString>PigletTexture</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
             <Member>AnimationChains</Member>
             <ValueAsString>PigletWalk</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>AnimationSpeed</Member>
+            <ValueAsFloat>2</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>string</Type>
@@ -1793,9 +1736,14 @@
             <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
+            <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>PigletTexture</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
-            <Member>AnimationSpeed</Member>
-            <ValueAsFloat>2</ValueAsFloat>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -1963,7 +1911,7 @@
       </NamedObjects>
       <Name>Entities\Piglet</Name>
       <CustomClassesForExport />
-      <BaseEntity>Entities\Animal</BaseEntity>
+      <BaseEntity />
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
       <Is2D>true</Is2D>
     </EntitySave>
@@ -2172,13 +2120,13 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>4</ValueAsFloat>
+            <Member>Height</Member>
+            <ValueAsFloat>8</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Height</Member>
-            <ValueAsFloat>8</ValueAsFloat>
+            <Member>Width</Member>
+            <ValueAsFloat>4</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2212,13 +2160,13 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>4</ValueAsFloat>
+            <Member>Height</Member>
+            <ValueAsFloat>8</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Height</Member>
-            <ValueAsFloat>8</ValueAsFloat>
+            <Member>Width</Member>
+            <ValueAsFloat>4</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>

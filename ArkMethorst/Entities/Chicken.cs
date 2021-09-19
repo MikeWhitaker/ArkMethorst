@@ -11,7 +11,7 @@ using FlatRedBall.Math.Geometry;
 
 namespace ArkMethorst.Entities
 {
-    public partial class Animal
+    public partial class Chicken
     {
         /// <summary>
         /// Initialization logic which is execute only one time for this Entity (unless the Entity is pooled).

@@ -52,13 +52,13 @@
     <Compile Include="DataTypes\PlatformerValues.Generated.cs" />
     <Compile Include="DataTypes\TileMapInfo.Generated.cs" />
     <Compile Include="DataTypes\TopDownValues.Generated.cs" />
-    <Compile Include="Entities\Animal.cs" />
-    <Compile Include="Entities\Animal.Generated.cs">
-      <DependentUpon>Animal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Checkpoint.cs" />
     <Compile Include="Entities\Checkpoint.Generated.cs">
       <DependentUpon>Checkpoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Chicken.cs" />
+    <Compile Include="Entities\Chicken.Generated.cs">
+      <DependentUpon>Chicken.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\EndOfLevel.cs" />
     <Compile Include="Entities\EndOfLevel.Generated.cs">
@@ -72,7 +72,6 @@
     <Compile Include="Entities\Player.Generated.cs">
       <DependentUpon>Player.cs</DependentUpon>
     </Compile>
-    <Compile Include="Factories\AnimalFactory.Generated.cs" />
     <Compile Include="Factories\CheckpointFactory.Generated.cs" />
     <Compile Include="Factories\EndOfLevelFactory.Generated.cs" />
     <Compile Include="Factories\PlayerFactory.Generated.cs" />

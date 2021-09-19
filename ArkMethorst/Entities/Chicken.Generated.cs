@@ -11,10 +11,20 @@ using System.Collections.Generic;
 using System.Text;
 namespace ArkMethorst.Entities
 {
-    public partial class Animal : FlatRedBall.PositionedObject, FlatRedBall.Graphics.IDestroyable, FlatRedBall.Performance.IPoolable, FlatRedBall.Math.Geometry.ICollidable
+    public partial class Chicken : ArkMethorst.Entities.Piglet, FlatRedBall.Graphics.IDestroyable
     {
         // This is made static so that static lazy-loaded content can access it.
-        public static string ContentManagerName { get; set; }
+        public static new string ContentManagerName
+        {
+            get
+            {
+                return ArkMethorst.Entities.Piglet.ContentManagerName;
+            }
+            set
+            {
+                ArkMethorst.Entities.Piglet.ContentManagerName = value;
+            }
+        }
         #if DEBUG
         static bool HasBeenLoadedWithGlobalContentManager = false;
         #endif
@@ -22,104 +32,118 @@ namespace ArkMethorst.Entities
         static System.Collections.Generic.List<string> mRegisteredUnloads = new System.Collections.Generic.List<string>();
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
         
-        public int Index { get; set; }
-        public bool Used { get; set; }
-        private FlatRedBall.Math.Geometry.ShapeCollection mGeneratedCollision;
-        public FlatRedBall.Math.Geometry.ShapeCollection Collision
+        public override ArkMethorst.DataTypes.PlatformerValues GroundMovement
         {
+            set
+            {
+                base.GroundMovement = value;
+            }
             get
             {
-                return mGeneratedCollision;
+                return base.GroundMovement;
             }
         }
-        protected FlatRedBall.Graphics.Layer LayerProvidedByContainer = null;
-        public Animal () 
+        public override ArkMethorst.DataTypes.PlatformerValues AirMovement
+        {
+            set
+            {
+                base.AirMovement = value;
+            }
+            get
+            {
+                return base.AirMovement;
+            }
+        }
+        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
+        {
+            set
+            {
+                base.AfterDoubleJump = value;
+            }
+            get
+            {
+                return base.AfterDoubleJump;
+            }
+        }
+        public Chicken () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
         }
-        public Animal (string contentManagerName) 
+        public Chicken (string contentManagerName) 
         	: this(contentManagerName, true)
         {
         }
-        public Animal (string contentManagerName, bool addToManagers) 
-        	: base()
+        public Chicken (string contentManagerName, bool addToManagers) 
+        	: base(contentManagerName, addToManagers)
         {
             ContentManagerName = contentManagerName;
-            InitializeEntity(addToManagers);
         }
-        protected virtual void InitializeEntity (bool addToManagers) 
+        protected override void InitializeEntity (bool addToManagers) 
         {
             LoadStaticContent(ContentManagerName);
             
-            PostInitialize();
-            if (addToManagers)
-            {
-                AddToManagers(null);
-            }
+            base.InitializeEntity(addToManagers);
         }
-        public virtual void ReAddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
+        public override void ReAddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
+        {
+            base.ReAddToManagers(layerToAddTo);
+        }
+        public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
-            FlatRedBall.SpriteManager.AddPositionedObject(this);
-        }
-        public virtual void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
-        {
-            LayerProvidedByContainer = layerToAddTo;
-            FlatRedBall.SpriteManager.AddPositionedObject(this);
-            AddToManagersBottomUp(layerToAddTo);
+            base.AddToManagers(layerToAddTo);
             CustomInitialize();
         }
-        public virtual void Activity () 
+        public override void Activity () 
         {
+            base.Activity();
             
             CustomActivity();
         }
-        public virtual void Destroy () 
+        public override void Destroy () 
         {
-            var wasUsed = this.Used;
-            if (Used)
-            {
-                Factories.AnimalFactory.MakeUnused(this, false);
-            }
-            FlatRedBall.SpriteManager.RemovePositionedObject(this);
+            base.Destroy();
             
-            mGeneratedCollision.RemoveFromManagers(clearThis: false);
             CustomDestroy();
         }
-        public virtual void PostInitialize () 
+        public override void PostInitialize () 
         {
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-            mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
+            base.PostInitialize();
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
-        public virtual void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
+        public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
-            AssignCustomVariables(false);
+            base.AddToManagersBottomUp(layerToAddTo);
         }
-        public virtual void RemoveFromManagers () 
+        public override void RemoveFromManagers () 
         {
-            FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
-            mGeneratedCollision.RemoveFromManagers(clearThis: false);
+            base.RemoveFromManagers();
         }
-        public virtual void AssignCustomVariables (bool callOnContainedElements) 
+        public override void AssignCustomVariables (bool callOnContainedElements) 
         {
+            base.AssignCustomVariables(callOnContainedElements);
             if (callOnContainedElements)
             {
             }
+            GroundMovement = Entities.Chicken.PlatformerValuesStatic["Ground"];
+            AirMovement = Entities.Chicken.PlatformerValuesStatic["Air"];
         }
-        public virtual void ConvertToManuallyUpdated () 
+        public override void ConvertToManuallyUpdated () 
         {
+            base.ConvertToManuallyUpdated();
             this.ForceUpdateDependenciesDeep();
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
         }
-        public static void LoadStaticContent (string contentManagerName) 
+        public static new void LoadStaticContent (string contentManagerName) 
         {
             if (string.IsNullOrEmpty(contentManagerName))
             {
                 throw new System.ArgumentException("contentManagerName cannot be empty or null");
             }
             ContentManagerName = contentManagerName;
+            ArkMethorst.Entities.Piglet.LoadStaticContent(contentManagerName);
             // Set the content manager for Gum
             var contentManagerWrapper = new FlatRedBall.Gum.ContentManagerWrapper();
             contentManagerWrapper.ContentManagerName = contentManagerName;
@@ -144,7 +168,7 @@ namespace ArkMethorst.Entities
                 {
                     if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
                     {
-                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("AnimalStaticUnload", UnloadStaticContent);
+                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("ChickenStaticUnload", UnloadStaticContent);
                         mRegisteredUnloads.Add(ContentManagerName);
                     }
                 }
@@ -155,14 +179,14 @@ namespace ArkMethorst.Entities
                 {
                     if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
                     {
-                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("AnimalStaticUnload", UnloadStaticContent);
+                        FlatRedBall.FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("ChickenStaticUnload", UnloadStaticContent);
                         mRegisteredUnloads.Add(ContentManagerName);
                     }
                 }
             }
             CustomLoadStaticContent(contentManagerName);
         }
-        public static void UnloadStaticContent () 
+        public static new void UnloadStaticContent () 
         {
             if (LoadedContentManagers.Count != 0)
             {
@@ -174,11 +198,11 @@ namespace ArkMethorst.Entities
             }
         }
         [System.Obsolete("Use GetFile instead")]
-        public static object GetStaticMember (string memberName) 
+        public static new object GetStaticMember (string memberName) 
         {
             return null;
         }
-        public static object GetFile (string memberName) 
+        public static new object GetFile (string memberName) 
         {
             return null;
         }
@@ -186,20 +210,14 @@ namespace ArkMethorst.Entities
         {
             return null;
         }
-        protected bool mIsPaused;
-        public override void Pause (FlatRedBall.Instructions.InstructionList instructions) 
+        public override void SetToIgnorePausing () 
         {
-            base.Pause(instructions);
-            mIsPaused = true;
+            base.SetToIgnorePausing();
         }
-        public virtual void SetToIgnorePausing () 
+        public override void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {
-            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-        }
-        public virtual void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
-        {
-            var layerToRemoveFrom = LayerProvidedByContainer;
-            LayerProvidedByContainer = layerToMoveTo;
+            var layerToRemoveFrom = LayerProvidedByContainer; // assign before calling base so removal is not impacted by base call
+            base.MoveToLayer(layerToMoveTo);
         }
     }
 }

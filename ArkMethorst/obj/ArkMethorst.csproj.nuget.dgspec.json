@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj": {}
+    "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj": {}
   },
   "projects": {
-    "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj": {
+    "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
+        "projectUniqueName": "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
         "projectName": "ArkMethorst",
-        "projectPath": "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
+        "projectPath": "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
         "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
-        "outputPath": "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\obj\\",
+        "outputPath": "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
