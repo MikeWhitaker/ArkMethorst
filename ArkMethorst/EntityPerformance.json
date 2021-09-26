@@ -1,20 +1,6 @@
 {
   "EntityManagementValueList": [
     {
-      "Name": "Entities\\Animal",
-      "SelectedProperties": [],
-      "InstanceManagementValuesList": [
-        {
-          "SelectedProperties": [],
-          "Name": "SpriteInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "AxisAlignedRectangleInstance"
-        }
-      ]
-    },
-    {
       "Name": "Entities\\Checkpoint",
       "SelectedProperties": [],
       "InstanceManagementValuesList": [
@@ -29,32 +15,6 @@
         {
           "SelectedProperties": [],
           "Name": "AxisAlignedRectangleInstance"
-        }
-      ]
-    },
-    {
-      "Name": "Entities\\Piglet",
-      "SelectedProperties": [],
-      "InstanceManagementValuesList": [
-        {
-          "SelectedProperties": [],
-          "Name": "SpriteInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "AxisAlignedRectangleInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "SpriteRuntimeInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "LeftCornerDetectionRectagle"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "RightCornerDetectionRectagle"
         }
       ]
     },
@@ -87,6 +47,51 @@
         {
           "SelectedProperties": [],
           "Name": "AnimalPickupHitBoxRight"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AnimalPickupHitBoxLeft"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Chicken",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": []
+    },
+    {
+      "Name": "Entities\\EndOfLevel",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Animal",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "LeftCornerDetectionRectagle"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "RightCornerDetectionRectagle"
         }
       ]
     }

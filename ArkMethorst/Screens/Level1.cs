@@ -26,25 +26,31 @@ namespace ArkMethorst.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-			if (PigletInstance.IsOnGround)
+			// 1) itterate over de animal list 
+			// 2) do something  for each of the animals in the list
+
+			foreach (var animal in AnimalList)
 			{
-				var pigletInstanceInput = PigletInstance.InputDevice as PigletPlatformerInput;
-				if (pigletInstanceInput.DesiredDirection == Direction.Right)
+				if (animal.IsOnGround)
 				{
-					var doesRightSideCollide = SolidCollision.CollideAgainst(PigletInstance.RightCornerDetectionRectagle);
-					if (!doesRightSideCollide)
+					var animalInput = animal.InputDevice as AnimalPlatformerInput;
+					if (animalInput.DesiredDirection == Direction.Right)
 					{
-						pigletInstanceInput.DesiredDirection = Direction.Left;
-						PigletInstance.SpriteInstanceFlipHorizontal = !PigletInstance.SpriteInstanceFlipHorizontal;
+						var doesRightSideCollide = SolidCollision.CollideAgainst(animal.RightCornerDetectionRectagle);
+						if (!doesRightSideCollide)
+						{
+							animalInput.DesiredDirection = Direction.Left;
+							animal.SpriteInstanceFlipHorizontal = !animal.SpriteInstanceFlipHorizontal;
+						}
 					}
-				}
-				else // moving left
-				{
-					var doesLeftLeftSideCollide = SolidCollision.CollideAgainst(PigletInstance.LeftCornerDetectionRectagle);
-					if (!doesLeftLeftSideCollide)
+					else // moving left
 					{
-						pigletInstanceInput.DesiredDirection = Direction.Right;
-						PigletInstance.SpriteInstanceFlipHorizontal = !PigletInstance.SpriteInstanceFlipHorizontal;
+						var doesLeftLeftSideCollide = SolidCollision.CollideAgainst(animal.LeftCornerDetectionRectagle);
+						if (!doesLeftLeftSideCollide)
+						{
+							animalInput.DesiredDirection = Direction.Right;
+							animal.SpriteInstanceFlipHorizontal = !animal.SpriteInstanceFlipHorizontal;
+						}
 					}
 				}
 			}

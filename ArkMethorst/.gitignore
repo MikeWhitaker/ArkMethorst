@@ -1,0 +1,15 @@
+*.user
+*.aeproperties
+.vs/
+*.tmp
+*.Generated.cs
+*.Generated.Event.cs
+TiledObjects.Generated.xml
+*.cachefile
+*.csvSettings
+*.sln.metaproj
+ArkMethorst/ArkMethorst/bin/
+ArkMethorst/bin/
+ArkMethorst/ArkMethorst/obj/
+ArkMethorst/obj/
+ArkMethorst/ArkMethorstContent/obj/

@@ -38,7 +38,6 @@ namespace ArkMethorst.Entities
 		/// </summary>
 		private void CustomInitialize()
 		{
-			this.InitializePlatformerInput(new PigletPlatformerInput(this));
 
 		}
 
@@ -74,49 +73,4 @@ namespace ArkMethorst.Entities
 		}
 	}
 
-	public class PigletPlatformerInput : InputDeviceBase
-	{
-		private Direction desiredDirection;
-		private Piglet piglet;
-
-		public PigletPlatformerInput(Piglet piglet)
-		{
-			this.piglet = piglet;
-			desiredDirection = Direction.Left;
-		}
-
-		public Direction DesiredDirection { get => desiredDirection; set => desiredDirection = value; }
-
-		protected override float GetHorizontalValue()
-		{
-			if (piglet.IsPickedUp)
-			{
-				return 0;
-			}	
-
-			if (DesiredDirection == Direction.Left)
-			{
-				return -1;
-			}
-			else
-			{
-				return 1;
-			}
-		}
-
-		protected override bool GetPrimaryActionPressed() //this how button presses are simulated or passed to the controller.
-		{
-			//if (false)
-			//{
-			//    return true;
-			//}
-			return false;
-		}
-	}
-
-	public enum Direction
-	{
-		Left,
-		Right
-	}
 }

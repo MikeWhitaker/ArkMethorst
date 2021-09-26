@@ -30,12 +30,13 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
-        protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Piglet> PigletList;
-        private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Piglet, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight;
+        private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Animal, Entities.Player> AnimalListVsPlayerListAnimalPickupHitBoxRight;
+        protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
+        private FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollision;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
-        public event System.Action<Entities.Piglet, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
+        public event System.Action<Entities.Animal, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
         ArkMethorst.FormsControls.Screens.GameScreenGumForms Forms;
         public GameScreen () 
         	: base ("GameScreen")
@@ -49,8 +50,8 @@ namespace ArkMethorst.Screens
             CheckpointList.Name = "CheckpointList";
             EndOfLevelList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel>();
             EndOfLevelList.Name = "EndOfLevelList";
-            PigletList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Piglet>();
-            PigletList.Name = "PigletList";
+            AnimalList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal>();
+            AnimalList.Name = "AnimalList";
         }
         public override void Initialize (bool addToManagers) 
         {
@@ -67,7 +68,7 @@ namespace ArkMethorst.Screens
             PitCollision.Name = "PitCollision";
             CheckpointList.Clear();
             EndOfLevelList.Clear();
-            PigletList.Clear();
+            AnimalList.Clear();
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Player, FlatRedBall.TileCollisions.TileShapeCollection>(PlayerList, SolidCollision);
         var isCloud = false;
@@ -107,12 +108,24 @@ namespace ArkMethorst.Screens
     PlayerListVsEndOfLevelList.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
     PlayerListVsEndOfLevelList.Name = "PlayerListVsEndOfLevelList";
 
-                PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(PigletList, PlayerList);
-    PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.SetFirstSubCollision(item => item.AxisAlignedRectangleInstance);
-    PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.SetSecondSubCollision(item => item.AnimalPickupHitBoxRight);
-    PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
-    PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
-    PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.Name = "PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight";
+                AnimalListVsPlayerListAnimalPickupHitBoxRight = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(AnimalList, PlayerList);
+    AnimalListVsPlayerListAnimalPickupHitBoxRight.SetSecondSubCollision(item => item.AnimalPickupHitBoxRight);
+    AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
+    AnimalListVsPlayerListAnimalPickupHitBoxRight.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
+    AnimalListVsPlayerListAnimalPickupHitBoxRight.Name = "AnimalListVsPlayerListAnimalPickupHitBoxRight";
+
+                {
+        var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection>(AnimalList, SolidCollision);
+        var isCloud = false;
+        temp.CollisionFunction = (first, second) =>
+        {
+            return first.CollideAgainst(second, isCloud);
+        }
+        ;
+        FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Add(temp);
+        AnimalListVsSolidCollision = temp;
+    }
+    AnimalListVsSolidCollision.Name = "AnimalListVsSolidCollision";
 
             Forms = new ArkMethorst.FormsControls.Screens.GameScreenGumForms(GameScreenGum);
             // normally we wait to set variables until after the object is created, but in this case if the
@@ -187,12 +200,12 @@ namespace ArkMethorst.Screens
                         EndOfLevelList[i].Activity();
                     }
                 }
-                for (int i = PigletList.Count - 1; i > -1; i--)
+                for (int i = AnimalList.Count - 1; i > -1; i--)
                 {
-                    if (i < PigletList.Count)
+                    if (i < AnimalList.Count)
                     {
                         // We do the extra if-check because activity could destroy any number of entities
-                        PigletList[i].Activity();
+                        AnimalList[i].Activity();
                     }
                 }
             }
@@ -217,7 +230,7 @@ namespace ArkMethorst.Screens
             PlayerList.MakeOneWay();
             CheckpointList.MakeOneWay();
             EndOfLevelList.MakeOneWay();
-            PigletList.MakeOneWay();
+            AnimalList.MakeOneWay();
             for (int i = PlayerList.Count - 1; i > -1; i--)
             {
                 PlayerList[i].Destroy();
@@ -238,14 +251,14 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
-            for (int i = PigletList.Count - 1; i > -1; i--)
+            for (int i = AnimalList.Count - 1; i > -1; i--)
             {
-                PigletList[i].Destroy();
+                AnimalList[i].Destroy();
             }
             PlayerList.MakeTwoWay();
             CheckpointList.MakeTwoWay();
             EndOfLevelList.MakeTwoWay();
-            PigletList.MakeTwoWay();
+            AnimalList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }
@@ -259,8 +272,8 @@ namespace ArkMethorst.Screens
             PlayerListVsCheckpointList.CollisionOccurred += OnPlayerListVsCheckpointListCollisionOccurredTunnel;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurred;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurredTunnel;
-            PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
-            PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
+            AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
+            AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
             if (Map!= null)
             {
                 if (Map.Parent == null)
@@ -311,9 +324,9 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].Destroy();
             }
-            for (int i = PigletList.Count - 1; i > -1; i--)
+            for (int i = AnimalList.Count - 1; i > -1; i--)
             {
-                PigletList[i].Destroy();
+                AnimalList[i].Destroy();
             }
         }
         public virtual void AssignCustomVariables (bool callOnContainedElements) 
@@ -365,9 +378,9 @@ namespace ArkMethorst.Screens
             {
                 EndOfLevelList[i].ConvertToManuallyUpdated();
             }
-            for (int i = 0; i < PigletList.Count; i++)
+            for (int i = 0; i < AnimalList.Count; i++)
             {
-                PigletList[i].ConvertToManuallyUpdated();
+                AnimalList[i].ConvertToManuallyUpdated();
             }
         }
         public static void LoadStaticContent (string contentManagerName) 

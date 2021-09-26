@@ -9,20 +9,22 @@ using FlatRedBall;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ArkMethorst.DataTypes;
+using FlatRedBall.IO.Csv;
 namespace ArkMethorst.Entities
 {
-    public partial class Chicken : ArkMethorst.Entities.Piglet, FlatRedBall.Graphics.IDestroyable
+    public partial class Chicken : ArkMethorst.Entities.Animal, FlatRedBall.Graphics.IDestroyable
     {
         // This is made static so that static lazy-loaded content can access it.
         public static new string ContentManagerName
         {
             get
             {
-                return ArkMethorst.Entities.Piglet.ContentManagerName;
+                return ArkMethorst.Entities.Animal.ContentManagerName;
             }
             set
             {
-                ArkMethorst.Entities.Piglet.ContentManagerName = value;
+                ArkMethorst.Entities.Animal.ContentManagerName = value;
             }
         }
         #if DEBUG
@@ -31,40 +33,8 @@ namespace ArkMethorst.Entities
         static object mLockObject = new object();
         static System.Collections.Generic.List<string> mRegisteredUnloads = new System.Collections.Generic.List<string>();
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
+        public static System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> PlatformerValuesStatic;
         
-        public override ArkMethorst.DataTypes.PlatformerValues GroundMovement
-        {
-            set
-            {
-                base.GroundMovement = value;
-            }
-            get
-            {
-                return base.GroundMovement;
-            }
-        }
-        public override ArkMethorst.DataTypes.PlatformerValues AirMovement
-        {
-            set
-            {
-                base.AirMovement = value;
-            }
-            get
-            {
-                return base.AirMovement;
-            }
-        }
-        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
-        {
-            set
-            {
-                base.AfterDoubleJump = value;
-            }
-            get
-            {
-                return base.AfterDoubleJump;
-            }
-        }
         public Chicken () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
@@ -81,16 +51,21 @@ namespace ArkMethorst.Entities
         protected override void InitializeEntity (bool addToManagers) 
         {
             LoadStaticContent(ContentManagerName);
+            SpriteInstance = new FlatRedBall.Sprite();
+            SpriteInstance.Name = "SpriteInstance";
             
             base.InitializeEntity(addToManagers);
         }
         public override void ReAddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             base.ReAddToManagers(layerToAddTo);
+            FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
         }
         public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
+            FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+            CurrentMovementType = MovementType.Ground;
             base.AddToManagers(layerToAddTo);
             CustomInitialize();
         }
@@ -104,6 +79,10 @@ namespace ArkMethorst.Entities
         {
             base.Destroy();
             
+            if (SpriteInstance != null)
+            {
+                FlatRedBall.SpriteManager.RemoveSprite(SpriteInstance);
+            }
             CustomDestroy();
         }
         public override void PostInitialize () 
@@ -111,6 +90,16 @@ namespace ArkMethorst.Entities
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
             base.PostInitialize();
+            if (SpriteInstance.Parent == null)
+            {
+                SpriteInstance.CopyAbsoluteToRelative();
+                SpriteInstance.AttachTo(this, false);
+            }
+            base.SpriteInstance.FlipHorizontal = false;
+            base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.CurrentChainName = "PigletWalk";
+            base.SpriteInstance.AnimationSpeed = 2f;
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -120,6 +109,10 @@ namespace ArkMethorst.Entities
         public override void RemoveFromManagers () 
         {
             base.RemoveFromManagers();
+            if (SpriteInstance != null)
+            {
+                FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
+            }
         }
         public override void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -127,14 +120,19 @@ namespace ArkMethorst.Entities
             if (callOnContainedElements)
             {
             }
-            GroundMovement = Entities.Chicken.PlatformerValuesStatic["Ground"];
-            AirMovement = Entities.Chicken.PlatformerValuesStatic["Air"];
+            base.SpriteInstance.FlipHorizontal = false;
+            base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.CurrentChainName = "PigletWalk";
+            base.SpriteInstance.AnimationSpeed = 2f;
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            SpriteInstanceFlipHorizontal = false;
         }
         public override void ConvertToManuallyUpdated () 
         {
             base.ConvertToManuallyUpdated();
             this.ForceUpdateDependenciesDeep();
             FlatRedBall.SpriteManager.ConvertToManuallyUpdated(this);
+            FlatRedBall.SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
         }
         public static new void LoadStaticContent (string contentManagerName) 
         {
@@ -143,7 +141,7 @@ namespace ArkMethorst.Entities
                 throw new System.ArgumentException("contentManagerName cannot be empty or null");
             }
             ContentManagerName = contentManagerName;
-            ArkMethorst.Entities.Piglet.LoadStaticContent(contentManagerName);
+            ArkMethorst.Entities.Animal.LoadStaticContent(contentManagerName);
             // Set the content manager for Gum
             var contentManagerWrapper = new FlatRedBall.Gum.ContentManagerWrapper();
             contentManagerWrapper.ContentManagerName = contentManagerName;
@@ -172,6 +170,22 @@ namespace ArkMethorst.Entities
                         mRegisteredUnloads.Add(ContentManagerName);
                     }
                 }
+                if (PlatformerValuesStatic == null)
+                {
+                    {
+                        // We put the { and } to limit the scope of oldDelimiter
+                        char oldDelimiter = FlatRedBall.IO.Csv.CsvFileManager.Delimiter;
+                        FlatRedBall.IO.Csv.CsvFileManager.Delimiter = ',';
+                        System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> temporaryCsvObject = new System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues>();
+                        foreach (var kvp in Entities.Animal.PlatformerValuesStatic)
+                        {
+                            temporaryCsvObject.Add(kvp.Key, kvp.Value);
+                        }
+                        FlatRedBall.IO.Csv.CsvFileManager.CsvDeserializeDictionary<System.String, ArkMethorst.DataTypes.PlatformerValues>("content/entities/chicken/platformervaluesstatic.csv", temporaryCsvObject, FlatRedBall.IO.Csv.DuplicateDictionaryEntryBehavior.Replace);
+                        FlatRedBall.IO.Csv.CsvFileManager.Delimiter = oldDelimiter;
+                        PlatformerValuesStatic = temporaryCsvObject;
+                    }
+                }
             }
             if (registerUnload && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
             {
@@ -195,15 +209,29 @@ namespace ArkMethorst.Entities
             }
             if (LoadedContentManagers.Count == 0)
             {
+                if (PlatformerValuesStatic != null)
+                {
+                    PlatformerValuesStatic= null;
+                }
             }
         }
         [System.Obsolete("Use GetFile instead")]
         public static new object GetStaticMember (string memberName) 
         {
+            switch(memberName)
+            {
+                case  "PlatformerValuesStatic":
+                    return PlatformerValuesStatic;
+            }
             return null;
         }
         public static new object GetFile (string memberName) 
         {
+            switch(memberName)
+            {
+                case  "PlatformerValuesStatic":
+                    return PlatformerValuesStatic;
+            }
             return null;
         }
         object GetMember (string memberName) 
@@ -213,6 +241,7 @@ namespace ArkMethorst.Entities
         public override void SetToIgnorePausing () 
         {
             base.SetToIgnorePausing();
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
         }
         public override void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {

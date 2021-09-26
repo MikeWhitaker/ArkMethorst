@@ -17,9 +17,6 @@ namespace ArkMethorst.Screens
         protected static ArkMethorst.GumRuntimes.Level1GumRuntime Level1Gum;
         protected static FlatRedBall.TileGraphics.LayeredTileMap Level1Map;
         
-        private FlatRedBall.Math.Collision.DelegateCollisionRelationship<ArkMethorst.Entities.Piglet, FlatRedBall.TileCollisions.TileShapeCollection> PigletInstanceVsSolidCollision;
-        private ArkMethorst.Entities.Piglet PigletInstance;
-        public event System.Action<ArkMethorst.Entities.Piglet, FlatRedBall.TileCollisions.TileShapeCollection> PigletInstanceVsSolidCollisionCollisionOccurred;
         ArkMethorst.FormsControls.Screens.Level1GumForms Forms;
         public Level1 () 
         	: base ()
@@ -31,21 +28,6 @@ namespace ArkMethorst.Screens
             Map = Level1Map;
             SolidCollision = new FlatRedBall.TileCollisions.TileShapeCollection();
             CloudCollision = new FlatRedBall.TileCollisions.TileShapeCollection();
-            PigletInstance = new ArkMethorst.Entities.Piglet(ContentManagerName, false);
-            PigletInstance.Name = "PigletInstance";
-                {
-        var temp = new FlatRedBall.Math.Collision.DelegateCollisionRelationship<ArkMethorst.Entities.Piglet, FlatRedBall.TileCollisions.TileShapeCollection>(PigletInstance, SolidCollision);
-        var isCloud = false;
-        temp.CollisionFunction = (first, second) =>
-        {
-            return first.CollideAgainst(second, isCloud);
-        }
-        ;
-        FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Add(temp);
-        PigletInstanceVsSolidCollision = temp;
-    }
-    PigletInstanceVsSolidCollision.Name = "PigletInstanceVsSolidCollision";
-
             Forms = new ArkMethorst.FormsControls.Screens.Level1GumForms(Level1Gum);
             
             
@@ -55,7 +37,6 @@ namespace ArkMethorst.Screens
         {
             Level1Gum.AddToManagers();FlatRedBall.FlatRedBallServices.GraphicsOptions.SizeOrOrientationChanged += RefreshLayoutInternal;
             Level1Map.AddToManagers(mLayer);
-            PigletInstance.AddToManagers(mLayer);
             base.AddToManagers();
             CustomInitialize();
         }
@@ -83,7 +64,7 @@ namespace ArkMethorst.Screens
             Level1Map.Destroy();
             Level1Map = null;
             
-            PigletList.MakeOneWay();
+            AnimalList.MakeOneWay();
             if (Map != null)
             {
                 Map.Destroy();
@@ -96,7 +77,7 @@ namespace ArkMethorst.Screens
             {
                 CloudCollision.Visible = false;
             }
-            PigletList.MakeTwoWay();
+            AnimalList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }
@@ -104,27 +85,7 @@ namespace ArkMethorst.Screens
         {
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-            PigletInstanceVsSolidCollision.CollisionOccurred += OnPigletInstanceVsSolidCollisionCollisionOccurred;
-            PigletInstanceVsSolidCollision.CollisionOccurred += OnPigletInstanceVsSolidCollisionCollisionOccurredTunnel;
             base.PostInitialize();
-            PigletList.Add(PigletInstance);
-            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
-            if (PigletInstance.Parent == null)
-            {
-                PigletInstance.X = 160f;
-            }
-            else
-            {
-                PigletInstance.RelativeX = 160f;
-            }
-            if (PigletInstance.Parent == null)
-            {
-                PigletInstance.Y = -160f;
-            }
-            else
-            {
-                PigletInstance.RelativeY = -160f;
-            }
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp () 
@@ -154,24 +115,6 @@ namespace ArkMethorst.Screens
             base.AssignCustomVariables(callOnContainedElements);
             if (callOnContainedElements)
             {
-                PigletInstance.AssignCustomVariables(true);
-            }
-            PigletInstance.GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
-            if (PigletInstance.Parent == null)
-            {
-                PigletInstance.X = 160f;
-            }
-            else
-            {
-                PigletInstance.RelativeX = 160f;
-            }
-            if (PigletInstance.Parent == null)
-            {
-                PigletInstance.Y = -160f;
-            }
-            else
-            {
-                PigletInstance.RelativeY = -160f;
             }
         }
         public override void ConvertToManuallyUpdated () 

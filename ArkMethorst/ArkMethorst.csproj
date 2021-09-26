@@ -64,6 +64,10 @@
     <Compile Include="Entities\EndOfLevel.Generated.cs">
       <DependentUpon>EndOfLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Animal.cs" />
+    <Compile Include="Entities\Animal.Generated.cs">
+      <DependentUpon>Animal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Piglet.cs" />
     <Compile Include="Entities\Piglet.Generated.cs">
       <DependentUpon>Piglet.cs</DependentUpon>
@@ -325,9 +329,17 @@
     <Content Include="Content\shader.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="content\entities\animal\platformervaluesstatic.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>PlatformerValuesStatic</Name>
+    </None>
     <None Include="content\entities\checkpoint\animationchainlistfile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
+    </None>
+    <None Include="content\entities\chicken\platformervaluesstatic.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>PlatformerValuesStatic</Name>
     </None>
     <None Include="content\entities\endoflevel\animationchainlistfile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

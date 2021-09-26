@@ -18,7 +18,7 @@ namespace ArkMethorst.Screens
             var hasCollidedWithWall = collisionReposition.X != 0;
             if (hasCollidedWithWall)
             {
-                var pigletMovement = first.InputDevice as PigletPlatformerInput;
+                var pigletMovement = first.InputDevice as AnimalPlatformerInput;
                 var isWallToTheRight = collisionReposition.X < 0;
 
                 if (isWallToTheRight && pigletMovement.DesiredDirection == Direction.Right)
