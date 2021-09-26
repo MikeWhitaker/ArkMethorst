@@ -223,6 +223,18 @@
                   <Name>SourceType</Name>
                   <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
                 </PropertySave>
+                <PropertySave>
+                  <Name>SortAxis</Name>
+                  <ValueAsInt>0</ValueAsInt>
+                </PropertySave>
+                <PropertySave>
+                  <Name>PartitionWidthHeight</Name>
+                  <ValueAsFloat>32</ValueAsFloat>
+                </PropertySave>
+                <PropertySave>
+                  <Name>IsSortListEveryFrameChecked</Name>
+                  <ValueAsBool>true</ValueAsBool>
+                </PropertySave>
               </Properties>
               <SourceType>Entity</SourceType>
               <SourceFile>Entities\Player</SourceFile>
@@ -769,6 +781,13 @@
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AnimalListVsSolidCollisionCollisionOccurred</EventName>
+          <SourceObject>AnimalListVsSolidCollision</SourceObject>
+          <SourceObjectEvent>CollisionOccurred</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
       </Events>
       <CustomClassesForExport />
     </ScreenSave>
@@ -840,6 +859,38 @@
             <PropertySave>
               <Name>CollisionTileTypeName</Name>
               <ValueAsString>SolidCollision</ValueAsString>
+            </PropertySave>
+            <PropertySave>
+              <Name>SortAxis</Name>
+              <ValueAsInt>0</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>PartitionWidthHeight</Name>
+              <ValueAsFloat>32</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsSortListEveryFrameChecked</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>CollisionTileSize</Name>
+              <ValueAsFloat>16</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>CollisionFillWidth</Name>
+              <ValueAsInt>32</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>CollisionFillHeight</Name>
+              <ValueAsInt>1</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>InnerSizeWidth</Name>
+              <ValueAsFloat>800</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>InnerSizeHeight</Name>
+              <ValueAsFloat>600</ValueAsFloat>
             </PropertySave>
           </Properties>
           <SourceType>FlatRedBallType</SourceType>
@@ -925,6 +976,18 @@
               <Name>SourceType</Name>
               <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
             </PropertySave>
+            <PropertySave>
+              <Name>SortAxis</Name>
+              <ValueAsInt>0</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>PartitionWidthHeight</Name>
+              <ValueAsFloat>32</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsSortListEveryFrameChecked</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
           </Properties>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>PositionedObjectList (Generic)</SourceFile>
@@ -936,6 +999,48 @@
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <DefinedByBase>true</DefinedByBase>
           <InstantiatedByBase>true</InstantiatedByBase>
+          <ContainedObjects>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>160</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>-160</ValueAsFloat>
+              </CustomProperty>
+              <Properties>
+                <PropertySave>
+                  <Name>AssociateWithFactory</Name>
+                  <ValueAsBool>true</ValueAsBool>
+                </PropertySave>
+                <PropertySave>
+                  <Name>SourceType</Name>
+                  <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
+                </PropertySave>
+                <PropertySave>
+                  <Name>SortAxis</Name>
+                  <ValueAsInt>0</ValueAsInt>
+                </PropertySave>
+                <PropertySave>
+                  <Name>PartitionWidthHeight</Name>
+                  <ValueAsFloat>32</ValueAsFloat>
+                </PropertySave>
+                <PropertySave>
+                  <Name>IsSortListEveryFrameChecked</Name>
+                  <ValueAsBool>true</ValueAsBool>
+                </PropertySave>
+              </Properties>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Piglet</SourceClassType>
+              <InstanceName>Piglet1</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <GenerateTimedEmit>true</GenerateTimedEmit>
+              <IndependentOfCamera>false</IndependentOfCamera>
+            </NamedObjectSave>
+          </ContainedObjects>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -1164,23 +1269,6 @@
           <Properties>
             <PropertySave>
               <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>CreatesProperties</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-          </Properties>
-          <Name>SpriteInstanceFlipHorizontal</Name>
-          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
-          <SetByDerived>true</SetByDerived>
-          <SourceObject>SpriteInstance</SourceObject>
-          <SourceObjectProperty>FlipHorizontal</SourceObjectProperty>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
               <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
             </PropertySave>
           </Properties>
@@ -1212,6 +1300,19 @@
           <SetByDerived>true</SetByDerived>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpriteInstanceFlipHorizontal</Name>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+          <SetByDerived>true</SetByDerived>
+          <SourceObject>SpriteInstance</SourceObject>
+          <SourceObjectProperty>FlipHorizontal</SourceObjectProperty>
+        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -1228,51 +1329,6 @@
         </PropertySave>
       </Properties>
       <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>AnimationSpeed</Member>
-            <ValueAsFloat>2</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>CurrentChainName</Member>
-            <ValueAsString>PigletWalk</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>FlipHorizontal</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>IgnoreAnimationChainTextureFlip</Member>
-            <ValueAsBool>true</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>Sprite</SourceFile>
-          <SourceClassType>FlatRedBall.Sprite</SourceClassType>
-          <InstanceName>SpriteInstance</InstanceName>
-          <SetByDerived>true</SetByDerived>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>Microsoft.Xna.Framework.Color</Type>
@@ -1416,6 +1472,39 @@
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <IncludeInICollidable>false</IncludeInICollidable>
           <IncludeInIClickable>false</IncludeInIClickable>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>CurrentChainName</Member>
+          </CustomProperty>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>Sprite</SourceFile>
+          <SourceClassType>FlatRedBall.Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <SetByDerived>true</SetByDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -1685,11 +1774,42 @@
           <Properties>
             <PropertySave>
               <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
             </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Ground in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
             <PropertySave>
-              <Name>CreatesProperties</Name>
-              <ValueAsBool>true</ValueAsBool>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Air in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
             </PropertySave>
           </Properties>
           <Name>SpriteInstanceFlipHorizontal</Name>
@@ -1709,26 +1829,6 @@
       </Properties>
       <NamedObjects>
         <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>AnimationSpeed</Member>
-            <ValueAsFloat>2</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>CurrentChainName</Member>
-            <ValueAsString>PigletWalk</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>FlipHorizontal</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>IgnoreAnimationChainTextureFlip</Member>
-            <ValueAsBool>true</ValueAsBool>
-          </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
@@ -1983,11 +2083,42 @@
           <Properties>
             <PropertySave>
               <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
             </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Ground in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
             <PropertySave>
-              <Name>CreatesProperties</Name>
-              <ValueAsBool>true</ValueAsBool>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Air in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
             </PropertySave>
           </Properties>
           <Name>SpriteInstanceFlipHorizontal</Name>
@@ -2013,8 +2144,8 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>AnimationSpeed</Member>
-            <ValueAsFloat>2</ValueAsFloat>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>string</Type>
@@ -2022,19 +2153,9 @@
             <ValueAsString>PigletWalk</ValueAsString>
           </CustomProperty>
           <CustomProperty>
-            <Type>bool</Type>
-            <Member>FlipHorizontal</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>IgnoreAnimationChainTextureFlip</Member>
-            <ValueAsBool>true</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
+            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>PigletWalk</ValueAsString>
           </CustomProperty>
           <Properties>
             <PropertySave>

@@ -39,6 +39,39 @@ namespace ArkMethorst.Entities
         protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureSecondFrame;
         protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureFirstFrame;
         
+        public override ArkMethorst.DataTypes.PlatformerValues GroundMovement
+        {
+            set
+            {
+                base.GroundMovement = value;
+            }
+            get
+            {
+                return base.GroundMovement;
+            }
+        }
+        public override ArkMethorst.DataTypes.PlatformerValues AirMovement
+        {
+            set
+            {
+                base.AirMovement = value;
+            }
+            get
+            {
+                return base.AirMovement;
+            }
+        }
+        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
+        {
+            set
+            {
+                base.AfterDoubleJump = value;
+            }
+            get
+            {
+                return base.AfterDoubleJump;
+            }
+        }
         public Piglet () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
@@ -99,11 +132,9 @@ namespace ArkMethorst.Entities
                 SpriteInstance.CopyAbsoluteToRelative();
                 SpriteInstance.AttachTo(this, false);
             }
-            base.SpriteInstance.FlipHorizontal = false;
             base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.AnimationChains = PigletWalk;
             base.SpriteInstance.CurrentChainName = "PigletWalk";
-            base.SpriteInstance.AnimationSpeed = 2f;
-            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -124,11 +155,11 @@ namespace ArkMethorst.Entities
             if (callOnContainedElements)
             {
             }
-            base.SpriteInstance.FlipHorizontal = false;
             base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.AnimationChains = PigletWalk;
             base.SpriteInstance.CurrentChainName = "PigletWalk";
-            base.SpriteInstance.AnimationSpeed = 2f;
-            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
+            AirMovement = Entities.Piglet.PlatformerValuesStatic["Air"];
             SpriteInstanceFlipHorizontal = false;
         }
         public override void ConvertToManuallyUpdated () 

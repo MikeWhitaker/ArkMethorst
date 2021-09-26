@@ -17,6 +17,7 @@ namespace ArkMethorst.Screens
         protected static ArkMethorst.GumRuntimes.Level1GumRuntime Level1Gum;
         protected static FlatRedBall.TileGraphics.LayeredTileMap Level1Map;
         
+        private ArkMethorst.Entities.Piglet Piglet1;
         ArkMethorst.FormsControls.Screens.Level1GumForms Forms;
         public Level1 () 
         	: base ()
@@ -28,6 +29,8 @@ namespace ArkMethorst.Screens
             Map = Level1Map;
             SolidCollision = new FlatRedBall.TileCollisions.TileShapeCollection();
             CloudCollision = new FlatRedBall.TileCollisions.TileShapeCollection();
+            Piglet1 = new ArkMethorst.Entities.Piglet(ContentManagerName, false);
+            Piglet1.Name = "Piglet1";
             Forms = new ArkMethorst.FormsControls.Screens.Level1GumForms(Level1Gum);
             
             
@@ -37,6 +40,7 @@ namespace ArkMethorst.Screens
         {
             Level1Gum.AddToManagers();FlatRedBall.FlatRedBallServices.GraphicsOptions.SizeOrOrientationChanged += RefreshLayoutInternal;
             Level1Map.AddToManagers(mLayer);
+            Piglet1.AddToManagers(mLayer);
             base.AddToManagers();
             CustomInitialize();
         }
@@ -86,6 +90,23 @@ namespace ArkMethorst.Screens
             bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
             base.PostInitialize();
+            AnimalList.Add(Piglet1);
+            if (Piglet1.Parent == null)
+            {
+                Piglet1.X = 160f;
+            }
+            else
+            {
+                Piglet1.RelativeX = 160f;
+            }
+            if (Piglet1.Parent == null)
+            {
+                Piglet1.Y = -160f;
+            }
+            else
+            {
+                Piglet1.RelativeY = -160f;
+            }
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp () 
@@ -115,6 +136,23 @@ namespace ArkMethorst.Screens
             base.AssignCustomVariables(callOnContainedElements);
             if (callOnContainedElements)
             {
+                Piglet1.AssignCustomVariables(true);
+            }
+            if (Piglet1.Parent == null)
+            {
+                Piglet1.X = 160f;
+            }
+            else
+            {
+                Piglet1.RelativeX = 160f;
+            }
+            if (Piglet1.Parent == null)
+            {
+                Piglet1.Y = -160f;
+            }
+            else
+            {
+                Piglet1.RelativeY = -160f;
             }
         }
         public override void ConvertToManuallyUpdated () 

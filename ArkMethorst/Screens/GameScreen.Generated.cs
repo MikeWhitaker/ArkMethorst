@@ -37,6 +37,7 @@ namespace ArkMethorst.Screens
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
         public event System.Action<Entities.Animal, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
+        public event System.Action<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollisionCollisionOccurred;
         ArkMethorst.FormsControls.Screens.GameScreenGumForms Forms;
         public GameScreen () 
         	: base ("GameScreen")
@@ -274,6 +275,8 @@ namespace ArkMethorst.Screens
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurredTunnel;
             AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
             AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
+            AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurred;
+            AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurredTunnel;
             if (Map!= null)
             {
                 if (Map.Parent == null)
