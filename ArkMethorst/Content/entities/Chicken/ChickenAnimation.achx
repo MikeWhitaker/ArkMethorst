@@ -10,16 +10,18 @@
       <FrameLength>0.2</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>17</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
+      <TopCoordinate>1</TopCoordinate>
       <BottomCoordinate>15</BottomCoordinate>
+      <RelativeY>7</RelativeY>
     </Frame>
     <Frame>
       <TextureName>chickenwalk02.png</TextureName>
       <FrameLength>0.2</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>17</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
+      <TopCoordinate>1</TopCoordinate>
       <BottomCoordinate>15</BottomCoordinate>
+      <RelativeY>7</RelativeY>
     </Frame>
   </AnimationChain>
   <ProjectFile>../../../arkmethorst.glux</ProjectFile>

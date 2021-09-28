@@ -68,6 +68,10 @@
     <Compile Include="Entities\Animal.Generated.cs">
       <DependentUpon>Animal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Lamb.cs" />
+    <Compile Include="Entities\Lamb.Generated.cs">
+      <DependentUpon>Lamb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Piglet.cs" />
     <Compile Include="Entities\Piglet.Generated.cs">
       <DependentUpon>Piglet.cs</DependentUpon>
@@ -337,6 +341,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
+    <None Include="content\entities\chicken\chickenanimation.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>ChickenAnimation</Name>
+    </None>
+    <None Include="content\entities\chicken\chickenwalk01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>chickenwalk01</Name>
+    </None>
+    <None Include="content\entities\chicken\chickenwalk02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>chickenwalk02</Name>
+    </None>
     <None Include="content\entities\chicken\platformervaluesstatic.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>PlatformerValuesStatic</Name>
@@ -348,6 +364,22 @@
     <None Include="content\entities\enemy\frbplatformer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>frbplatformer</Name>
+    </None>
+    <None Include="content\entities\lamb\lambanimation.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>LambAnimation</Name>
+    </None>
+    <None Include="content\entities\lamb\lambwalk01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>lambwalk01</Name>
+    </None>
+    <None Include="content\entities\lamb\lambwalk02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>lambwalk02</Name>
+    </None>
+    <None Include="content\entities\lamb\platformervaluesstatic.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>PlatformerValuesStatic</Name>
     </None>
     <None Include="content\entities\piglet\piglettexture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

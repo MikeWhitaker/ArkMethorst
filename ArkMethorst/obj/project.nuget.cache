@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pzUMMHhlKwDa7tigGoNKy2SbuRbZDGL/ZUeZLYnM7ClKLh3jZhPnGMolKRMHtU3Vr6NCXENYWVFl9PbaPBz4Mg==",
+  "dgSpecHash": "ct6rsXTPW2sjmx0GgnIKho1+i6Q26uEFyCHbzS6boDJZiBnlb4j6GHmFEzX1RqaAJ2L444X7Te6pL1RCGjNmJw==",
   "success": true,
-  "projectFilePath": "C:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
+  "projectFilePath": "c:\\Data\\Repos\\Frb\\ArkMethorst\\ArkMethorst\\ArkMethorst.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mike\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],

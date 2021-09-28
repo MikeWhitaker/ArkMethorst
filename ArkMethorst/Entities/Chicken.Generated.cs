@@ -34,7 +34,19 @@ namespace ArkMethorst.Entities
         static System.Collections.Generic.List<string> mRegisteredUnloads = new System.Collections.Generic.List<string>();
         static System.Collections.Generic.List<string> LoadedContentManagers = new System.Collections.Generic.List<string>();
         public static System.Collections.Generic.Dictionary<System.String, ArkMethorst.DataTypes.PlatformerValues> PlatformerValuesStatic;
+        protected static FlatRedBall.Graphics.Animation.AnimationChainList ChickenAnimation;
         
+        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
+        {
+            set
+            {
+                base.AfterDoubleJump = value;
+            }
+            get
+            {
+                return base.AfterDoubleJump;
+            }
+        }
         public override ArkMethorst.DataTypes.PlatformerValues GroundMovement
         {
             set
@@ -57,17 +69,6 @@ namespace ArkMethorst.Entities
                 return base.AirMovement;
             }
         }
-        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
-        {
-            set
-            {
-                base.AfterDoubleJump = value;
-            }
-            get
-            {
-                return base.AfterDoubleJump;
-            }
-        }
         public Chicken () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
@@ -86,6 +87,8 @@ namespace ArkMethorst.Entities
             LoadStaticContent(ContentManagerName);
             SpriteInstance = new FlatRedBall.Sprite();
             SpriteInstance.Name = "SpriteInstance";
+            mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
             
             base.InitializeEntity(addToManagers);
         }
@@ -93,11 +96,13 @@ namespace ArkMethorst.Entities
         {
             base.ReAddToManagers(layerToAddTo);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
         }
         public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
             base.AddToManagers(layerToAddTo);
             CustomInitialize();
@@ -116,6 +121,10 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.SpriteManager.RemoveSprite(SpriteInstance);
             }
+            if (AxisAlignedRectangleInstance != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.Remove(AxisAlignedRectangleInstance);
+            }
             CustomDestroy();
         }
         public override void PostInitialize () 
@@ -128,7 +137,37 @@ namespace ArkMethorst.Entities
                 SpriteInstance.CopyAbsoluteToRelative();
                 SpriteInstance.AttachTo(this, false);
             }
+            if (SpriteInstance.Parent == null)
+            {
+                base.SpriteInstance.X = 0f;
+            }
+            else
+            {
+                base.SpriteInstance.RelativeX = 0f;
+            }
+            if (SpriteInstance.Parent == null)
+            {
+                base.SpriteInstance.Y = 0f;
+            }
+            else
+            {
+                base.SpriteInstance.RelativeY = 0f;
+            }
+            base.SpriteInstance.TextureAddressMode = Microsoft.Xna.Framework.Graphics.TextureAddressMode.Clamp;
             base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.UseAnimationRelativePosition = false;
+            base.SpriteInstance.AnimationChains = ChickenAnimation;
+            base.SpriteInstance.CurrentChainName = "ChickenWalk";
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            if (mAxisAlignedRectangleInstance.Parent == null)
+            {
+                mAxisAlignedRectangleInstance.CopyAbsoluteToRelative();
+                mAxisAlignedRectangleInstance.AttachTo(this, false);
+            }
+            base.AxisAlignedRectangleInstance.Width = 16f;
+            base.AxisAlignedRectangleInstance.Height = 14f;
+            base.AxisAlignedRectangleInstance.Visible = false;
+            base.AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -142,6 +181,10 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
             }
+            if (AxisAlignedRectangleInstance != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
+            }
         }
         public override void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -149,10 +192,35 @@ namespace ArkMethorst.Entities
             if (callOnContainedElements)
             {
             }
+            if (SpriteInstance.Parent == null)
+            {
+                base.SpriteInstance.X = 0f;
+            }
+            else
+            {
+                base.SpriteInstance.RelativeX = 0f;
+            }
+            if (SpriteInstance.Parent == null)
+            {
+                base.SpriteInstance.Y = 0f;
+            }
+            else
+            {
+                base.SpriteInstance.RelativeY = 0f;
+            }
+            base.SpriteInstance.TextureAddressMode = Microsoft.Xna.Framework.Graphics.TextureAddressMode.Clamp;
             base.SpriteInstance.TextureScale = 1f;
+            base.SpriteInstance.UseAnimationRelativePosition = false;
+            base.SpriteInstance.AnimationChains = ChickenAnimation;
+            base.SpriteInstance.CurrentChainName = "ChickenWalk";
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            base.AxisAlignedRectangleInstance.Width = 16f;
+            base.AxisAlignedRectangleInstance.Height = 14f;
+            base.AxisAlignedRectangleInstance.Visible = false;
+            base.AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
+            SpriteInstanceFlipHorizontal = false;
             GroundMovement = Entities.Chicken.PlatformerValuesStatic["Ground"];
             AirMovement = Entities.Chicken.PlatformerValuesStatic["Air"];
-            SpriteInstanceFlipHorizontal = false;
         }
         public override void ConvertToManuallyUpdated () 
         {
@@ -213,6 +281,11 @@ namespace ArkMethorst.Entities
                         PlatformerValuesStatic = temporaryCsvObject;
                     }
                 }
+                if (!FlatRedBall.FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/chicken/chickenanimation.achx", ContentManagerName))
+                {
+                    registerUnload = true;
+                }
+                ChickenAnimation = FlatRedBall.FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/chicken/chickenanimation.achx", ContentManagerName);
             }
             if (registerUnload && ContentManagerName != FlatRedBall.FlatRedBallServices.GlobalContentManager)
             {
@@ -240,6 +313,10 @@ namespace ArkMethorst.Entities
                 {
                     PlatformerValuesStatic= null;
                 }
+                if (ChickenAnimation != null)
+                {
+                    ChickenAnimation= null;
+                }
             }
         }
         [System.Obsolete("Use GetFile instead")]
@@ -249,6 +326,8 @@ namespace ArkMethorst.Entities
             {
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
+                case  "ChickenAnimation":
+                    return ChickenAnimation;
             }
             return null;
         }
@@ -258,17 +337,25 @@ namespace ArkMethorst.Entities
             {
                 case  "PlatformerValuesStatic":
                     return PlatformerValuesStatic;
+                case  "ChickenAnimation":
+                    return ChickenAnimation;
             }
             return null;
         }
         object GetMember (string memberName) 
         {
+            switch(memberName)
+            {
+                case  "ChickenAnimation":
+                    return ChickenAnimation;
+            }
             return null;
         }
         public override void SetToIgnorePausing () 
         {
             base.SetToIgnorePausing();
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
         }
         public override void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {

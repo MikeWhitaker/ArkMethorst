@@ -17,6 +17,7 @@ namespace ArkMethorst.Screens
 		{
 			this.RestartScreen(reloadContent: false);
 		}
+
 		void OnPlayerListVsCheckpointListCollisionOccurred(Entities.Player first, Entities.Checkpoint checkpoint)
 		{
 			if (checkpoint.Visible)

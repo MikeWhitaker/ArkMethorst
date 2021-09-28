@@ -39,6 +39,17 @@ namespace ArkMethorst.Entities
         protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureSecondFrame;
         protected static Microsoft.Xna.Framework.Graphics.Texture2D PigletTextureFirstFrame;
         
+        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
+        {
+            set
+            {
+                base.AfterDoubleJump = value;
+            }
+            get
+            {
+                return base.AfterDoubleJump;
+            }
+        }
         public override ArkMethorst.DataTypes.PlatformerValues GroundMovement
         {
             set
@@ -61,17 +72,6 @@ namespace ArkMethorst.Entities
                 return base.AirMovement;
             }
         }
-        public override ArkMethorst.DataTypes.PlatformerValues AfterDoubleJump
-        {
-            set
-            {
-                base.AfterDoubleJump = value;
-            }
-            get
-            {
-                return base.AfterDoubleJump;
-            }
-        }
         public Piglet () 
         	: this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
@@ -90,6 +90,8 @@ namespace ArkMethorst.Entities
             LoadStaticContent(ContentManagerName);
             SpriteInstance = new FlatRedBall.Sprite();
             SpriteInstance.Name = "SpriteInstance";
+            mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
             
             base.InitializeEntity(addToManagers);
         }
@@ -97,11 +99,13 @@ namespace ArkMethorst.Entities
         {
             base.ReAddToManagers(layerToAddTo);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
         }
         public override void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
             LayerProvidedByContainer = layerToAddTo;
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
             base.AddToManagers(layerToAddTo);
             CustomInitialize();
@@ -120,6 +124,10 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.SpriteManager.RemoveSprite(SpriteInstance);
             }
+            if (AxisAlignedRectangleInstance != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.Remove(AxisAlignedRectangleInstance);
+            }
             CustomDestroy();
         }
         public override void PostInitialize () 
@@ -135,6 +143,16 @@ namespace ArkMethorst.Entities
             base.SpriteInstance.TextureScale = 1f;
             base.SpriteInstance.AnimationChains = PigletWalk;
             base.SpriteInstance.CurrentChainName = "PigletWalk";
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            if (mAxisAlignedRectangleInstance.Parent == null)
+            {
+                mAxisAlignedRectangleInstance.CopyAbsoluteToRelative();
+                mAxisAlignedRectangleInstance.AttachTo(this, false);
+            }
+            base.AxisAlignedRectangleInstance.Width = 16f;
+            base.AxisAlignedRectangleInstance.Height = 16f;
+            base.AxisAlignedRectangleInstance.Visible = false;
+            base.AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public override void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -148,6 +166,10 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.SpriteManager.RemoveSpriteOneWay(SpriteInstance);
             }
+            if (AxisAlignedRectangleInstance != null)
+            {
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
+            }
         }
         public override void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -158,9 +180,14 @@ namespace ArkMethorst.Entities
             base.SpriteInstance.TextureScale = 1f;
             base.SpriteInstance.AnimationChains = PigletWalk;
             base.SpriteInstance.CurrentChainName = "PigletWalk";
+            base.SpriteInstance.IgnoreAnimationChainTextureFlip = true;
+            base.AxisAlignedRectangleInstance.Width = 16f;
+            base.AxisAlignedRectangleInstance.Height = 16f;
+            base.AxisAlignedRectangleInstance.Visible = false;
+            base.AxisAlignedRectangleInstance.Color = Microsoft.Xna.Framework.Color.White;
+            SpriteInstanceFlipHorizontal = false;
             GroundMovement = Entities.Piglet.PlatformerValuesStatic["Ground"];
             AirMovement = Entities.Piglet.PlatformerValuesStatic["Air"];
-            SpriteInstanceFlipHorizontal = false;
         }
         public override void ConvertToManuallyUpdated () 
         {
@@ -340,6 +367,7 @@ namespace ArkMethorst.Entities
         {
             base.SetToIgnorePausing();
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
         }
         public override void MoveToLayer (FlatRedBall.Graphics.Layer layerToMoveTo) 
         {

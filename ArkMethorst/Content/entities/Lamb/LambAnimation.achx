@@ -4,24 +4,23 @@
   <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
   <CoordinateType>Pixel</CoordinateType>
   <AnimationChain>
-    <Name>ChickenWalk</Name>
+    <Name>LambWalk</Name>
     <Frame>
-      <TextureName>chickenwalk01.png</TextureName>
+      <TextureName>lambwalk01.png</TextureName>
       <FrameLength>0.2</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>17</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>15</BottomCoordinate>
-      <RelativeY>7</RelativeY>
+      <RightCoordinate>20</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>14</BottomCoordinate>
     </Frame>
     <Frame>
-      <TextureName>chickenwalk02.png</TextureName>
+      <TextureName>lambwalk02.png</TextureName>
       <FrameLength>0.2</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>17</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>15</BottomCoordinate>
-      <RelativeY>7</RelativeY>
+      <RightCoordinate>20</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>14</BottomCoordinate>
     </Frame>
   </AnimationChain>
+  <ProjectFile>../../../arkmethorst.glux</ProjectFile>
 </AnimationChainArraySave>
