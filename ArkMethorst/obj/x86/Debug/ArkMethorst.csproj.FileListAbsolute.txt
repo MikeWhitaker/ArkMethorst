@@ -62,7 +62,6 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\gumproject\uispr
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level1\frbplatformer.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level1\frbplatformertileset.tsx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level1\level1map.tmx
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level2\level2map.tmx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\standardtileset.tsx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\standardtileseticons.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\x64\SDL2.dll
@@ -172,7 +171,6 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\gumpro
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\screens\level1\frbplatformer.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\screens\level1\frbplatformertileset.tsx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\screens\level1\level1map.tmx
-C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\screens\level2\level2map.tmx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\standardtileset.tsx
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\standardtileseticons.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\x64\SDL2.dll
@@ -209,3 +207,5 @@ c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entiti
 c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\lamb\lambwalk01.png
 c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\lamb\lambwalk02.png
 c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\lamb\platformervaluesstatic.csv
+c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\screens\level1\frbplatformertileset2.tsx
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level1\frbplatformertileset2.tsx

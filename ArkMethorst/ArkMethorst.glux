@@ -1133,177 +1133,6 @@
       <CustomClassesForExport />
       <BaseScreen>Screens\GameScreen</BaseScreen>
     </ScreenSave>
-    <ScreenSave>
-      <Tags>
-        <string>GLUE</string>
-      </Tags>
-      <Source>GLUE</Source>
-      <UseGlobalContent>false</UseGlobalContent>
-      <ReferencedFiles>
-        <ReferencedFileSave>
-          <Name>gumproject/Screens/Level2Gum.gusx</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>ArkMethorst.GumRuntimes.Level2GumRuntime</RuntimeType>
-          <ProjectsToExcludeFrom />
-        </ReferencedFileSave>
-        <ReferencedFileSave>
-          <Name>Screens/Level2/Level2Map.tmx</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>FlatRedBall.TileGraphics.LayeredTileMap</RuntimeType>
-          <ProjectsToExcludeFrom />
-        </ReferencedFileSave>
-      </ReferencedFiles>
-      <IsHiddenInTreeView>false</IsHiddenInTreeView>
-      <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Member>CreateEntitiesFromTiles</Member>
-            <ValueAsBool>true</ValueAsBool>
-          </CustomProperty>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">File</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>File</SourceType>
-          <SourceFile>Screens/Level2/Level2Map.tmx</SourceFile>
-          <SourceName>Entire File (LayeredTileMap)</SourceName>
-          <SourceClassType>FlatRedBall.TileGraphics.LayeredTileMap</SourceClassType>
-          <InstanceName>Map</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <DefinedByBase>true</DefinedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionCreationOptions</Name>
-              <ValueAsInt>4</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceTmxName</Name>
-              <ValueAsString>Map</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionTileTypeName</Name>
-              <ValueAsString>SolidCollision</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>FlatRedBall.TileCollisions.TileShapeCollection</SourceFile>
-          <SourceClassType>FlatRedBall.TileCollisions.TileShapeCollection</SourceClassType>
-          <InstanceName>SolidCollision</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <DefinedByBase>true</DefinedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionCreationOptions</Name>
-              <ValueAsInt>4</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceTmxName</Name>
-              <ValueAsString>Map</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionTileTypeName</Name>
-              <ValueAsString>CloudCollision</ValueAsString>
-            </PropertySave>
-            <PropertySave>
-              <Name>SortAxis</Name>
-              <ValueAsInt>0</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>PartitionWidthHeight</Name>
-              <ValueAsFloat>32</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>IsSortListEveryFrameChecked</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionTileSize</Name>
-              <ValueAsFloat>16</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionFillWidth</Name>
-              <ValueAsInt>32</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>CollisionFillHeight</Name>
-              <ValueAsInt>1</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>InnerSizeWidth</Name>
-              <ValueAsFloat>800</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>InnerSizeHeight</Name>
-              <ValueAsFloat>600</ValueAsFloat>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>FlatRedBall.TileCollisions.TileShapeCollection</SourceFile>
-          <SourceClassType>FlatRedBall.TileCollisions.TileShapeCollection</SourceClassType>
-          <InstanceName>CloudCollision</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <DefinedByBase>true</DefinedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>PositionedObjectList (Generic)</SourceFile>
-          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
-          <SourceClassGenericType>Entities\Animal</SourceClassGenericType>
-          <InstanceName>AnimalList</InstanceName>
-          <ExposedInDerived>true</ExposedInDerived>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <DefinedByBase>true</DefinedByBase>
-          <InstantiatedByBase>true</InstantiatedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-      </NamedObjects>
-      <Name>Screens\Level2</Name>
-      <CustomClassesForExport />
-      <BaseScreen>Screens\GameScreen</BaseScreen>
-    </ScreenSave>
   </Screens>
   <Entities>
     <EntitySave>
@@ -1919,6 +1748,11 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>ChickenAnimation</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>string</Type>
             <Member>CurrentChainName</Member>
             <ValueAsString>ChickenWalk</ValueAsString>
@@ -1952,11 +1786,6 @@
             <Type>float</Type>
             <Member>Y</Member>
             <ValueAsFloat>0</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
-            <Member>AnimationChains</Member>
-            <ValueAsString>ChickenAnimation</ValueAsString>
           </CustomProperty>
           <Properties>
             <PropertySave>

@@ -260,10 +260,6 @@
     <Compile Include="Screens\Level1.Generated.Event.cs">
       <DependentUpon>Level1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Level2.cs" />
-    <Compile Include="Screens\Level2.Generated.cs">
-      <DependentUpon>Level2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Setup\CameraSetup.cs" />
     <Compile Include="TileCollisions\CollidableListVsTileShapeCollectionRelationship.cs" />
     <Compile Include="TileCollisions\CollidableVsTileShapeCollectionRelationship.cs" />
@@ -629,13 +625,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>frbplatformertileset</Name>
     </None>
+    <None Include="content\screens\level1\frbplatformertileset2.tsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>frbplatformertileset2</Name>
+    </None>
     <None Include="content\screens\level1\level1map.tmx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Level1Map</Name>
-    </None>
-    <None Include="content\screens\level2\level2map.tmx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>Level2Map</Name>
     </None>
     <None Include="content\standardtileset.tsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
