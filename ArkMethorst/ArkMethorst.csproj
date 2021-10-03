@@ -52,6 +52,22 @@
     <Compile Include="DataTypes\PlatformerValues.Generated.cs" />
     <Compile Include="DataTypes\TileMapInfo.Generated.cs" />
     <Compile Include="DataTypes\TopDownValues.Generated.cs" />
+    <Compile Include="Entities\Cage\CageBase.cs" />
+    <Compile Include="Entities\Cage\CageBase.Generated.cs">
+      <DependentUpon>CageBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Cage\ChickenCage.cs" />
+    <Compile Include="Entities\Cage\ChickenCage.Generated.cs">
+      <DependentUpon>ChickenCage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Cage\PigCage.cs" />
+    <Compile Include="Entities\Cage\PigCage.Generated.cs">
+      <DependentUpon>PigCage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Cage\SheepCage.cs" />
+    <Compile Include="Entities\Cage\SheepCage.Generated.cs">
+      <DependentUpon>SheepCage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Checkpoint.cs" />
     <Compile Include="Entities\Checkpoint.Generated.cs">
       <DependentUpon>Checkpoint.cs</DependentUpon>
@@ -72,6 +88,7 @@
     <Compile Include="Entities\Lamb.Generated.cs">
       <DependentUpon>Lamb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Pen\ChickenCage.Generated.cs" />
     <Compile Include="Entities\Piglet.cs" />
     <Compile Include="Entities\Piglet.Generated.cs">
       <DependentUpon>Piglet.cs</DependentUpon>
@@ -82,6 +99,8 @@
     </Compile>
     <Compile Include="Factories\CheckpointFactory.Generated.cs" />
     <Compile Include="Factories\EndOfLevelFactory.Generated.cs" />
+    <Compile Include="Factories\CageBaseFactory.Generated.cs" />
+    <Compile Include="Factories\PigCageFactory.Generated.cs" />
     <Compile Include="Factories\PlayerFactory.Generated.cs" />
     <Compile Include="FileAliases.Generated.cs" />
     <Compile Include="Forms\Screens\GameScreenGumForms.cs" />

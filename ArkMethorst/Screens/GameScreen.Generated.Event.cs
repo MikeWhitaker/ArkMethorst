@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using FlatRedBall.Audio;
 using FlatRedBall.Screens;
 using ArkMethorst.Entities;
+using ArkMethorst.Entities.Cage;
 using ArkMethorst.Screens;
 namespace ArkMethorst.Screens
 {

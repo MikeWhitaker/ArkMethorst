@@ -57,7 +57,16 @@
     {
       "Name": "Entities\\Chicken",
       "SelectedProperties": [],
-      "InstanceManagementValuesList": []
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
     },
     {
       "Name": "Entities\\EndOfLevel",
@@ -92,6 +101,40 @@
         {
           "SelectedProperties": [],
           "Name": "RightCornerDetectionRectagle"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Lamb",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Pen\\Pen",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Pen\\PenBase",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
         }
       ]
     }
