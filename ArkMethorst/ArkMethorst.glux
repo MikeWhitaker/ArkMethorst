@@ -2839,15 +2839,15 @@
     <Name>Custom</Name>
     <Is2D>true</Is2D>
     <GenerateDisplayCode>true</GenerateDisplayCode>
-    <ResolutionWidth>256</ResolutionWidth>
-    <ResolutionHeight>224</ResolutionHeight>
+    <ResolutionWidth>480</ResolutionWidth>
+    <ResolutionHeight>360</ResolutionHeight>
     <FixedAspectRatio>false</FixedAspectRatio>
     <AspectRatioWidth>16</AspectRatioWidth>
     <AspectRatioHeight>9</AspectRatioHeight>
     <SupportLandscape>true</SupportLandscape>
     <SupportPortrait>false</SupportPortrait>
     <RunInFullScreen>false</RunInFullScreen>
-    <AllowWindowResizing>false</AllowWindowResizing>
+    <AllowWindowResizing>true</AllowWindowResizing>
     <Scale>300</Scale>
     <ScaleGum>100</ScaleGum>
     <ResizeBehavior>StretchVisibleArea</ResizeBehavior>
