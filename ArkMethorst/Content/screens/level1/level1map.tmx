@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="5">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="5">
  <tileset firstgid="1" source="../../StandardTileset.tsx"/>
  <tileset firstgid="1025" source="FRBPlatformerTileset.tsx"/>
- <layer id="2" name="Sky" width="128" height="16">
+ <layer id="2" name="Sky" width="30" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3DMQkAAAwDsH7zUf8iq2OQQHpJVVVVVVVVVdXXBxCQGEsAIAAA
+   H4sIAAAAAAAACu3DMQ0AAAgDsH34wL/IueAgbdIEAAAA+GZHVb1eTCeSlXAXAAA=
   </data>
  </layer>
- <layer id="3" name="CloudLayer" width="128" height="16">
+ <layer id="3" name="CloudLayer" width="30" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu2YbQ7CIAyG+QPq/e8wdfMc+DHPMT2GNK6RLFsoSEfEPsniLymlb1+6KSUIgiDUSqOV2hql9u73pPliwPoHpvXXpGM8pxIYV/uzfj8bwxPDurWP7nkSzg31yHHGTQYN9sQ8pnEhJ+wzyh6wZ7jOAgAt38baQ33uTHGGiLVRjxxaTKldDqz+9Bg1N78vL0x7jomxloeDVnaGT4shcnjEFNDdY8yLmtvg/YdLs723p1AMu6DdrvC93mXWZc/og78Maniqk1Keiliif/0r/nzPPUuUmIvRJ2vq2Zx3bcrsMQf67FKNS/tATeBcFvK0UE0AvOPbsf7XRF2Jz64HzsCpM9kcoIP2ixou3f8CjYbQq7HEvitTdSXkh+O7Bnp7TbNPrZT+riEIsbwAHRsUoAAgAAA=
+   H4sIAAAAAAAACu3RTQqAIBCGYTfW/S9hhZ2jAjuHdYxGqI0luEgpeB+Y7fx9SgEAAAAAAHyL0Up1Ur2uO3eSeYPUnjHXvLibl15rZr+mue9R41c+6h9+NUu10T628C5Oem8PGbnM3EoJd48F5tsz31TvUndf+S6Vf5rKF/iLA7ONEl1wFwAA
   </data>
  </layer>
  <objectgroup id="6" name="PitCollision">
-  <object id="1" x="0" y="288" width="2048" height="64"/>
+  <object id="1" x="-333.5" y="827" width="2048" height="64"/>
  </objectgroup>
  <objectgroup id="7" name="GameplayObjectLayer">
-  <object id="2" name="Midpoint" gid="69" x="796" y="176" width="16" height="16"/>
-  <object id="3" name="LevelStart" gid="69" x="80" y="224" width="16" height="16">
+  <object id="3" name="LevelStart" gid="69" x="208" y="592" width="16" height="16">
    <properties>
     <property name="Visible" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="4" gid="65" x="1968" y="120" width="16" height="16">
-   <properties>
-    <property name="NextLevel" value="Level2"/>
-   </properties>
-  </object>
  </objectgroup>
- <layer id="5" name="ForegroundLayer" width="128" height="16">
+ <layer id="5" name="ForegroundLayer" width="30" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu2XXQ6CMBCEeemj19BzgCacoyjhHGo8SPGi1sjGTV1D6Q9s0p1kEjC6LfvRqe1UVXUrWcRL2jI5r8RF+POT8C9bemFO5/quaBuFrv8Qllr4s5PwL1vCv2xR/H3ObtT93G+EPz/J+v+qtvNrrI31kfFc3/Mcp7mO6LrxuDaT4b4X/tVefXyY+tGteCYO0b8zW4x9nzfmTMeVP0gH9GMLpebfZn5m7Yzl5R1tLMhBg4wzbmmG43leUHbiDMWZurR+rehspgxjUWM8E/MfMr4D0FPgOkSaqh2baVT+n6xvM74v7NXVo6bPGKnXP/Q2xzugE3EH4/WQij9Vr6T8x/1tE9d268cacxH+/Pjkdgr+eB/G/xl69Ft3/zfqd4929+ba8zNO/B/WL5AE/k0AIAAA
+   H4sIAAAAAAAACu2TQQrDIBBF3czZegLNutOFN2huEmjvmXZbC5aImGltJiLhP3iQhebpgMYAAAAAAAAAAADgaMxkzKOBz+BIS/dC62fS5NxJl8O3SxyEc9gNa1nhvvzHHo05H6k7UVmp+8ueXu/bqstf3kPeS+dY08+7N6pr1/J5x+/GPXiKetqvbeN/r7HpC2q3bexJzbztFORktlKztS/jLTFOcBcAAA==
   </data>
  </layer>
- <layer id="1" name="GameplayLayer" width="128" height="16" visible="0">
+ <layer id="1" name="GameplayLayer" width="30" height="50" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3ZMQ4AIQgFUbz/pe2tRAUhf15itzZO1oTdYWYjaaGerC70r4n+2jz3dNSz+OekS9YexKO/NvprW7vszG4v9qAG3n9t9Nfmmc1uZjr61xU5n5/O/3w/yBVxxnTr5XUv2vfDPz9AxwQQqizQACAAAA==
+   H4sIAAAAAAAACu3VSwoAIAhFUdv/pps3yBQVq3ugWfn6IIkAAAAAAIDXjMKx5lbolLu7j6y5nvNGrPk919MD3jVWt9/zaR1LH2m51mwrbY8Z2ac1I7M975D1B3UwAWTwAG5wFwAA
   </data>
  </layer>
 </map>
