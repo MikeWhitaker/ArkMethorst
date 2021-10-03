@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="5">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="31" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="5">
  <tileset firstgid="1" source="../../StandardTileset.tsx"/>
  <tileset firstgid="1025" source="FRBPlatformerTileset.tsx"/>
- <layer id="2" name="Sky" width="30" height="50">
+ <layer id="2" name="Sky" width="31" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3DMQ0AAAgDsH34wL/IueAgbdIEAAAA+GZHVb1eTCeSlXAXAAA=
+   H4sIAAAAAAAACu3DMQ0AAAwDoH7zUf8iOyGQ0Euqqqqqqqr6B+AK5M84GAAA
   </data>
  </layer>
- <layer id="3" name="CloudLayer" width="30" height="50">
+ <layer id="3" name="CloudLayer" width="31" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3RTQqAIBCGYTfW/S9hhZ2jAjuHdYxGqI0luEgpeB+Y7fx9SgEAAAAAAHyL0Up1Ur2uO3eSeYPUnjHXvLibl15rZr+mue9R41c+6h9+NUu10T628C5Oem8PGbnM3EoJd48F5tsz31TvUndf+S6Vf5rKF/iLA7ONEl1wFwAA
+   H4sIAAAAAAAACu2WWw5AQAxF5wf734RHWAcS1oFlqIQPiYlWZ4zHPUl/kHZuR3prDAAA2EkjYzKKPLq/dk01C4opQO2BavaKuqH71lAk8f55qTgPV09H78eDO+sU9+hKz/J9JTwDV0+59seWX6P/jK0/rcP8Z3o2bP3R4EMPFx96/k7oWfhWD3kiGg/R4nOGcpF4iPS/d+khUs90OXOlO8CdM/fKDiDJ/aUdgAs8EwAAAPg+MzHvkCc4GAAA
   </data>
  </layer>
- <objectgroup id="6" name="PitCollision">
-  <object id="1" x="-333.5" y="827" width="2048" height="64"/>
- </objectgroup>
+ <layer id="8" name="ShipBackground" width="31" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3QMQoAMAgEQZv8/7+p0gax1UCYAevljAAAAADotdfsaWtra//cnuxX3Yn+3cqbO/u5U/27o181XjonM+1yOBgAAA==
+  </data>
+ </layer>
+ <objectgroup id="6" name="PitCollision"/>
  <objectgroup id="7" name="GameplayObjectLayer">
-  <object id="3" name="LevelStart" gid="69" x="208" y="592" width="16" height="16">
+  <object id="3" name="LevelStart" gid="69" x="240" y="544" width="16" height="16">
    <properties>
     <property name="Visible" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="5" name="ForegroundLayer" width="30" height="50">
+ <layer id="5" name="ForegroundLayer" width="31" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu2TQQrDIBBF3czZegLNutOFN2huEmjvmXZbC5aImGltJiLhP3iQhebpgMYAAAAAAAAAAADgaMxkzKOBz+BIS/dC62fS5NxJl8O3SxyEc9gNa1nhvvzHHo05H6k7UVmp+8ueXu/bqstf3kPeS+dY08+7N6pr1/J5x+/GPXiKetqvbeN/r7HpC2q3bexJzbztFORktlKztS/jLTFOcBcAAA==
+   H4sIAAAAAAAACu2WUQqDMAyG8xKv5gnq3vPiCaYn2YaedpWlIkFmJ62W+X/wQx5sPpoSkAgAAAAAAAAAro1johuf47r7uj/IbV1ww32m+1ERPRPkVf3uzkVpbuHvs1oS3qPh+G9DJNG9ZceZVDP/R/fajtl3te6YM6Xfu1T3PNuIHdtyD77u+LOvuf5fnPafZjX61Ct+yeB32rdTb6sJTHUOv9Oe1mvd1t8kiCzm3G64j8wbUZt2BTgYAAA=
   </data>
  </layer>
- <layer id="1" name="GameplayLayer" width="30" height="50" visible="0">
+ <layer id="9" name="Water" width="31" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu3VSwoAIAhFUdv/pps3yBQVq3ugWfn6IIkAAAAAAIDXjMKx5lbolLu7j6y5nvNGrPk919MD3jVWt9/zaR1LH2m51mwrbY8Z2ac1I7M975D1B3UwAWTwAG5wFwAA
+   H4sIAAAAAAAACu3SMQqAQAxFwTS52upNvP8NRFQIi6UGixn4bV6TCAAAAAAA/m7JiDV7m+PqbXmuqz9K52539Md0v7a/7M/d2p4df/DmnuyAaUR5OBgAAA==
+  </data>
+ </layer>
+ <layer id="1" name="GameplayLayer" width="31" height="50" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2W0QoAEAxF+f+f9qK8sWl3xDm1Bxonq6EUAAAAAACAv6k9Trky3ZY53Lgz3DUwvG4VN7pntVLm7pw7ag3uMfb2S2aPvVjz1Xprj1k9yv+L5y5QeKNzFXtFvmNZb4WHBixDaMU4GAAA
   </data>
  </layer>
 </map>
