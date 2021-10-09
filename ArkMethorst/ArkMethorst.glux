@@ -782,150 +782,6 @@
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-            <PropertySave>
-              <Name>SortAxis</Name>
-              <ValueAsInt>0</ValueAsInt>
-            </PropertySave>
-            <PropertySave>
-              <Name>PartitionWidthHeight</Name>
-              <ValueAsFloat>32</ValueAsFloat>
-            </PropertySave>
-            <PropertySave>
-              <Name>IsSortListEveryFrameChecked</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>PositionedObjectList (Generic)</SourceFile>
-          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
-          <SourceClassGenericType>Entities\Cage\CageBase</SourceClassGenericType>
-          <InstanceName>CageList</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <ContainedObjects>
-            <NamedObjectSave>
-              <Properties>
-                <PropertySave>
-                  <Name>AssociateWithFactory</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SourceType</Name>
-                  <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SortAxis</Name>
-                  <ValueAsInt>0</ValueAsInt>
-                </PropertySave>
-                <PropertySave>
-                  <Name>PartitionWidthHeight</Name>
-                  <ValueAsFloat>32</ValueAsFloat>
-                </PropertySave>
-                <PropertySave>
-                  <Name>IsSortListEveryFrameChecked</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-              </Properties>
-              <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Cage\ChickenCage</SourceClassType>
-              <InstanceName>ChickenCage1</InstanceName>
-              <AttachToContainer>true</AttachToContainer>
-              <GenerateTimedEmit>true</GenerateTimedEmit>
-              <IndependentOfCamera>false</IndependentOfCamera>
-            </NamedObjectSave>
-            <NamedObjectSave>
-              <Properties>
-                <PropertySave>
-                  <Name>AssociateWithFactory</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SourceType</Name>
-                  <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SortAxis</Name>
-                  <ValueAsInt>0</ValueAsInt>
-                </PropertySave>
-                <PropertySave>
-                  <Name>PartitionWidthHeight</Name>
-                  <ValueAsFloat>32</ValueAsFloat>
-                </PropertySave>
-                <PropertySave>
-                  <Name>IsSortListEveryFrameChecked</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-              </Properties>
-              <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Cage\PigCage</SourceClassType>
-              <InstanceName>PigCage1</InstanceName>
-              <AttachToContainer>true</AttachToContainer>
-              <GenerateTimedEmit>true</GenerateTimedEmit>
-              <IndependentOfCamera>false</IndependentOfCamera>
-            </NamedObjectSave>
-            <NamedObjectSave>
-              <Properties>
-                <PropertySave>
-                  <Name>AssociateWithFactory</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SourceType</Name>
-                  <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
-                </PropertySave>
-                <PropertySave>
-                  <Name>SortAxis</Name>
-                  <ValueAsInt>0</ValueAsInt>
-                </PropertySave>
-                <PropertySave>
-                  <Name>PartitionWidthHeight</Name>
-                  <ValueAsFloat>32</ValueAsFloat>
-                </PropertySave>
-                <PropertySave>
-                  <Name>IsSortListEveryFrameChecked</Name>
-                  <ValueAsBool>true</ValueAsBool>
-                </PropertySave>
-              </Properties>
-              <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Cage\SheepCage</SourceClassType>
-              <InstanceName>SheepCage1</InstanceName>
-              <AttachToContainer>true</AttachToContainer>
-              <GenerateTimedEmit>true</GenerateTimedEmit>
-              <IndependentOfCamera>false</IndependentOfCamera>
-            </NamedObjectSave>
-          </ContainedObjects>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>PositionedObjectList (Generic)</SourceFile>
-          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
-          <SourceClassGenericType>Entities\Cage\PigCage</SourceClassGenericType>
-          <InstanceName>PigCageList</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
       </NamedObjects>
       <Name>Screens\GameScreen</Name>
       <Events>
@@ -1671,6 +1527,11 @@
             <Member>Width</Member>
             <ValueAsFloat>48</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
@@ -1775,14 +1636,19 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>CageChicken</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
-            <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
-            <Member>Texture</Member>
-            <ValueAsString>CageChicken</ValueAsString>
+            <Type>bool</Type>
+            <Member>IgnoreAnimationChainTextureFlip</Member>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -1808,6 +1674,7 @@
       <CustomClassesForExport />
       <BaseEntity>Entities\Cage\CageBase</BaseEntity>
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
+      <CreatedByOtherEntities>true</CreatedByOtherEntities>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>
@@ -1863,14 +1730,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>CagePig</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -1952,6 +1819,11 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>CageSheep</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>1</ValueAsFloat>
@@ -1980,6 +1852,7 @@
       <CustomClassesForExport />
       <BaseEntity>Entities\Cage\CageBase</BaseEntity>
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
+      <CreatedByOtherEntities>true</CreatedByOtherEntities>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>

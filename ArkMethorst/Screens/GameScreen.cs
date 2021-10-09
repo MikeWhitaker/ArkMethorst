@@ -15,6 +15,8 @@ namespace ArkMethorst.Screens
 			}
 
 			initializePlayer();
+
+			initializeCages();
 		}
 
 		private void initializePlayer()
@@ -27,11 +29,8 @@ namespace ArkMethorst.Screens
 
 		private void initializeCages()
 		{
-			//var mapChickCage = Map.
+			var mapChickenCage = Map.MapLayers.First(s => s.Name == "GameplayObjectLayer");
 
-			var checkpoint = CheckpointList.First(item => item.Name == LastCheckpointName);
-			Player1.Position = checkpoint.Position;
-			Player1.Y -= 8;
 		}
 
 		void CustomActivity(bool firstTimeCalled)

@@ -97,10 +97,12 @@
       <DependentUpon>Player.cs</DependentUpon>
     </Compile>
     <Compile Include="Factories\CheckpointFactory.Generated.cs" />
+    <Compile Include="Factories\ChickenCageFactory.Generated.cs" />
     <Compile Include="Factories\EndOfLevelFactory.Generated.cs" />
     <Compile Include="Factories\CageBaseFactory.Generated.cs" />
     <Compile Include="Factories\PigCageFactory.Generated.cs" />
     <Compile Include="Factories\PlayerFactory.Generated.cs" />
+    <Compile Include="Factories\SheepCageFactory.Generated.cs" />
     <Compile Include="FileAliases.Generated.cs" />
     <Compile Include="Forms\Screens\GameScreenGumForms.cs" />
     <Compile Include="Forms\Screens\GameScreenGumForms.Generated.cs">

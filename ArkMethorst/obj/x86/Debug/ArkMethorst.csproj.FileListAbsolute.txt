@@ -212,3 +212,6 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\screens\level1\f
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\cage\chickencage\cagechicken.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\cage\pigcage\cagepig.png
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\entities\cage\sheepcage\cagesheep.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\cage\chickencage\cagechicken.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\cage\pigcage\cagepig.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\entities\cage\sheepcage\cagesheep.png

@@ -18,7 +18,7 @@
   </properties>
  </tile>
  <tile id="96" type="Ladder"/>
- <tile id="192" type="Cage">
+ <tile id="192" type="CageBase">
   <properties>
    <property name="CageType" value=""/>
   </properties>
