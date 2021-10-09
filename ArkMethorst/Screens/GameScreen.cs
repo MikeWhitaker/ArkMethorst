@@ -27,7 +27,7 @@ namespace ArkMethorst.Screens
 
 		private void initializeCages()
 		{
-			var mapChickCage = Map.
+			//var mapChickCage = Map.
 
 			var checkpoint = CheckpointList.First(item => item.Name == LastCheckpointName);
 			Player1.Position = checkpoint.Position;
