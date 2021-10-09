@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.5" tiledversion="1.5.0" name="TiledIcons" tilewidth="16" tileheight="16" tilecount="1024" columns="32">
+<tileset version="1.5" tiledversion="1.7.2" name="TiledIcons" tilewidth="16" tileheight="16" tilecount="1024" columns="32">
  <image source="StandardTilesetIcons.png" width="512" height="512"/>
  <tile id="0" type="SolidCollision"/>
  <tile id="1" type="BreakableCollision"/>
@@ -18,4 +18,9 @@
   </properties>
  </tile>
  <tile id="96" type="Ladder"/>
+ <tile id="192" type="Cage">
+  <properties>
+   <property name="CageType" value=""/>
+  </properties>
+ </tile>
 </tileset>

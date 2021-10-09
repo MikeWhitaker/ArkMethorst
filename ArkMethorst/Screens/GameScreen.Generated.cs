@@ -27,13 +27,17 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.Geometry.ShapeCollection PitCollision;
         private FlatRedBall.Math.Collision.ListVsShapeCollectionRelationship<Entities.Player> PlayerListVsPitCollision;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Checkpoint> CheckpointList;
+        private ArkMethorst.Entities.Checkpoint Checkpoint1;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Animal, Entities.Player> AnimalListVsPlayerListAnimalPickupHitBoxRight;
         protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
         private FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollision;
-        private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase> PenList;
+        private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase> CageList;
+        private ArkMethorst.Entities.Cage.ChickenCage ChickenCage1;
+        private ArkMethorst.Entities.Cage.PigCage PigCage1;
+        private ArkMethorst.Entities.Cage.SheepCage SheepCage1;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.PigCage> PigCageList;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
@@ -55,8 +59,8 @@ namespace ArkMethorst.Screens
             EndOfLevelList.Name = "EndOfLevelList";
             AnimalList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal>();
             AnimalList.Name = "AnimalList";
-            PenList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase>();
-            PenList.Name = "PenList";
+            CageList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase>();
+            CageList.Name = "CageList";
             PigCageList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.PigCage>();
             PigCageList.Name = "PigCageList";
         }
@@ -74,9 +78,17 @@ namespace ArkMethorst.Screens
             PitCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             PitCollision.Name = "PitCollision";
             CheckpointList.Clear();
+            Checkpoint1 = new ArkMethorst.Entities.Checkpoint(ContentManagerName, false);
+            Checkpoint1.Name = "Checkpoint1";
             EndOfLevelList.Clear();
             AnimalList.Clear();
-            PenList.Clear();
+            CageList.Clear();
+            ChickenCage1 = new ArkMethorst.Entities.Cage.ChickenCage(ContentManagerName, false);
+            ChickenCage1.Name = "ChickenCage1";
+            PigCage1 = new ArkMethorst.Entities.Cage.PigCage(ContentManagerName, false);
+            PigCage1.Name = "PigCage1";
+            SheepCage1 = new ArkMethorst.Entities.Cage.SheepCage(ContentManagerName, false);
+            SheepCage1.Name = "SheepCage1";
             PigCageList.Clear();
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Player, FlatRedBall.TileCollisions.TileShapeCollection>(PlayerList, SolidCollision);
@@ -173,11 +185,16 @@ namespace ArkMethorst.Screens
             Factories.PlayerFactory.AddList(PlayerList);
             Factories.CheckpointFactory.AddList(CheckpointList);
             Factories.EndOfLevelFactory.AddList(EndOfLevelList);
-            Factories.CageBaseFactory.AddList(PenList);
+            Factories.CageBaseFactory.AddList(CageList);
+            Factories.PigCageFactory.AddList(CageList);
             Factories.PigCageFactory.AddList(PigCageList);
             Player1.AddToManagers(mLayer);
             FlatRedBall.SpriteManager.AddPositionedObject(CameraControllingEntityInstance); CameraControllingEntityInstance.Activity();
             PitCollision.AddToManagers();
+            Checkpoint1.AddToManagers(mLayer);
+            ChickenCage1.AddToManagers(mLayer);
+            PigCage1.AddToManagers(mLayer);
+            SheepCage1.AddToManagers(mLayer);
             FlatRedBall.TileEntities.TileEntityInstantiator.CreateEntitiesFrom(Map);
             base.AddToManagers();
             AddToManagersBottomUp();
@@ -221,12 +238,12 @@ namespace ArkMethorst.Screens
                         AnimalList[i].Activity();
                     }
                 }
-                for (int i = PenList.Count - 1; i > -1; i--)
+                for (int i = CageList.Count - 1; i > -1; i--)
                 {
-                    if (i < PenList.Count)
+                    if (i < CageList.Count)
                     {
                         // We do the extra if-check because activity could destroy any number of entities
-                        PenList[i].Activity();
+                        CageList[i].Activity();
                     }
                 }
                 for (int i = PigCageList.Count - 1; i > -1; i--)
@@ -262,7 +279,7 @@ namespace ArkMethorst.Screens
             CheckpointList.MakeOneWay();
             EndOfLevelList.MakeOneWay();
             AnimalList.MakeOneWay();
-            PenList.MakeOneWay();
+            CageList.MakeOneWay();
             PigCageList.MakeOneWay();
             for (int i = PlayerList.Count - 1; i > -1; i--)
             {
@@ -288,9 +305,9 @@ namespace ArkMethorst.Screens
             {
                 AnimalList[i].Destroy();
             }
-            for (int i = PenList.Count - 1; i > -1; i--)
+            for (int i = CageList.Count - 1; i > -1; i--)
             {
-                PenList[i].Destroy();
+                CageList[i].Destroy();
             }
             for (int i = PigCageList.Count - 1; i > -1; i--)
             {
@@ -300,7 +317,7 @@ namespace ArkMethorst.Screens
             CheckpointList.MakeTwoWay();
             EndOfLevelList.MakeTwoWay();
             AnimalList.MakeTwoWay();
-            PenList.MakeTwoWay();
+            CageList.MakeTwoWay();
             PigCageList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
@@ -339,6 +356,10 @@ namespace ArkMethorst.Screens
             PlayerList.Add(Player1);
             CameraControllingEntityInstance.Targets = PlayerList;
             CameraControllingEntityInstance.Map = Map;
+            CheckpointList.Add(Checkpoint1);
+            CageList.Add(ChickenCage1);
+            CageList.Add(PigCage1);
+            CageList.Add(SheepCage1);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public virtual void AddToManagersBottomUp () 
@@ -373,9 +394,9 @@ namespace ArkMethorst.Screens
             {
                 AnimalList[i].Destroy();
             }
-            for (int i = PenList.Count - 1; i > -1; i--)
+            for (int i = CageList.Count - 1; i > -1; i--)
             {
-                PenList[i].Destroy();
+                CageList[i].Destroy();
             }
             for (int i = PigCageList.Count - 1; i > -1; i--)
             {
@@ -387,6 +408,10 @@ namespace ArkMethorst.Screens
             if (callOnContainedElements)
             {
                 Player1.AssignCustomVariables(true);
+                Checkpoint1.AssignCustomVariables(true);
+                ChickenCage1.AssignCustomVariables(true);
+                PigCage1.AssignCustomVariables(true);
+                SheepCage1.AssignCustomVariables(true);
             }
             if (Map != null)
             {
@@ -435,9 +460,9 @@ namespace ArkMethorst.Screens
             {
                 AnimalList[i].ConvertToManuallyUpdated();
             }
-            for (int i = 0; i < PenList.Count; i++)
+            for (int i = 0; i < CageList.Count; i++)
             {
-                PenList[i].ConvertToManuallyUpdated();
+                CageList[i].ConvertToManuallyUpdated();
             }
             for (int i = 0; i < PigCageList.Count; i++)
             {

@@ -88,7 +88,6 @@
     <Compile Include="Entities\Lamb.Generated.cs">
       <DependentUpon>Lamb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Pen\ChickenCage.Generated.cs" />
     <Compile Include="Entities\Piglet.cs" />
     <Compile Include="Entities\Piglet.Generated.cs">
       <DependentUpon>Piglet.cs</DependentUpon>
@@ -351,6 +350,18 @@
     <None Include="content\entities\animal\platformervaluesstatic.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>PlatformerValuesStatic</Name>
+    </None>
+    <None Include="content\entities\cage\chickencage\cagechicken.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>CageChicken</Name>
+    </None>
+    <None Include="content\entities\cage\pigcage\cagepig.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>CagePig</Name>
+    </None>
+    <None Include="content\entities\cage\sheepcage\cagesheep.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>CageSheep</Name>
     </None>
     <None Include="content\entities\checkpoint\animationchainlistfile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

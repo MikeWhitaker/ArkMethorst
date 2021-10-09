@@ -26,7 +26,7 @@ namespace ArkMethorst.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-			// 1) itterate over de animal list 
+			// 1) iterate over the animal list 
 			// 2) do something  for each of the animals in the list
 
 			foreach (var animal in AnimalList)
