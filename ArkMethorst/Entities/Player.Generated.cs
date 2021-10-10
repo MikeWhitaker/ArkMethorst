@@ -527,6 +527,7 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBoxRight.Width = 4f;
             AnimalPickupHitBoxRight.Height = 8f;
+            AnimalPickupHitBoxRight.Visible = false;
             if (mAnimalPickupHitBoxLeft.Parent == null)
             {
                 mAnimalPickupHitBoxLeft.CopyAbsoluteToRelative();
@@ -550,10 +551,9 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBoxLeft.Width = 4f;
             AnimalPickupHitBoxLeft.Height = 8f;
+            AnimalPickupHitBoxLeft.Visible = false;
             mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
-            Collision.AxisAlignedRectangles.AddOneWay(mAnimalPickupHitBoxRight);
-            Collision.AxisAlignedRectangles.AddOneWay(mAnimalPickupHitBoxLeft);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
         }
         public virtual void AddToManagersBottomUp (FlatRedBall.Graphics.Layer layerToAddTo) 
@@ -618,6 +618,7 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBoxRight.Width = 4f;
             AnimalPickupHitBoxRight.Height = 8f;
+            AnimalPickupHitBoxRight.Visible = false;
             if (AnimalPickupHitBoxLeft.Parent == null)
             {
                 AnimalPickupHitBoxLeft.X = -8f;
@@ -636,6 +637,7 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBoxLeft.Width = 4f;
             AnimalPickupHitBoxLeft.Height = 8f;
+            AnimalPickupHitBoxLeft.Visible = false;
             if (Parent == null)
             {
                 X = 64f;

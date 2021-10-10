@@ -16,7 +16,6 @@ namespace ArkMethorst.Screens
 
 			initializePlayer();
 
-			initializeCages();
 		}
 
 		private void initializePlayer()
@@ -25,12 +24,6 @@ namespace ArkMethorst.Screens
 			Player1.Position = checkpoint.Position;
 			Player1.Y -= 8;
 			CameraControllingEntityInstance.ApplyTarget(CameraControllingEntityInstance.GetTarget(), lerpSmooth: false);
-		}
-
-		private void initializeCages()
-		{
-			var mapChickenCage = Map.MapLayers.First(s => s.Name == "GameplayObjectLayer");
-
 		}
 
 		void CustomActivity(bool firstTimeCalled)

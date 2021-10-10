@@ -1523,14 +1523,14 @@
             <ValueAsFloat>48</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>48</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>48</ValueAsFloat>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -1636,6 +1636,11 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>bool</Type>
+            <Member>IgnoreAnimationChainTextureFlip</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
             <Type>Microsoft.Xna.Framework.Graphics.Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>CageChicken</ValueAsString>
@@ -1644,11 +1649,6 @@
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>IgnoreAnimationChainTextureFlip</Member>
-            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -3069,6 +3069,11 @@
             <Member>Y</Member>
             <ValueAsFloat>6</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
@@ -3086,6 +3091,7 @@
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IncludeInICollidable>false</IncludeInICollidable>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -3109,6 +3115,11 @@
             <Member>Y</Member>
             <ValueAsFloat>6</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
@@ -3126,6 +3137,7 @@
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IncludeInICollidable>false</IncludeInICollidable>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
