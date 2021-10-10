@@ -27,13 +27,13 @@
   <object id="13" name="chickencCage1" type="ChickenCage" gid="193" x="144" y="544" width="48" height="48"/>
   <object id="14" name="SheepCage1" type="SheepCage" gid="193" x="224" y="544" width="48" height="48"/>
   <object id="15" name="PigCage1" type="PigCage" gid="193" x="304" y="544" width="48" height="48"/>
-  <object id="22" name="AnimalSpawnPointTwo" type="Animal" gid="68" x="128" y="656" width="16" height="16"/>
-  <object id="23" name="AnimalSpawnPointThree" type="Animal" gid="68" x="352" y="656" width="16" height="16"/>
-  <object id="24" name="AnimalSpawnPointOne" type="Animal" gid="68" x="240" y="768" width="16" height="16"/>
+  <object id="22" name="AnimalSpawnPointTwo" type="AnimalSpawnPoint" gid="68" x="128" y="656" width="16" height="16"/>
+  <object id="23" name="AnimalSpawnPointThree" type="AnimalSpawnPoint" gid="68" x="352" y="656" width="16" height="16"/>
+  <object id="24" name="AnimalSpawnPointOne" type="AnimalSpawnPoint" gid="68" x="240" y="768" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="ForegroundLayer" width="31" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu2WUQqDMAyG8xKv5gnq3vPiCaYn2YaedpWlIkFmJ62W+X/wQx5sPpoSkAgAAAAAAAAAro1johuf47r7uj/IbV1ww32m+1ERPRPkVf3uzkVpbuHvs1oS3qPh+G9DJNG9ZceZVDP/R/fajtl3te6YM6Xfu1T3PNuIHdtyD77u+LOvuf5fnPafZjX61Ct+yeB32rdTb6sJTHUOv9Oe1mvd1t8kiCzm3G64j8wbUZt2BTgYAAA=
+   H4sIAAAAAAAACu2WQQqEMAxFs4lX8wTVfTeeYBQPMg7jaa1MOkhwtEKrxfkPPmRR82hKQCIAAAAAAAAA+G8ME9V8jevh6u4kt3bBDfeV7mdBNETIqzjuTkVubsvbs1ri36Pi8LM+NtK9+w3nL2LN/I7utR3T76rdId/kfu9c3d/ZBuzYnvvt6pY/+5rq/8VI/3m/R5dyxW8T+I30bcXbSDxzncJvpKf2arf2VxFiF3NudtxnZgIpbJ13OBgAAA==
   </data>
  </layer>
  <layer id="9" name="Water" width="31" height="50">

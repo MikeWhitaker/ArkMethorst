@@ -52,6 +52,10 @@
     <Compile Include="DataTypes\PlatformerValues.Generated.cs" />
     <Compile Include="DataTypes\TileMapInfo.Generated.cs" />
     <Compile Include="DataTypes\TopDownValues.Generated.cs" />
+    <Compile Include="Entities\AnimalSpawnPoint.cs" />
+    <Compile Include="Entities\AnimalSpawnPoint.Generated.cs">
+      <DependentUpon>AnimalSpawnPoint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Cage\CageBase.cs" />
     <Compile Include="Entities\Cage\CageBase.Generated.cs">
       <DependentUpon>CageBase.cs</DependentUpon>
@@ -96,6 +100,7 @@
     <Compile Include="Entities\Player.Generated.cs">
       <DependentUpon>Player.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factories\AnimalSpawnPointFactory.Generated.cs" />
     <Compile Include="Factories\CheckpointFactory.Generated.cs" />
     <Compile Include="Factories\ChickenCageFactory.Generated.cs" />
     <Compile Include="Factories\EndOfLevelFactory.Generated.cs" />
