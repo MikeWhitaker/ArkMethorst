@@ -141,7 +141,7 @@ namespace ArkMethorst.Entities
 			if (InputDevice is Keyboard asKeyboard)
 			{
 				RunInput = asKeyboard.GetKey(Microsoft.Xna.Framework.Input.Keys.R);
-				InputPickup = asKeyboard.GetKey(Microsoft.Xna.Framework.Input.Keys.C);
+				InputPickup = asKeyboard.GetKey(Microsoft.Xna.Framework.Input.Keys.E);
 			}
 			else if (InputDevice is Xbox360GamePad asGamepad)
 			{
