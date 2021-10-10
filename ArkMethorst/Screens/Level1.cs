@@ -1,16 +1,4 @@
 using ArkMethorst.Entities;
-using FlatRedBall;
-using FlatRedBall.AI.Pathfinding;
-using FlatRedBall.Graphics.Animation;
-using FlatRedBall.Graphics.Particle;
-using FlatRedBall.Input;
-using FlatRedBall.Instructions;
-using FlatRedBall.Localization;
-using FlatRedBall.Math.Geometry;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 
 
@@ -26,9 +14,6 @@ namespace ArkMethorst.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-			// 1) iterate over the animal list 
-			// 2) do something  for each of the animals in the list
-
 			foreach (var animal in AnimalList)
 			{
 				if (animal.IsOnGround)
