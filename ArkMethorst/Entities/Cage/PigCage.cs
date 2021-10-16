@@ -20,8 +20,7 @@ namespace ArkMethorst.Entities.Cage
         /// </summary>
         private void CustomInitialize()
         {
-
-
+            CageType = this.GetType().Name.ToLowerInvariant();
         }
 
         private void CustomActivity()

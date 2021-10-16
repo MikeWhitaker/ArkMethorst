@@ -21,7 +21,6 @@ namespace ArkMethorst.Entities.Cage
         private void CustomInitialize()
         {
 
-
         }
 
         private void CustomActivity()

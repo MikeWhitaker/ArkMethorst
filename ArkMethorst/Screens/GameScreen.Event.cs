@@ -72,9 +72,9 @@ namespace ArkMethorst.Screens
 			}
 
 			var animalType = animal.GetType().Name.ToLower();
-			var cageType = cage.Name.ToLower();
+			var cageName = cage.Name.ToLower();
 
-			if(cage.Name.Contains(animalType))
+			if(cageName.Contains(animalType))
 			{
 				animal.Destroy();
 			}

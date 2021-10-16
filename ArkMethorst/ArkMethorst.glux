@@ -1752,7 +1752,6 @@
           </Properties>
           <Name>CageType</Name>
           <DefaultValue xsi:type="xsd:string">asdf</DefaultValue>
-          <SetByDerived>true</SetByDerived>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -1877,17 +1876,6 @@
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>string</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>CageType</Name>
-          <DefaultValue xsi:type="xsd:string">Chicken</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
-        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -1983,17 +1971,6 @@
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>string</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>CageType</Name>
-          <DefaultValue xsi:type="xsd:string">Pig</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
-        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -2083,17 +2060,6 @@
           </Properties>
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>string</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>CageType</Name>
-          <DefaultValue xsi:type="xsd:string">Lamb</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
         </CustomVariable>
       </CustomVariables>
       <Properties>

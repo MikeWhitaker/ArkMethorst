@@ -29,9 +29,9 @@
     <property name="Visible" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="13" name="chickencCage1" type="ChickenCage" gid="193" x="144" y="544" width="48" height="48"/>
+  <object id="13" name="chickenCage1" type="ChickenCage" gid="193" x="144" y="544" width="48" height="48"/>
   <object id="14" name="SheepCage1" type="SheepCage" gid="193" x="224" y="544" width="48" height="48"/>
-  <object id="15" name="PigCage1" type="PigCage" gid="193" x="304" y="544" width="48" height="48"/>
+  <object id="15" name="PigletCage1" type="PigCage" gid="193" x="304" y="544" width="48" height="48"/>
   <object id="22" name="AnimalSpawnPointTwo" type="AnimalSpawnPoint" gid="68" x="128" y="656" width="16" height="16"/>
   <object id="23" name="AnimalSpawnPointThree" type="AnimalSpawnPoint" gid="68" x="352" y="656" width="16" height="16"/>
   <object id="24" name="AnimalSpawnPointOne" type="AnimalSpawnPoint" gid="68" x="240" y="768" width="16" height="16"/>
