@@ -1,14 +1,6 @@
-using FlatRedBall;
-using FlatRedBall.AI.Pathfinding;
-using FlatRedBall.Debugging;
 using FlatRedBall.Graphics.Animation;
-using FlatRedBall.Graphics.Particle;
 using FlatRedBall.Input;
-using FlatRedBall.Instructions;
-using FlatRedBall.Math.Geometry;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ArkMethorst.Entities
 {
@@ -20,6 +12,8 @@ namespace ArkMethorst.Entities
 		public IPressableInput InputPickup { get; set; }
 
 		public bool PressedUp => InputDevice.DefaultUpPressable.WasJustPressed;
+
+		private Direction direction = Direction.Left;
 
 		public void SetIndex(int index)
 		{
@@ -153,11 +147,30 @@ namespace ArkMethorst.Entities
 		private void CustomActivity()
 		{
 			animationController.Activity();
-			//When the player pressed the b button and the pick up hit box is in a state of collision with an animal then we want to set the coordinats to the
-			// same coordinates as the player, even better would be to set the coordinates of the animal to the pick up hit box.
+			if (this.HorizontalInput.Value != 0)
+			{
+				if (this.HorizontalInput.Value < 0)
+				{
+					if (direction != Direction.Left)
+					{
+						// flip the hit box x property
+						//AnimalPickupHitBox.X = -8;
+						AnimalPickupHitBox.RelativeX *= -1;
+						direction = Direction.Left;
+					}
+				}
 
-
-
+				if (this.HorizontalInput.Value > 0)
+				{
+					if (direction != Direction.Right)
+					{
+						// flip the hit box x property
+						//AnimalPickupHitBox.X = 8;
+						AnimalPickupHitBox.RelativeX *= -1;
+						direction = Direction.Right;
+					}
+				}
+			}
 		}
 
 		private bool CheckPickupAnimal()

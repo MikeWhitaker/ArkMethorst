@@ -31,7 +31,7 @@ namespace ArkMethorst.Screens
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointList;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.EndOfLevel> EndOfLevelList;
         private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelList;
-        private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Animal, Entities.Player> AnimalListVsPlayerListAnimalPickupHitBoxRight;
+        private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Animal, Entities.Player> AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox;
         protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
         private FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollision;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.AnimalSpawnPoint> AnimalSpawnPointList;
@@ -116,11 +116,12 @@ namespace ArkMethorst.Screens
     PlayerListVsEndOfLevelList.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
     PlayerListVsEndOfLevelList.Name = "PlayerListVsEndOfLevelList";
 
-                AnimalListVsPlayerListAnimalPickupHitBoxRight = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(AnimalList, PlayerList);
-    AnimalListVsPlayerListAnimalPickupHitBoxRight.SetSecondSubCollision(item => item.AnimalPickupHitBoxRight);
-    AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
-    AnimalListVsPlayerListAnimalPickupHitBoxRight.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
-    AnimalListVsPlayerListAnimalPickupHitBoxRight.Name = "AnimalListVsPlayerListAnimalPickupHitBoxRight";
+                AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(AnimalList, PlayerList);
+    AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.SetFirstSubCollision(item => item.AxisAlignedRectangleInstance);
+    AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.SetSecondSubCollision(item => item.AnimalPickupHitBox);
+    AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
+    AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
+    AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.Name = "AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox";
 
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection>(AnimalList, SolidCollision);
@@ -298,8 +299,8 @@ namespace ArkMethorst.Screens
             PlayerListVsCheckpointList.CollisionOccurred += OnPlayerListVsCheckpointListCollisionOccurredTunnel;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurred;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurredTunnel;
-            AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
-            AnimalListVsPlayerListAnimalPickupHitBoxRight.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
+            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
+            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurred;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurredTunnel;
             if (Map!= null)

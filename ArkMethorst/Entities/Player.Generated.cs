@@ -43,28 +43,16 @@ namespace ArkMethorst.Entities
                 mAxisAlignedRectangleInstance = value;
             }
         }
-        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAnimalPickupHitBoxRight;
-        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AnimalPickupHitBoxRight
+        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAnimalPickupHitBox;
+        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AnimalPickupHitBox
         {
             get
             {
-                return mAnimalPickupHitBoxRight;
+                return mAnimalPickupHitBox;
             }
             private set
             {
-                mAnimalPickupHitBoxRight = value;
-            }
-        }
-        private FlatRedBall.Math.Geometry.AxisAlignedRectangle mAnimalPickupHitBoxLeft;
-        public FlatRedBall.Math.Geometry.AxisAlignedRectangle AnimalPickupHitBoxLeft
-        {
-            get
-            {
-                return mAnimalPickupHitBoxLeft;
-            }
-            private set
-            {
-                mAnimalPickupHitBoxLeft = value;
+                mAnimalPickupHitBox = value;
             }
         }
         public event Action<ArkMethorst.DataTypes.PlatformerValues> BeforeGroundMovementSet;
@@ -374,10 +362,8 @@ namespace ArkMethorst.Entities
             SpriteInstance.Name = "SpriteInstance";
             mAxisAlignedRectangleInstance = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
             mAxisAlignedRectangleInstance.Name = "mAxisAlignedRectangleInstance";
-            mAnimalPickupHitBoxRight = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
-            mAnimalPickupHitBoxRight.Name = "mAnimalPickupHitBoxRight";
-            mAnimalPickupHitBoxLeft = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
-            mAnimalPickupHitBoxLeft.Name = "mAnimalPickupHitBoxLeft";
+            mAnimalPickupHitBox = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+            mAnimalPickupHitBox.Name = "mAnimalPickupHitBox";
             
             // this provides default controls for the platformer using either keyboad or 360. Can be overridden in custom code:
             this.InitializeInput();
@@ -423,8 +409,7 @@ namespace ArkMethorst.Entities
             FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxRight, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxLeft, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBox, LayerProvidedByContainer);
         }
         public virtual void AddToManagers (FlatRedBall.Graphics.Layer layerToAddTo) 
         {
@@ -432,8 +417,7 @@ namespace ArkMethorst.Entities
             FlatRedBall.SpriteManager.AddPositionedObject(this);
             FlatRedBall.SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAxisAlignedRectangleInstance, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxRight, LayerProvidedByContainer);
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBoxLeft, LayerProvidedByContainer);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(mAnimalPickupHitBox, LayerProvidedByContainer);
             CurrentMovementType = MovementType.Ground;
             AddToManagersBottomUp(layerToAddTo);
             CustomInitialize();
@@ -465,13 +449,9 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
             }
-            if (AnimalPickupHitBoxRight != null)
+            if (AnimalPickupHitBox != null)
             {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxRight);
-            }
-            if (AnimalPickupHitBoxLeft != null)
-            {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxLeft);
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBox);
             }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
             CustomDestroy();
@@ -504,54 +484,31 @@ namespace ArkMethorst.Entities
             AxisAlignedRectangleInstance.Width = 10f;
             AxisAlignedRectangleInstance.Height = 22f;
             AxisAlignedRectangleInstance.Visible = false;
-            if (mAnimalPickupHitBoxRight.Parent == null)
+            if (mAnimalPickupHitBox.Parent == null)
             {
-                mAnimalPickupHitBoxRight.CopyAbsoluteToRelative();
-                mAnimalPickupHitBoxRight.AttachTo(this, false);
+                mAnimalPickupHitBox.CopyAbsoluteToRelative();
+                mAnimalPickupHitBox.AttachTo(this, false);
             }
-            if (AnimalPickupHitBoxRight.Parent == null)
+            if (AnimalPickupHitBox.Parent == null)
             {
-                AnimalPickupHitBoxRight.X = 8f;
-            }
-            else
-            {
-                AnimalPickupHitBoxRight.RelativeX = 8f;
-            }
-            if (AnimalPickupHitBoxRight.Parent == null)
-            {
-                AnimalPickupHitBoxRight.Y = 6f;
+                AnimalPickupHitBox.X = -8f;
             }
             else
             {
-                AnimalPickupHitBoxRight.RelativeY = 6f;
+                AnimalPickupHitBox.RelativeX = -8f;
             }
-            AnimalPickupHitBoxRight.Width = 4f;
-            AnimalPickupHitBoxRight.Height = 8f;
-            AnimalPickupHitBoxRight.Visible = false;
-            if (mAnimalPickupHitBoxLeft.Parent == null)
+            if (AnimalPickupHitBox.Parent == null)
             {
-                mAnimalPickupHitBoxLeft.CopyAbsoluteToRelative();
-                mAnimalPickupHitBoxLeft.AttachTo(this, false);
-            }
-            if (AnimalPickupHitBoxLeft.Parent == null)
-            {
-                AnimalPickupHitBoxLeft.X = -8f;
+                AnimalPickupHitBox.Y = 6f;
             }
             else
             {
-                AnimalPickupHitBoxLeft.RelativeX = -8f;
+                AnimalPickupHitBox.RelativeY = 6f;
             }
-            if (AnimalPickupHitBoxLeft.Parent == null)
-            {
-                AnimalPickupHitBoxLeft.Y = 6f;
-            }
-            else
-            {
-                AnimalPickupHitBoxLeft.RelativeY = 6f;
-            }
-            AnimalPickupHitBoxLeft.Width = 4f;
-            AnimalPickupHitBoxLeft.Height = 8f;
-            AnimalPickupHitBoxLeft.Visible = false;
+            AnimalPickupHitBox.Width = 4f;
+            AnimalPickupHitBox.Height = 8f;
+            AnimalPickupHitBox.Visible = true;
+            AnimalPickupHitBox.ParentRotationChangesPosition = true;
             mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
             FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
@@ -571,13 +528,9 @@ namespace ArkMethorst.Entities
             {
                 FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AxisAlignedRectangleInstance);
             }
-            if (AnimalPickupHitBoxRight != null)
+            if (AnimalPickupHitBox != null)
             {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxRight);
-            }
-            if (AnimalPickupHitBoxLeft != null)
-            {
-                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBoxLeft);
+                FlatRedBall.Math.Geometry.ShapeManager.RemoveOneWay(AnimalPickupHitBox);
             }
             mGeneratedCollision.RemoveFromManagers(clearThis: false);
         }
@@ -600,44 +553,26 @@ namespace ArkMethorst.Entities
             AxisAlignedRectangleInstance.Width = 10f;
             AxisAlignedRectangleInstance.Height = 22f;
             AxisAlignedRectangleInstance.Visible = false;
-            if (AnimalPickupHitBoxRight.Parent == null)
+            if (AnimalPickupHitBox.Parent == null)
             {
-                AnimalPickupHitBoxRight.X = 8f;
+                AnimalPickupHitBox.X = -8f;
             }
             else
             {
-                AnimalPickupHitBoxRight.RelativeX = 8f;
+                AnimalPickupHitBox.RelativeX = -8f;
             }
-            if (AnimalPickupHitBoxRight.Parent == null)
+            if (AnimalPickupHitBox.Parent == null)
             {
-                AnimalPickupHitBoxRight.Y = 6f;
+                AnimalPickupHitBox.Y = 6f;
             }
             else
             {
-                AnimalPickupHitBoxRight.RelativeY = 6f;
+                AnimalPickupHitBox.RelativeY = 6f;
             }
-            AnimalPickupHitBoxRight.Width = 4f;
-            AnimalPickupHitBoxRight.Height = 8f;
-            AnimalPickupHitBoxRight.Visible = false;
-            if (AnimalPickupHitBoxLeft.Parent == null)
-            {
-                AnimalPickupHitBoxLeft.X = -8f;
-            }
-            else
-            {
-                AnimalPickupHitBoxLeft.RelativeX = -8f;
-            }
-            if (AnimalPickupHitBoxLeft.Parent == null)
-            {
-                AnimalPickupHitBoxLeft.Y = 6f;
-            }
-            else
-            {
-                AnimalPickupHitBoxLeft.RelativeY = 6f;
-            }
-            AnimalPickupHitBoxLeft.Width = 4f;
-            AnimalPickupHitBoxLeft.Height = 8f;
-            AnimalPickupHitBoxLeft.Visible = false;
+            AnimalPickupHitBox.Width = 4f;
+            AnimalPickupHitBox.Height = 8f;
+            AnimalPickupHitBox.Visible = true;
+            AnimalPickupHitBox.ParentRotationChangesPosition = true;
             if (Parent == null)
             {
                 X = 64f;
@@ -856,8 +791,7 @@ namespace ArkMethorst.Entities
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
             FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AxisAlignedRectangleInstance);
-            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AnimalPickupHitBoxRight);
-            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AnimalPickupHitBoxLeft);
+            FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(AnimalPickupHitBox);
         }
         
 
@@ -1527,14 +1461,9 @@ namespace ArkMethorst.Entities
             FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AxisAlignedRectangleInstance, layerToMoveTo);
             if (layerToRemoveFrom != null)
             {
-                layerToRemoveFrom.Remove(AnimalPickupHitBoxRight);
+                layerToRemoveFrom.Remove(AnimalPickupHitBox);
             }
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AnimalPickupHitBoxRight, layerToMoveTo);
-            if (layerToRemoveFrom != null)
-            {
-                layerToRemoveFrom.Remove(AnimalPickupHitBoxLeft);
-            }
-            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AnimalPickupHitBoxLeft, layerToMoveTo);
+            FlatRedBall.Math.Geometry.ShapeManager.AddToLayer(AnimalPickupHitBox, layerToMoveTo);
             LayerProvidedByContainer = layerToMoveTo;
         }
     }

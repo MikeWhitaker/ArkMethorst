@@ -80,6 +80,7 @@
     <Compile Include="Entities\Chicken.Generated.cs">
       <DependentUpon>Chicken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\EndOfLevel.cs" />
     <Compile Include="Entities\EndOfLevel.Generated.cs">
       <DependentUpon>EndOfLevel.cs</DependentUpon>

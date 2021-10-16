@@ -684,16 +684,17 @@
             </PropertySave>
             <PropertySave>
               <Name>FirstSubCollisionSelectedItem</Name>
+              <ValueAsString>AxisAlignedRectangleInstance</ValueAsString>
             </PropertySave>
             <PropertySave>
               <Name>SecondSubCollisionSelectedItem</Name>
-              <ValueAsString>AnimalPickupHitBoxRight</ValueAsString>
+              <ValueAsString>AnimalPickupHitBox</ValueAsString>
             </PropertySave>
           </Properties>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>Collision Relationship</SourceFile>
           <SourceClassType>FlatRedBall.Math.Collision.ListVsListRelationship&lt;Entities.Animal, Entities.Player&gt;</SourceClassType>
-          <InstanceName>AnimalListVsPlayerListAnimalPickupHitBoxRight</InstanceName>
+          <InstanceName>AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <IndependentOfCamera>false</IndependentOfCamera>
@@ -840,7 +841,7 @@
         </EventResponseSave>
         <EventResponseSave>
           <EventName>PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred</EventName>
-          <SourceObject>AnimalListVsPlayerListAnimalPickupHitBoxRight</SourceObject>
+          <SourceObject>AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox</SourceObject>
           <SourceObjectEvent>CollisionOccurred</SourceObjectEvent>
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
@@ -1551,11 +1552,6 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>32</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
             <Member>Height</Member>
             <ValueAsFloat>32</ValueAsFloat>
           </CustomProperty>
@@ -1563,6 +1559,11 @@
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>32</ValueAsFloat>
           </CustomProperty>
           <Properties>
             <PropertySave>
@@ -3178,53 +3179,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>4</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>8</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>6</ValueAsFloat>
-          </CustomProperty>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>AxisAlignedRectangle</SourceFile>
-          <SourceClassType>FlatRedBall.Math.Geometry.AxisAlignedRectangle</SourceClassType>
-          <InstanceName>AnimalPickupHitBoxRight</InstanceName>
-          <HasPublicProperty>true</HasPublicProperty>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IncludeInICollidable>false</IncludeInICollidable>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Height</Member>
-            <ValueAsFloat>8</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -3241,6 +3196,11 @@
             <Member>Y</Member>
             <ValueAsFloat>6</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>ParentRotationChangesPosition</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
@@ -3254,7 +3214,7 @@
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>AxisAlignedRectangle</SourceFile>
           <SourceClassType>FlatRedBall.Math.Geometry.AxisAlignedRectangle</SourceClassType>
-          <InstanceName>AnimalPickupHitBoxLeft</InstanceName>
+          <InstanceName>AnimalPickupHitBox</InstanceName>
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>

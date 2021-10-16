@@ -47,8 +47,8 @@ namespace ArkMethorst.Entities
 			{
 				if (IsPickedUp)
 				{
-					X = player.AnimalPickupHitBoxRight.X;
-					Y = player.AnimalPickupHitBoxRight.Y + 4;
+					X = player.AnimalPickupHitBox.X;
+					Y = player.AnimalPickupHitBox.Y + 4;
 					initialZValue = Z;
 					Z = 10;
 				}
