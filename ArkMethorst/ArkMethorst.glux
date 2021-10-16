@@ -840,7 +840,7 @@
           <DelegateType />
         </EventResponseSave>
         <EventResponseSave>
-          <EventName>PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred</EventName>
+          <EventName>AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred</EventName>
           <SourceObject>AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox</SourceObject>
           <SourceObjectEvent>CollisionOccurred</SourceObjectEvent>
           <BeforeOrAfter>Before</BeforeOrAfter>
@@ -1243,6 +1243,7 @@
             </PropertySave>
           </Properties>
           <Name>Z</Name>
+          <DefaultValue xsi:type="xsd:float">90</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -1465,6 +1466,11 @@
             <Member>TextureScale</Member>
             <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>10</ValueAsFloat>
+          </CustomProperty>
           <Properties>
             <PropertySave>
               <Name>AssociateWithFactory</Name>
@@ -1625,6 +1631,7 @@
             </PropertySave>
           </Properties>
           <Name>Z</Name>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -1747,6 +1754,7 @@
             </PropertySave>
           </Properties>
           <Name>Z</Name>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -1841,6 +1849,7 @@
             </PropertySave>
           </Properties>
           <Name>Z</Name>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -1930,6 +1939,7 @@
             </PropertySave>
           </Properties>
           <Name>Z</Name>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -3178,6 +3188,11 @@
           </CustomProperty>
           <CustomProperty>
             <Type>bool</Type>
+            <Member>ParentRotationChangesPosition</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
@@ -3195,11 +3210,6 @@
             <Type>float</Type>
             <Member>Y</Member>
             <ValueAsFloat>6</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>ParentRotationChangesPosition</Member>
-            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <Properties>
             <PropertySave>

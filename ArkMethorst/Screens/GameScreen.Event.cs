@@ -1,13 +1,4 @@
 using ArkMethorst.Entities;
-using ArkMethorst.Screens;
-using FlatRedBall;
-using FlatRedBall.Audio;
-using FlatRedBall.Input;
-using FlatRedBall.Instructions;
-using FlatRedBall.Screens;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Specialized;
 
 namespace ArkMethorst.Screens
 {
@@ -33,39 +24,40 @@ namespace ArkMethorst.Screens
 			GameScreen.LastCheckpointName = "LevelStart";
 			MoveToScreen(endOfLevel.NextLevel);
 		}
-		void OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred (Entities.Animal animal, Entities.Player player) 
-        {
-			if (player.InputPickup.WasJustPressed)
-			{
-				// we want to say to the piglet that it should take its co-ords from the player
-				animal.IsPickedUp = true; // signaling the horizontal input should be null
-				animal.Player = player; // Setting the player as an attriuut on the piglet.
-			}
-        }
-        void OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred (Entities.Animal first, Entities.Player second) 
-        {
-            
-        }
-        void OnAnimalListVsSolidCollisionCollisionOccurred (Entities.Animal first, FlatRedBall.TileCollisions.TileShapeCollection second) 
-        {
+
+		void OnAnimalListVsSolidCollisionCollisionOccurred(Entities.Animal first, FlatRedBall.TileCollisions.TileShapeCollection second)
+		{
 			var collisionReposition = first.AxisAlignedRectangleInstance.LastMoveCollisionReposition;
 			var hasCollidedWithWall = collisionReposition.X != 0;
 			if (hasCollidedWithWall)
 			{
-				var pigletMovement = first.InputDevice as AnimalPlatformerInput;
+				var animalMovement = first.InputDevice as AnimalPlatformerInput;
 				var isWallToTheRight = collisionReposition.X < 0;
 
-				if (isWallToTheRight && pigletMovement.DesiredDirection == Direction.Right)
+				if (isWallToTheRight && animalMovement.DesiredDirection == Direction.Right)
 				{
-					pigletMovement.DesiredDirection = Direction.Left;
+					animalMovement.DesiredDirection = Direction.Left;
+					first.SpriteInstanceFlipHorizontal = !first.SpriteInstanceFlipHorizontal;
+
 				}
-				else if (!isWallToTheRight && pigletMovement.DesiredDirection == Direction.Left)
+				else if (!isWallToTheRight && animalMovement.DesiredDirection == Direction.Left)
 				{
-					pigletMovement.DesiredDirection = Direction.Right;
+					animalMovement.DesiredDirection = Direction.Right;
+					first.SpriteInstanceFlipHorizontal = !first.SpriteInstanceFlipHorizontal;
 				}
 
-				first.SpriteInstanceFlipHorizontal = !first.SpriteInstanceFlipHorizontal;
 			}
+		}
+		void OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred(Entities.Animal animal, Entities.Player player)
+		{
+			if (!player.InputPickup.WasJustPressed)
+			{
+				return;
+			}
+
+			// we want to say to the piglet that it should take its co-ords from the player
+			animal.IsPickedUp = true; // signaling the horizontal input should be null
+			animal.Player = player; // Setting the player as an attribute on the piglet.
 		}
 	}
 }

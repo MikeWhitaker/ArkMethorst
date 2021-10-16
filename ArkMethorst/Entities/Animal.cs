@@ -39,6 +39,7 @@ namespace ArkMethorst.Entities
 		private void CustomInitialize()
 		{
 			this.InitializePlatformerInput(new AnimalPlatformerInput(this));
+			Z = 10;
 
 		}
 
@@ -50,8 +51,6 @@ namespace ArkMethorst.Entities
 				{
 					X = player.AnimalPickupHitBox.X;
 					Y = player.AnimalPickupHitBox.Y + 4;
-					initialZValue = Z;
-					Z = 10;
 				}
 
 				if (player.InputPickup.WasJustReleased)

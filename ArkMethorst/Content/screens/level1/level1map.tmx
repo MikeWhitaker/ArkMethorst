@@ -18,6 +18,11 @@
   </data>
  </layer>
  <objectgroup id="6" name="PitCollision"/>
+ <layer id="5" name="ForegroundLayer" width="31" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2WQQqEMAxFs4lX8wTVfTeeYBQPMg7jaa1MOkhwtEKrxfkPPmRR82hKQCIAAAAAAAAA+G8ME9V8jevh6u4kt3bBDfeV7mdBNETIqzjuTkVubsvbs1ri36Pi8LM+NtK9+w3nL2LN/I7utR3T76rdId/kfu9c3d/ZBuzYnvvt6pY/+5rq/8VI/3m/R5dyxW8T+I30bcXbSDxzncJvpKf2arf2VxFiF3NudtxnZgIpbJ13OBgAAA==
+  </data>
+ </layer>
  <objectgroup id="7" name="GameplayObjectLayer">
   <object id="3" name="LevelStart" gid="69" x="224" y="592" width="16" height="16" visible="0">
    <properties>
@@ -31,11 +36,6 @@
   <object id="23" name="AnimalSpawnPointThree" type="AnimalSpawnPoint" gid="68" x="352" y="656" width="16" height="16"/>
   <object id="24" name="AnimalSpawnPointOne" type="AnimalSpawnPoint" gid="68" x="240" y="768" width="16" height="16"/>
  </objectgroup>
- <layer id="5" name="ForegroundLayer" width="31" height="50">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACu2WQQqEMAxFs4lX8wTVfTeeYBQPMg7jaa1MOkhwtEKrxfkPPmRR82hKQCIAAAAAAAAA+G8ME9V8jevh6u4kt3bBDfeV7mdBNETIqzjuTkVubsvbs1ri36Pi8LM+NtK9+w3nL2LN/I7utR3T76rdId/kfu9c3d/ZBuzYnvvt6pY/+5rq/8VI/3m/R5dyxW8T+I30bcXbSDxzncJvpKf2arf2VxFiF3NudtxnZgIpbJ13OBgAAA==
-  </data>
- </layer>
  <layer id="9" name="Water" width="31" height="50">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAACu3SMQqAQAxFwTS52upNvP8NRFQIi6UGixn4bV6TCAAAAAAA/m7JiDV7m+PqbXmuqz9K52539Md0v7a/7M/d2p4df/DmnuyAaUR5OBgAAA==

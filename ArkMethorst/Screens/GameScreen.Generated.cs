@@ -38,7 +38,7 @@ namespace ArkMethorst.Screens
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
-        public event System.Action<Entities.Animal, Entities.Player> PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
+        public event System.Action<Entities.Animal, Entities.Player> AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred;
         public event System.Action<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollisionCollisionOccurred;
         ArkMethorst.FormsControls.Screens.GameScreenGumForms Forms;
         public GameScreen () 
@@ -299,8 +299,8 @@ namespace ArkMethorst.Screens
             PlayerListVsCheckpointList.CollisionOccurred += OnPlayerListVsCheckpointListCollisionOccurredTunnel;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurred;
             PlayerListVsEndOfLevelList.CollisionOccurred += OnPlayerListVsEndOfLevelListCollisionOccurredTunnel;
-            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred;
-            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel;
+            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred;
+            AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurredTunnel;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurred;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurredTunnel;
             if (Map!= null)

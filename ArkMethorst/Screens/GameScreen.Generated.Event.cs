@@ -34,11 +34,11 @@ namespace ArkMethorst.Screens
                 PlayerListVsEndOfLevelListCollisionOccurred(first, second);
             }
         }
-        void OnPigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurredTunnel (Entities.Animal first, Entities.Player second) 
+        void OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurredTunnel (Entities.Animal first, Entities.Player second) 
         {
-            if (this.PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred != null)
+            if (this.AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred != null)
             {
-                PigletListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxRightCollisionOccurred(first, second);
+                AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred(first, second);
             }
         }
         void OnAnimalListVsSolidCollisionCollisionOccurredTunnel (Entities.Animal first, FlatRedBall.TileCollisions.TileShapeCollection second) 
