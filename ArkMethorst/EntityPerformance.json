@@ -105,20 +105,6 @@
       ]
     },
     {
-      "Name": "Entities\\Lamb",
-      "SelectedProperties": [],
-      "InstanceManagementValuesList": [
-        {
-          "SelectedProperties": [],
-          "Name": "SpriteInstance"
-        },
-        {
-          "SelectedProperties": [],
-          "Name": "AxisAlignedRectangleInstance"
-        }
-      ]
-    },
-    {
       "Name": "Entities\\Pen\\Pen",
       "SelectedProperties": [],
       "InstanceManagementValuesList": [
@@ -132,6 +118,64 @@
       "Name": "Entities\\Pen\\PenBase",
       "SelectedProperties": [],
       "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Cage\\CageBase",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "AxisAlignedRectangleInstance"
+        },
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Cage\\ChickenCage",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Cage\\SheepCage",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Cage\\PigCage",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        }
+      ]
+    },
+    {
+      "Name": "Entities\\Sheep",
+      "SelectedProperties": [],
+      "InstanceManagementValuesList": [
+        {
+          "SelectedProperties": [],
+          "Name": "SpriteInstance"
+        },
         {
           "SelectedProperties": [],
           "Name": "AxisAlignedRectangleInstance"

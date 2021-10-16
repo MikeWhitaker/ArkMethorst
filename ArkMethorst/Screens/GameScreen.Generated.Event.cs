@@ -48,5 +48,12 @@ namespace ArkMethorst.Screens
                 AnimalListVsSolidCollisionCollisionOccurred(first, second);
             }
         }
+        void OnCageBaseListVsAnimalListCollisionOccurredTunnel (Entities.Cage.CageBase first, Entities.Animal second) 
+        {
+            if (this.CageBaseListVsAnimalListCollisionOccurred != null)
+            {
+                CageBaseListVsAnimalListCollisionOccurred(first, second);
+            }
+        }
     }
 }

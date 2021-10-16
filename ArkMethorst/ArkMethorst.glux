@@ -815,6 +815,86 @@
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
+        <NamedObjectSave>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+            <PropertySave>
+              <Name>SortAxis</Name>
+              <ValueAsInt>0</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>PartitionWidthHeight</Name>
+              <ValueAsFloat>32</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsSortListEveryFrameChecked</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>PositionedObjectList (Generic)</SourceFile>
+          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
+          <SourceClassGenericType>Entities\Cage\CageBase</SourceClassGenericType>
+          <InstanceName>CageBaseList</InstanceName>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsAutoNameEnabled</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>FirstCollisionName</Name>
+              <ValueAsString>CageBaseList</ValueAsString>
+            </PropertySave>
+            <PropertySave>
+              <Name>SecondCollisionName</Name>
+              <ValueAsString>AnimalList</ValueAsString>
+            </PropertySave>
+            <PropertySave>
+              <Name>FirstCollisionMass</Name>
+              <ValueAsFloat>1</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>SecondCollisionMass</Name>
+              <ValueAsFloat>1</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>CollisionElasticity</Name>
+              <ValueAsFloat>1</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsCollisionActive</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>Collision Relationship</SourceFile>
+          <SourceClassType>FlatRedBall.Math.Collision.ListVsListRelationship&lt;Entities.Cage.CageBase, Entities.Animal&gt;</SourceClassType>
+          <InstanceName>CageBaseListVsAnimalList</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
       </NamedObjects>
       <Name>Screens\GameScreen</Name>
       <Events>
@@ -849,6 +929,13 @@
         <EventResponseSave>
           <EventName>AnimalListVsSolidCollisionCollisionOccurred</EventName>
           <SourceObject>AnimalListVsSolidCollision</SourceObject>
+          <SourceObjectEvent>CollisionOccurred</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>CageBaseListVsAnimalListCollisionOccurred</EventName>
+          <SourceObject>CageBaseListVsAnimalList</SourceObject>
           <SourceObjectEvent>CollisionOccurred</SourceObjectEvent>
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
@@ -1184,13 +1271,36 @@
                 </PropertySave>
               </Properties>
               <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Lamb</SourceClassType>
+              <SourceClassType>Entities\Sheep</SourceClassType>
               <InstanceName>Lamb1</InstanceName>
               <AttachToContainer>true</AttachToContainer>
               <GenerateTimedEmit>true</GenerateTimedEmit>
               <IndependentOfCamera>false</IndependentOfCamera>
             </NamedObjectSave>
           </ContainedObjects>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>PositionedObjectList (Generic)</SourceFile>
+          <SourceClassType>FlatRedBall.Math.PositionedObjectList&lt;T&gt;</SourceClassType>
+          <SourceClassGenericType>Entities\Cage\CageBase</SourceClassGenericType>
+          <InstanceName>CageBaseList</InstanceName>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <DefinedByBase>true</DefinedByBase>
+          <InstantiatedByBase>true</InstantiatedByBase>
           <IndependentOfCamera>false</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -1633,6 +1743,17 @@
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>string</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CageType</Name>
+          <DefaultValue xsi:type="xsd:string">asdf</DefaultValue>
+          <SetByDerived>true</SetByDerived>
+        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -1756,6 +1877,17 @@
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>string</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CageType</Name>
+          <DefaultValue xsi:type="xsd:string">Chicken</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -1851,6 +1983,17 @@
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>string</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CageType</Name>
+          <DefaultValue xsi:type="xsd:string">Pig</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+        </CustomVariable>
       </CustomVariables>
       <Properties>
         <PropertySave>
@@ -1940,6 +2083,17 @@
           </Properties>
           <Name>Z</Name>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>string</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CageType</Name>
+          <DefaultValue xsi:type="xsd:string">Lamb</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
         </CustomVariable>
       </CustomVariables>
       <Properties>
@@ -2564,198 +2718,6 @@
       <UseGlobalContent>false</UseGlobalContent>
       <ReferencedFiles>
         <ReferencedFileSave>
-          <Name>Entities/Lamb/PlatformerValuesStatic.csv</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <HasPublicProperty>true</HasPublicProperty>
-          <CreatesDictionary>true</CreatesDictionary>
-          <ProjectsToExcludeFrom />
-        </ReferencedFileSave>
-        <ReferencedFileSave>
-          <Name>Entities/Lamb/LambAnimation.achx</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
-          <ProjectsToExcludeFrom />
-        </ReferencedFileSave>
-      </ReferencedFiles>
-      <IsHiddenInTreeView>false</IsHiddenInTreeView>
-      <CustomVariables>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>X</Name>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Y</Name>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Z</Name>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>GroundMovement</Name>
-          <DefaultValue xsi:type="xsd:string">Ground in PlatformerValuesStatic.csv</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
-          <CreatesEvent>true</CreatesEvent>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>AirMovement</Name>
-          <DefaultValue xsi:type="xsd:string">Air in PlatformerValuesStatic.csv</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
-          <CreatesEvent>true</CreatesEvent>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>AfterDoubleJump</Name>
-          <DefinedByBase>true</DefinedByBase>
-          <CreatesEvent>true</CreatesEvent>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>SpriteInstanceFlipHorizontal</Name>
-          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
-          <DefinedByBase>true</DefinedByBase>
-        </CustomVariable>
-      </CustomVariables>
-      <Properties>
-        <PropertySave>
-          <Name>InputDevice</Name>
-          <ValueAsInt>0</ValueAsInt>
-        </PropertySave>
-        <PropertySave>
-          <Name>IsPlatformer</Name>
-          <ValueAsBool>true</ValueAsBool>
-        </PropertySave>
-      </Properties>
-      <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
-            <Member>AnimationChains</Member>
-            <ValueAsString>LambAnimation</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>CurrentChainName</Member>
-            <ValueAsString>LambWalk</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>Sprite</SourceFile>
-          <SourceClassType>FlatRedBall.Sprite</SourceClassType>
-          <InstanceName>SpriteInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <DefinedByBase>true</DefinedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>Microsoft.Xna.Framework.Color</Type>
-            <Member>Color</Member>
-            <ValueAsString>White</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Height</Member>
-            <ValueAsFloat>14</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>16</ValueAsFloat>
-          </CustomProperty>
-          <Properties>
-            <PropertySave>
-              <Name>AssociateWithFactory</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-            <PropertySave>
-              <Name>SourceType</Name>
-              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
-            </PropertySave>
-          </Properties>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile>AxisAlignedRectangle</SourceFile>
-          <SourceClassType>FlatRedBall.Math.Geometry.AxisAlignedRectangle</SourceClassType>
-          <InstanceName>AxisAlignedRectangleInstance</InstanceName>
-          <HasPublicProperty>true</HasPublicProperty>
-          <AttachToContainer>true</AttachToContainer>
-          <GenerateTimedEmit>true</GenerateTimedEmit>
-          <IncludeInIClickable>false</IncludeInIClickable>
-          <DefinedByBase>true</DefinedByBase>
-          <IndependentOfCamera>false</IndependentOfCamera>
-        </NamedObjectSave>
-      </NamedObjects>
-      <Name>Entities\Lamb</Name>
-      <CustomClassesForExport />
-      <BaseEntity>Entities\Animal</BaseEntity>
-      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
-      <Is2D>true</Is2D>
-    </EntitySave>
-    <EntitySave>
-      <Tags>
-        <string>GLUE</string>
-      </Tags>
-      <Source>GLUE</Source>
-      <UseGlobalContent>false</UseGlobalContent>
-      <ReferencedFiles>
-        <ReferencedFileSave>
           <Name>Entities/Piglet/PigletTexture.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
@@ -3253,6 +3215,198 @@
       </CustomClassesForExport>
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
       <CreatedByOtherEntities>true</CreatedByOtherEntities>
+      <Is2D>true</Is2D>
+    </EntitySave>
+    <EntitySave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <UseGlobalContent>false</UseGlobalContent>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/Lamb/PlatformerValuesStatic.csv</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <HasPublicProperty>true</HasPublicProperty>
+          <CreatesDictionary>true</CreatesDictionary>
+          <ProjectsToExcludeFrom />
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Entities/Lamb/LambAnimation.achx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
+          <ProjectsToExcludeFrom />
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <IsHiddenInTreeView>false</IsHiddenInTreeView>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Ground in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <DefaultValue xsi:type="xsd:string">Air in PlatformerValuesStatic.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>ArkMethorst.DataTypes.PlatformerValues</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpriteInstanceFlipHorizontal</Name>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+        </CustomVariable>
+      </CustomVariables>
+      <Properties>
+        <PropertySave>
+          <Name>InputDevice</Name>
+          <ValueAsInt>0</ValueAsInt>
+        </PropertySave>
+        <PropertySave>
+          <Name>IsPlatformer</Name>
+          <ValueAsBool>true</ValueAsBool>
+        </PropertySave>
+      </Properties>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>FlatRedBall.Graphics.Animation.AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>LambAnimation</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>CurrentChainName</Member>
+            <ValueAsString>LambWalk</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>Sprite</SourceFile>
+          <SourceClassType>FlatRedBall.Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <DefinedByBase>true</DefinedByBase>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>Microsoft.Xna.Framework.Color</Type>
+            <Member>Color</Member>
+            <ValueAsString>White</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>14</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>16</ValueAsFloat>
+          </CustomProperty>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">FlatRedBallType</ValueAsObject>
+            </PropertySave>
+          </Properties>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile>AxisAlignedRectangle</SourceFile>
+          <SourceClassType>FlatRedBall.Math.Geometry.AxisAlignedRectangle</SourceClassType>
+          <InstanceName>AxisAlignedRectangleInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IncludeInIClickable>false</IncludeInIClickable>
+          <DefinedByBase>true</DefinedByBase>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <Name>Entities\Sheep</Name>
+      <CustomClassesForExport />
+      <BaseEntity>Entities\Animal</BaseEntity>
+      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
       <Is2D>true</Is2D>
     </EntitySave>
   </Entities>

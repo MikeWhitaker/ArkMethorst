@@ -35,11 +35,14 @@ namespace ArkMethorst.Screens
         protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Animal> AnimalList;
         private FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollision;
         private FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.AnimalSpawnPoint> AnimalSpawnPointList;
+        protected FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase> CageBaseList;
+        private FlatRedBall.Math.Collision.ListVsListRelationship<Entities.Cage.CageBase, Entities.Animal> CageBaseListVsAnimalList;
         public event System.Action<Entities.Player, FlatRedBall.Math.Geometry.ShapeCollection> PlayerListVsPitCollisionCollisionOccurred;
         public event System.Action<Entities.Player, Entities.Checkpoint> PlayerListVsCheckpointListCollisionOccurred;
         public event System.Action<Entities.Player, Entities.EndOfLevel> PlayerListVsEndOfLevelListCollisionOccurred;
         public event System.Action<Entities.Animal, Entities.Player> AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurred;
         public event System.Action<Entities.Animal, FlatRedBall.TileCollisions.TileShapeCollection> AnimalListVsSolidCollisionCollisionOccurred;
+        public event System.Action<Entities.Cage.CageBase, Entities.Animal> CageBaseListVsAnimalListCollisionOccurred;
         ArkMethorst.FormsControls.Screens.GameScreenGumForms Forms;
         public GameScreen () 
         	: base ("GameScreen")
@@ -57,6 +60,8 @@ namespace ArkMethorst.Screens
             AnimalList.Name = "AnimalList";
             AnimalSpawnPointList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.AnimalSpawnPoint>();
             AnimalSpawnPointList.Name = "AnimalSpawnPointList";
+            CageBaseList = new FlatRedBall.Math.PositionedObjectList<ArkMethorst.Entities.Cage.CageBase>();
+            CageBaseList.Name = "CageBaseList";
         }
         public override void Initialize (bool addToManagers) 
         {
@@ -77,6 +82,7 @@ namespace ArkMethorst.Screens
             EndOfLevelList.Clear();
             AnimalList.Clear();
             AnimalSpawnPointList.Clear();
+            CageBaseList.Clear();
                 {
         var temp = new FlatRedBall.Math.Collision.DelegateListVsSingleRelationship<Entities.Player, FlatRedBall.TileCollisions.TileShapeCollection>(PlayerList, SolidCollision);
         var isCloud = false;
@@ -136,6 +142,11 @@ namespace ArkMethorst.Screens
     }
     AnimalListVsSolidCollision.Name = "AnimalListVsSolidCollision";
 
+                CageBaseListVsAnimalList = FlatRedBall.Math.Collision.CollisionManager.Self.CreateRelationship(CageBaseList, AnimalList);
+    CageBaseListVsAnimalList.CollisionLimit = FlatRedBall.Math.Collision.CollisionLimit.All;
+    CageBaseListVsAnimalList.ListVsListLoopingMode = FlatRedBall.Math.Collision.ListVsListLoopingMode.PreventDoubleChecksPerFrame;
+    CageBaseListVsAnimalList.Name = "CageBaseListVsAnimalList";
+
             Forms = new ArkMethorst.FormsControls.Screens.GameScreenGumForms(GameScreenGum);
             // normally we wait to set variables until after the object is created, but in this case if the
             // TileShapeCollection doesn't have its Visible set before creating the tiles, it can result in
@@ -169,10 +180,15 @@ namespace ArkMethorst.Screens
             Factories.CheckpointFactory.Initialize(ContentManagerName);
             Factories.EndOfLevelFactory.Initialize(ContentManagerName);
             Factories.AnimalSpawnPointFactory.Initialize(ContentManagerName);
+            Factories.CageBaseFactory.Initialize(ContentManagerName);
             Factories.PlayerFactory.AddList(PlayerList);
             Factories.CheckpointFactory.AddList(CheckpointList);
             Factories.EndOfLevelFactory.AddList(EndOfLevelList);
             Factories.AnimalSpawnPointFactory.AddList(AnimalSpawnPointList);
+            Factories.CageBaseFactory.AddList(CageBaseList);
+            Factories.ChickenCageFactory.AddList(CageBaseList);
+            Factories.PigCageFactory.AddList(CageBaseList);
+            Factories.SheepCageFactory.AddList(CageBaseList);
             Player1.AddToManagers(mLayer);
             FlatRedBall.SpriteManager.AddPositionedObject(CameraControllingEntityInstance); CameraControllingEntityInstance.Activity();
             PitCollision.AddToManagers();
@@ -228,6 +244,14 @@ namespace ArkMethorst.Screens
                         AnimalSpawnPointList[i].Activity();
                     }
                 }
+                for (int i = CageBaseList.Count - 1; i > -1; i--)
+                {
+                    if (i < CageBaseList.Count)
+                    {
+                        // We do the extra if-check because activity could destroy any number of entities
+                        CageBaseList[i].Activity();
+                    }
+                }
             }
             else
             {
@@ -245,6 +269,10 @@ namespace ArkMethorst.Screens
             Factories.CheckpointFactory.Destroy();
             Factories.EndOfLevelFactory.Destroy();
             Factories.AnimalSpawnPointFactory.Destroy();
+            Factories.CageBaseFactory.Destroy();
+            Factories.ChickenCageFactory.Destroy();
+            Factories.PigCageFactory.Destroy();
+            Factories.SheepCageFactory.Destroy();
             GameScreenGum.RemoveFromManagers();FlatRedBall.FlatRedBallServices.GraphicsOptions.SizeOrOrientationChanged -= RefreshLayoutInternal;
             GameScreenGum = null;
             
@@ -253,6 +281,7 @@ namespace ArkMethorst.Screens
             EndOfLevelList.MakeOneWay();
             AnimalList.MakeOneWay();
             AnimalSpawnPointList.MakeOneWay();
+            CageBaseList.MakeOneWay();
             for (int i = PlayerList.Count - 1; i > -1; i--)
             {
                 PlayerList[i].Destroy();
@@ -281,11 +310,16 @@ namespace ArkMethorst.Screens
             {
                 AnimalSpawnPointList[i].Destroy();
             }
+            for (int i = CageBaseList.Count - 1; i > -1; i--)
+            {
+                CageBaseList[i].Destroy();
+            }
             PlayerList.MakeTwoWay();
             CheckpointList.MakeTwoWay();
             EndOfLevelList.MakeTwoWay();
             AnimalList.MakeTwoWay();
             AnimalSpawnPointList.MakeTwoWay();
+            CageBaseList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }
@@ -303,6 +337,8 @@ namespace ArkMethorst.Screens
             AnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBox.CollisionOccurred += OnAnimalListAxisAlignedRectangleInstanceVsPlayerListAnimalPickupHitBoxCollisionOccurredTunnel;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurred;
             AnimalListVsSolidCollision.CollisionOccurred += OnAnimalListVsSolidCollisionCollisionOccurredTunnel;
+            CageBaseListVsAnimalList.CollisionOccurred += OnCageBaseListVsAnimalListCollisionOccurred;
+            CageBaseListVsAnimalList.CollisionOccurred += OnCageBaseListVsAnimalListCollisionOccurredTunnel;
             if (Map!= null)
             {
                 if (Map.Parent == null)
@@ -362,6 +398,10 @@ namespace ArkMethorst.Screens
             {
                 AnimalSpawnPointList[i].Destroy();
             }
+            for (int i = CageBaseList.Count - 1; i > -1; i--)
+            {
+                CageBaseList[i].Destroy();
+            }
         }
         public virtual void AssignCustomVariables (bool callOnContainedElements) 
         {
@@ -420,6 +460,10 @@ namespace ArkMethorst.Screens
             for (int i = 0; i < AnimalSpawnPointList.Count; i++)
             {
                 AnimalSpawnPointList[i].ConvertToManuallyUpdated();
+            }
+            for (int i = 0; i < CageBaseList.Count; i++)
+            {
+                CageBaseList[i].ConvertToManuallyUpdated();
             }
         }
         public static void LoadStaticContent (string contentManagerName) 

@@ -66,7 +66,7 @@
     </Compile>
     <Compile Include="Entities\Cage\PigCage.cs" />
     <Compile Include="Entities\Cage\PigCage.Generated.cs">
-      <DependentUpon>PigCage.cs</DependentUpon>
+      <DependentUpon>pigcage.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Cage\SheepCage.cs" />
     <Compile Include="Entities\Cage\SheepCage.Generated.cs">
@@ -89,9 +89,9 @@
     <Compile Include="Entities\Animal.Generated.cs">
       <DependentUpon>Animal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Lamb.cs" />
-    <Compile Include="Entities\Lamb.Generated.cs">
-      <DependentUpon>Lamb.cs</DependentUpon>
+    <Compile Include="Entities\Sheep.cs" />
+    <Compile Include="Entities\Sheep.Generated.cs">
+      <DependentUpon>Sheep.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Piglet.cs" />
     <Compile Include="Entities\Piglet.Generated.cs">

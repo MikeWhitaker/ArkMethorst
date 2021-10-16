@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <objecttypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <objecttype name="AnimalSpawnPoint" />
-  <objecttype name="CageBase" />
-  <objecttype name="ChickenCage" />
-  <objecttype name="PigCage" />
-  <objecttype name="SheepCage" />
+  <objecttype name="CageBase">
+    <property name="CageType" type="string" default="asdf" />
+  </objecttype>
+  <objecttype name="ChickenCage">
+    <property name="CageType" type="string" default="Chicken" />
+  </objecttype>
+  <objecttype name="PigletCage">
+    <property name="CageType" type="string" default="Pig" />
+  </objecttype>
+  <objecttype name="SheepCage">
+    <property name="CageType" type="string" default="Lamb" />
+  </objecttype>
   <objecttype name="Checkpoint">
     <property name="Visible" type="bool" default="true" />
   </objecttype>

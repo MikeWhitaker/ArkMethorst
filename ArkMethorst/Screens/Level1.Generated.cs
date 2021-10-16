@@ -19,7 +19,7 @@ namespace ArkMethorst.Screens
         
         private ArkMethorst.Entities.Piglet Piglet1;
         private ArkMethorst.Entities.Chicken Chicken1;
-        private ArkMethorst.Entities.Lamb Lamb1;
+        private ArkMethorst.Entities.Sheep Lamb1;
         ArkMethorst.FormsControls.Screens.Level1GumForms Forms;
         public Level1 () 
         	: base ()
@@ -35,7 +35,7 @@ namespace ArkMethorst.Screens
             Piglet1.Name = "Piglet1";
             Chicken1 = new ArkMethorst.Entities.Chicken(ContentManagerName, false);
             Chicken1.Name = "Chicken1";
-            Lamb1 = new ArkMethorst.Entities.Lamb(ContentManagerName, false);
+            Lamb1 = new ArkMethorst.Entities.Sheep(ContentManagerName, false);
             Lamb1.Name = "Lamb1";
             Forms = new ArkMethorst.FormsControls.Screens.Level1GumForms(Level1Gum);
             
@@ -77,6 +77,7 @@ namespace ArkMethorst.Screens
             Level1Map = null;
             
             AnimalList.MakeOneWay();
+            CageBaseList.MakeOneWay();
             if (Map != null)
             {
                 Map.Destroy();
@@ -90,6 +91,7 @@ namespace ArkMethorst.Screens
                 CloudCollision.Visible = false;
             }
             AnimalList.MakeTwoWay();
+            CageBaseList.MakeTwoWay();
             FlatRedBall.Math.Collision.CollisionManager.Self.Relationships.Clear();
             CustomDestroy();
         }
