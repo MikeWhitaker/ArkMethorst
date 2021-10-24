@@ -66,7 +66,7 @@
     </Compile>
     <Compile Include="Entities\Cage\PigCage.cs" />
     <Compile Include="Entities\Cage\PigCage.Generated.cs">
-      <DependentUpon>pigcage.cs</DependentUpon>
+      <DependentUpon>PigCage.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Cage\SheepCage.cs" />
     <Compile Include="Entities\Cage\SheepCage.Generated.cs">
@@ -121,6 +121,10 @@
     <Compile Include="Forms\Screens\Level2GumForms.cs" />
     <Compile Include="Forms\Screens\Level2GumForms.Generated.cs">
       <DependentUpon>Level2GumForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Screens\MainMenuGumForms.cs" />
+    <Compile Include="Forms\Screens\MainMenuGumForms.Generated.cs">
+      <DependentUpon>MainMenuGumForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
     <Compile Include="Game1.Generated.cs">
@@ -256,6 +260,10 @@
     <Compile Include="GumRuntimes\Level2GumRuntime.Generated.cs">
       <DependentUpon>Level2GumRuntime.cs</DependentUpon>
     </Compile>
+    <Compile Include="GumRuntimes\MainMenuGumRuntime.cs" />
+    <Compile Include="GumRuntimes\MainMenuGumRuntime.Generated.cs">
+      <DependentUpon>MainMenuGumRuntime.cs</DependentUpon>
+    </Compile>
     <Compile Include="GumRuntimes\NineSliceRuntime.Generated.cs" />
     <Compile Include="GumRuntimes\PolygonRuntime.Generated.cs" />
     <Compile Include="GumRuntimes\RectangleRuntime.Generated.cs" />
@@ -285,6 +293,10 @@
     </Compile>
     <Compile Include="Screens\Level1.Generated.Event.cs">
       <DependentUpon>Level1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainMenu.cs" />
+    <Compile Include="Screens\MainMenu.Generated.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Setup\CameraSetup.cs" />
     <Compile Include="TileCollisions\CollidableListVsTileShapeCollectionRelationship.cs" />
@@ -563,6 +575,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>font18arial_0</Name>
     </None>
+    <None Include="content\gumproject\fontcache\font45showcard_gothic.fnt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>font45showcard_gothic</Name>
+    </None>
+    <None Include="content\gumproject\fontcache\font45showcard_gothic_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>font45showcard_gothic_0</Name>
+    </None>
+    <None Include="content\gumproject\fontcache\font45showcard_gothic_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>font45showcard_gothic_1</Name>
+    </None>
     <None Include="content\gumproject\gumproject.gumx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>GumProject</Name>
@@ -578,6 +602,10 @@
     <None Include="content\gumproject\screens\level2gum.gusx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Level2Gum</Name>
+    </None>
+    <None Include="content\gumproject\screens\mainmenugum.gusx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>MainMenuGum</Name>
     </None>
     <None Include="content\gumproject\standards\circle.gutx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

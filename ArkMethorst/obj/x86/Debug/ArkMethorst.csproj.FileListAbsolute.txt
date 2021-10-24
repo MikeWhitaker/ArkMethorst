@@ -215,3 +215,11 @@ C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\obj\x86\Debug\ArkMethorst.csproj.CopyC
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\obj\x86\Debug\ArkMethorst.exe
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\obj\x86\Debug\ArkMethorst.pdb
 C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\obj\x86\Debug\ArkMethorst.csproj.AssemblyReference.cache
+c:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\gumproject\screens\mainmenugum.gusx
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\gumproject\fontcache\font45showcard_gothic.fnt
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\gumproject\fontcache\font45showcard_gothic_0.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\gumproject\fontcache\font45showcard_gothic_1.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\x86\Debug\content\gumproject\screens\mainmenugum.gusx
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\gumproject\fontcache\font45showcard_gothic.fnt
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\gumproject\fontcache\font45showcard_gothic_0.png
+C:\Data\Repos\Frb\ArkMethorst\ArkMethorst\bin\DesktopGL\x86\Debug\content\gumproject\fontcache\font45showcard_gothic_1.png

@@ -507,7 +507,7 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBox.Width = 4f;
             AnimalPickupHitBox.Height = 8f;
-            AnimalPickupHitBox.Visible = true;
+            AnimalPickupHitBox.Visible = false;
             AnimalPickupHitBox.ParentRotationChangesPosition = true;
             mGeneratedCollision = new FlatRedBall.Math.Geometry.ShapeCollection();
             Collision.AxisAlignedRectangles.AddOneWay(mAxisAlignedRectangleInstance);
@@ -571,7 +571,7 @@ namespace ArkMethorst.Entities
             }
             AnimalPickupHitBox.Width = 4f;
             AnimalPickupHitBox.Height = 8f;
-            AnimalPickupHitBox.Visible = true;
+            AnimalPickupHitBox.Visible = false;
             AnimalPickupHitBox.ParentRotationChangesPosition = true;
             if (Parent == null)
             {

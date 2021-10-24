@@ -58,7 +58,7 @@ namespace ArkMethorst
             GlobalContent.Initialize();
 
 			CameraSetup.SetupCamera(SpriteManager.Camera, graphics);
-            Type startScreenType = typeof(ArkMethorst.Screens.Level1);
+            Type startScreenType = typeof(ArkMethorst.Screens.MainMenu);
 
 			var commandLineArgs = Environment.GetCommandLineArgs();
 			if (commandLineArgs.Length > 0)

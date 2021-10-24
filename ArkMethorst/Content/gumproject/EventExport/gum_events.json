@@ -1,0 +1,34 @@
+{
+  "UserEvents": {
+    "Mike": [
+      {
+        "NewName": " MainMenuGum.ColoredRectangleInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2021-10-24T07:20:19.1149879Z"
+      },
+      {
+        "NewName": " MainMenuGum.TextInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2021-10-24T07:20:44.2249618Z"
+      },
+      {
+        "NewName": null,
+        "OldName": " MainMenuGum.ColoredRectangle ColoredRectangleInstance in  MainMenuGum",
+        "ElementType": "Screens",
+        "EventType": 6,
+        "TimestampUtc": "2021-10-24T07:34:45.2656376Z"
+      },
+      {
+        "NewName": " MainMenuGum.TextInstance1",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2021-10-24T07:40:59.7145617Z"
+      }
+    ]
+  }
+}

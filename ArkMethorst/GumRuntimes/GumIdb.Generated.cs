@@ -39,6 +39,7 @@
                 GumRuntime.ElementSaveExtensions.RegisterGueInstantiationType("GameScreenGum", typeof(ArkMethorst.GumRuntimes.GameScreenGumRuntime));
                 GumRuntime.ElementSaveExtensions.RegisterGueInstantiationType("Level1Gum", typeof(ArkMethorst.GumRuntimes.Level1GumRuntime));
                 GumRuntime.ElementSaveExtensions.RegisterGueInstantiationType("Level2Gum", typeof(ArkMethorst.GumRuntimes.Level2GumRuntime));
+                GumRuntime.ElementSaveExtensions.RegisterGueInstantiationType("MainMenuGum", typeof(ArkMethorst.GumRuntimes.MainMenuGumRuntime));
                 
                 FlatRedBall.Forms.Controls.FrameworkElement.DefaultFormsComponents[typeof(FlatRedBall.Forms.Controls.Button)] = typeof(ArkMethorst.GumRuntimes.DefaultForms.ButtonRuntime);
                 FlatRedBall.Forms.Controls.FrameworkElement.DefaultFormsComponents[typeof(FlatRedBall.Forms.Controls.CheckBox)] = typeof(ArkMethorst.GumRuntimes.DefaultForms.CheckBoxRuntime);

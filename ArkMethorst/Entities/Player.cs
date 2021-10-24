@@ -173,18 +173,6 @@ namespace ArkMethorst.Entities
 			}
 		}
 
-		private bool CheckPickupAnimal()
-		{
-			if (InputPickup.WasJustPressed)
-			{
-				// check for collision with a animal object
-				//var doesRightSideCollide = SolidCollision.CollideAgainst(PigletInstance.RightCornerDetectionRectagle);
-
-			}
-
-			return false;
-		}
-
 		private void CustomDestroy()
 		{
 

@@ -1308,6 +1308,77 @@
       <CustomClassesForExport />
       <BaseScreen>Screens\GameScreen</BaseScreen>
     </ScreenSave>
+    <ScreenSave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <UseGlobalContent>false</UseGlobalContent>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>GumProject/Screens/MainMenuGum.gusx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>ArkMethorst.GumRuntimes.MainMenuGumRuntime</RuntimeType>
+          <ProjectsToExcludeFrom />
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <IsHiddenInTreeView>false</IsHiddenInTreeView>
+      <NamedObjects>
+        <NamedObjectSave>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">File</ValueAsObject>
+            </PropertySave>
+          </Properties>
+          <SourceType>File</SourceType>
+          <SourceFile>GumProject/Screens/MainMenuGum.gusx</SourceFile>
+          <SourceName>ColoredRectangleInstance (ArkMethorst.GumRuntimes.ColoredRectangleRuntime)</SourceName>
+          <SourceClassType>GumProject/Screens/MainMenuGum.gusx</SourceClassType>
+          <InstanceName>ColoredRectangleInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <Properties>
+            <PropertySave>
+              <Name>AssociateWithFactory</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+            <PropertySave>
+              <Name>SourceType</Name>
+              <ValueAsObject xsi:type="SourceType">Entity</ValueAsObject>
+            </PropertySave>
+            <PropertySave>
+              <Name>SortAxis</Name>
+              <ValueAsInt>0</ValueAsInt>
+            </PropertySave>
+            <PropertySave>
+              <Name>PartitionWidthHeight</Name>
+              <ValueAsFloat>32</ValueAsFloat>
+            </PropertySave>
+            <PropertySave>
+              <Name>IsSortListEveryFrameChecked</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
+          <SourceType>Entity</SourceType>
+          <SourceFile>Entities\Player</SourceFile>
+          <SourceClassType>Entities\Player</SourceClassType>
+          <InstanceName>PlayerInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>false</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <Name>Screens\MainMenu</Name>
+      <CustomClassesForExport />
+    </ScreenSave>
   </Screens>
   <Entities>
     <EntitySave>
@@ -3122,7 +3193,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -3420,7 +3491,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\Level1</StartUpScreen>
+  <StartUpScreen>Screens\MainMenu</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>
